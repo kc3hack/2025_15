@@ -503,7 +503,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 637793837}
         m_TargetAssemblyTypeName: RoomJoiner, Assembly-CSharp
-        m_MethodName: OnJoinedRoom
+        m_MethodName: CreateJoinRoom
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
