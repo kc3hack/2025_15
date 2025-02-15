@@ -1,0 +1,9 @@
+# Unity generated files
+.vs/
+.vscode/
+Library/
+Temp/
+obj/
+Build/
+BuildPlayer/
+.userprefs
