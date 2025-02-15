@@ -2652,7 +2652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: {fileID: 916140570}
-  Birthday: {fileID: 1704026055}
+  Birth: {fileID: 1704026055}
 --- !u!1 &1979017378
 GameObject:
   m_ObjectHideFlags: 0

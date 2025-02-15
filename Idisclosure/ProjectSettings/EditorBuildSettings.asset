@@ -15,8 +15,11 @@ EditorBuildSettings:
     path: Assets/Scenes/InputProfiles.unity
     guid: 13afbf4be8b4177408ae8709aea96e8a
   - enabled: 1
-    path: Assets/Scenes/InputPassword.unity
+    path: Assets/Scenes/InputSecretID.unity
     guid: 8e975cfdfaec3454f9de6e3ac2641d85
+  - enabled: 1
+    path: Assets/Scenes/CreateJoin.unity
+    guid: 494945a0bea0d48499d604939fd3a937
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
