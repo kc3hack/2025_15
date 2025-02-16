@@ -5,10 +5,10 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class RoomJoiner : MonoBehaviourPunCallbacks
+public class CreateJoin : MonoBehaviourPunCallbacks
 {
     private bool isConnectedToMaster = false;
-    public TMP_Text RoomName;
+    public TMP_InputField RoomName;
 
     void Start()
     {
@@ -28,7 +28,7 @@ public class RoomJoiner : MonoBehaviourPunCallbacks
         Debug.Log("Photonに接続完了！ マスターサーバーに接続しました。");
     }
 
-    public void CreateJoinRoom()
+    public void JoinRoom()
     {
         if (!isConnectedToMaster)
         {
