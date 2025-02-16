@@ -47,6 +47,7 @@ public class CreateJoin : MonoBehaviourPunCallbacks
         // ルームに参加を試みる
         PhotonNetwork.JoinRoom(roomName);
         Debug.Log($"ルーム '{roomName}' に参加中...");
+        Debug.Log(roomName.Length);
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
@@ -69,6 +70,7 @@ public class CreateJoin : MonoBehaviourPunCallbacks
 
         PhotonNetwork.CreateRoom(roomName, roomOptions);
         Debug.Log($"新しいルーム '{roomName}' を作成中...");
+        Debug.Log(roomName.Length);
     }
 
     public override void OnJoinedRoom()
@@ -76,6 +78,8 @@ public class CreateJoin : MonoBehaviourPunCallbacks
         // ルームに参加成功した場合の処理
         Debug.Log("ルームに参加成功！");
         SceneManager.LoadScene("Waiting"); // "Waiting"シーンに遷移
+        Debug.Log($"現在参加しているルームの名前: {PhotonNetwork.CurrentRoom.Name}");
+        Debug.Log($"現在参加しているルームの名前: {PhotonNetwork.CurrentRoom.Name.Length}");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
