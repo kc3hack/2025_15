@@ -12,6 +12,7 @@ public class CreateJoin : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        // プレイヤー名を設定（未設定ならランダム名）
         string playerName = PlayerPrefs.GetString("PlayerName", "Guest" + Random.Range(1000, 9999));
         PhotonNetwork.NickName = playerName;
 
@@ -43,19 +44,43 @@ public class CreateJoin : MonoBehaviourPunCallbacks
             return;
         }
 
-        PhotonNetwork.JoinOrCreateRoom(roomName, new RoomOptions { MaxPlayers = 6, IsVisible = true, IsOpen = true }, TypedLobby.Default);
+        // ルームに参加を試みる
+        PhotonNetwork.JoinRoom(roomName);
         Debug.Log($"ルーム '{roomName}' に参加中...");
-    }
-
-    public override void OnJoinedRoom()
-    {
-        Debug.Log("ルームに参加成功！");
-        SceneManager.LoadScene("Waiting");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
-        Debug.LogError($"ルーム参加失敗: {message}");
+        // ルームに参加できなかった場合、新しいルームを作成
+        Debug.LogWarning($"ルーム '{RoomName.text}' への参加に失敗: {message}");
+
+        string roomName = RoomName.text;
+        if (string.IsNullOrEmpty(roomName))
+        {
+            roomName = "Room_" + Random.Range(1000, 9999); // ランダムなルーム名を生成
+        }
+
+        RoomOptions roomOptions = new RoomOptions
+        {
+            MaxPlayers = 6,
+            IsVisible = true,
+            IsOpen = true
+        };
+
+        PhotonNetwork.CreateRoom(roomName, roomOptions);
+        Debug.Log($"新しいルーム '{roomName}' を作成中...");
+    }
+
+    public override void OnJoinedRoom()
+    {
+        // ルームに参加成功した場合の処理
+        Debug.Log("ルームに参加成功！");
+        SceneManager.LoadScene("Waiting"); // "Waiting"シーンに遷移
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        // ルーム作成に失敗した場合の処理（例えば同名のルームがすでに存在する場合）
+        Debug.LogError($"ルーム作成失敗: {message}");
     }
 }
-
