@@ -21,6 +21,9 @@ public class CreateJoin : MonoBehaviourPunCallbacks
 
         if (!PhotonNetwork.IsConnected)
         {
+            // "Connecting"シーンをロード
+            SceneManager.LoadScene("Connecting", LoadSceneMode.Additive);
+
             PhotonNetwork.ConnectUsingSettings();
             Debug.Log($"Photonに接続中... プレイヤー名: {PhotonNetwork.NickName}");
         }
@@ -30,6 +33,9 @@ public class CreateJoin : MonoBehaviourPunCallbacks
     {
         isConnectedToMaster = true;
         Debug.Log("Photonに接続完了！ マスターサーバーに接続しました。");
+
+        // "Connecting"シーンをアンロード
+        SceneManager.UnloadSceneAsync("Connecting");
     }
 
     public void JoinRoom()
