@@ -6,7 +6,7 @@ using ExitGames.Client.Photon;
 public class Start15m : MonoBehaviourPunCallbacks
 {
     private int totalPlayers;
-    private int minutes = 15;
+    private float seconds = 15*60;
 
     void Awake()
     {
@@ -40,7 +40,7 @@ public class Start15m : MonoBehaviourPunCallbacks
         // プレイ時間を保存
         Hashtable time = new Hashtable
         {
-            { "Time", minutes }
+            { "Time", seconds }
         };
 
         // 保存
