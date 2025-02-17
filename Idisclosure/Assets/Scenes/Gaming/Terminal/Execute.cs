@@ -4,7 +4,7 @@ using TMPro;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 
-public class Execute
+public class Execute : MonoBehaviour
 {
     public TMP_Text Command;
 

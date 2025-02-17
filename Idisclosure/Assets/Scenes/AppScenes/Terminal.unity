@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 136951372}
   - component: {fileID: 136951371}
   m_Layer: 5
-  m_Name: Browser
+  m_Name: Terminal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,7 +1115,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 7.6328177}
+  m_AnchoredPosition: {x: 0, y: 11.24085}
   m_SizeDelta: {x: 0, y: 1951.693}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &733653119
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 765043929}
   - component: {fileID: 765043928}
   m_Layer: 5
-  m_Name: BrowserView
+  m_Name: TerminalView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2098,7 +2098,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 437023205}
   m_HandleRect: {fileID: 437023204}
   m_Direction: 2
-  m_Value: 0.99424046
+  m_Value: 0.99151796
   m_Size: 0.32097208
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2923,9 +2923,9 @@ GameObject:
   - component: {fileID: 2022715087}
   - component: {fileID: 2022715086}
   - component: {fileID: 2022715085}
-  - component: {fileID: 2022715084}
+  - component: {fileID: 2022715088}
   m_Layer: 5
-  m_Name: BrowserInput
+  m_Name: TerminalInput
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2951,19 +2951,6 @@ RectTransform:
   m_AnchoredPosition: {x: -464.19, y: 220}
   m_SizeDelta: {x: 613.174, y: 91.746}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2022715084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022715082}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0e6f76c934bfa149ba5df9cb89c5ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SearchWords: {fileID: 1456025355}
 --- !u!114 &2022715085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,9 +3013,9 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2022715084}
-        m_TargetAssemblyTypeName: BrowserSearch, Assembly-CSharp
-        m_MethodName: SearchAndMove
+      - m_Target: {fileID: 2022715088}
+        m_TargetAssemblyTypeName: Execute, Assembly-CSharp
+        m_MethodName: ExecuteCommand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3115,6 +3102,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2022715082}
   m_CullTransparentMesh: 1
+--- !u!114 &2022715088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022715082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b34209039f70b74797a34fe6616c388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Command: {fileID: 1456025355}
 --- !u!1 &2078467744
 GameObject:
   m_ObjectHideFlags: 0
