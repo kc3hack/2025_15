@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TimeUp.unity
     guid: a261483b0abc6a74488b831d2149ab0f
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/MyServer.unity
+    guid: 9e07f1b34b660224891e2b3bcd72fccb
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/SNSServer.unity
+    guid: fd0909482e287fc40bb4281fdf57e6d6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
