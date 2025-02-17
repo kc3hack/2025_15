@@ -227,7 +227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 527.3478}
+  m_AnchoredPosition: {x: 0, y: 915.691}
   m_SizeDelta: {x: 0, y: 1163.309}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &89228373
@@ -2913,7 +2913,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 782477964}
   m_HandleRect: {fileID: 782477963}
   m_Direction: 2
-  m_Value: 0.42409852
+  m_Value: 0.000000049991066
   m_Size: 0.2128566
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4295,6 +4295,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1307706976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1307706977}
+  - component: {fileID: 1307706978}
+  m_Layer: 0
+  m_Name: CreateStoreWeb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1307706977
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307706976}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 316.47916, y: 195.2121, z: -2.2399907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1307706978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307706976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe46a0870758e74eae580f837edfa85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowBrowser: {fileID: 691524765}
 --- !u!1 &1335571758
 GameObject:
   m_ObjectHideFlags: 0
@@ -5431,6 +5476,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BuhiCoinText: {fileID: 2046602292}
+  BatteryText: {fileID: 1432630550}
 --- !u!4 &1919830493
 Transform:
   m_ObjectHideFlags: 0
@@ -5919,3 +5965,4 @@ SceneRoots:
   - {fileID: 1261026983}
   - {fileID: 1919830493}
   - {fileID: 2091268780}
+  - {fileID: 1307706977}

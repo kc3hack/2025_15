@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using ExitGames.Client.Photon;
+using Photon.Pun;
 
 public class BrowserSearch : MonoBehaviour
 {
@@ -22,6 +24,16 @@ public class BrowserSearch : MonoBehaviour
         {
             SceneManager.LoadScene("SNSServer");
             // ここにwifiにIPメモる処理忘れずに
+        }
+        
+        /*----------Virus Osakano Obatyannを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["VirusOO"])
+        {
+            if (searchWords == "virusoo")
+            {
+                SceneManager.LoadScene("VirusOO");
+                // ここにwifiにIPをメモる処理忘れずに
+            }
         }
     }
 }
