@@ -8,6 +8,11 @@ public class SceneTransitionManager : MonoBehaviourPunCallbacks, IOnEventCallbac
 {
     private const byte CrackedSecretID = 1;
 
+    void Start()
+    {
+        PhotonNetwork.AutomaticallySyncScene = false;
+    }
+
     public void OnEvent(EventData photonEvent)
     {
         if (photonEvent.Code == CrackedSecretID)
