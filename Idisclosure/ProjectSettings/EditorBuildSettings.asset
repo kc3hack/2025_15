@@ -29,6 +29,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Connecting.unity
     guid: 94a4f60353632b446a81353cfffb29f2
+  - enabled: 1
+    path: Assets/Scenes/TimeUp.unity
+    guid: a261483b0abc6a74488b831d2149ab0f
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/MyServer.unity
+    guid: 9e07f1b34b660224891e2b3bcd72fccb
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/SNSServer.unity
+    guid: fd0909482e287fc40bb4281fdf57e6d6
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Firewall.unity
+    guid: 5004da0a6d1dcf543ae73474e00917af
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Terminal.unity
+    guid: bafd8cc58743055429c3d316cce1d84d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -497,7 +497,22 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Kinkakuji_0: 4006269947933392312
+      Kinkakuji_1: 4888028839557477731
+      Kinkakuji_10: 7581048244437589900
+      Kinkakuji_11: -9013525017782623047
+      Kinkakuji_12: -2498820645173049807
+      Kinkakuji_13: -4437998985263410607
+      Kinkakuji_14: 5034066389956758001
+      Kinkakuji_2: -1597890245698192602
+      Kinkakuji_3: 3026775302519241781
+      Kinkakuji_4: 5205945444204936319
+      Kinkakuji_5: 7646215126857735313
+      Kinkakuji_6: -1271885929441876419
+      Kinkakuji_7: 5779969215499104863
+      Kinkakuji_8: 4555627945593125926
+      Kinkakuji_9: 7316422409354409107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

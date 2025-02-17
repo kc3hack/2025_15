@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      BuhiCoin_0: 5859991162357138408
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

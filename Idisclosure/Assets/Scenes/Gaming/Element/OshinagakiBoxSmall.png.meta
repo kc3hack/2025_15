@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OshinagakiBoxSmall_0: 4499006136076348447
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
