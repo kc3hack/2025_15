@@ -1,34 +1,65 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class TimeManagement : MonoBehaviour
+public class CountdownTimerWithCover : MonoBehaviourPunCallbacks, IOnEventCallback
 {
-    // 制限時間（秒）
-    public float timeRemaining = 180.0f; // 初期値を設定
-
-    // TextMeshPro の参照
+    // タイマー設定
+    public float timeRemaining = 90.0f;
     public TextMeshProUGUI timerText;
+
+    // イベントコード
+    private const byte EventCode = 1;
+    private bool isNotified = false;
+
+    // 保存するデータのキー
+    private string dataKey = "YourDataKey";
+    private string savedData;
+
+    // 表示する文字列の定義
+    string snsPlofiles = "";
+
+    private void Start()
+    {
+        // PlayerPrefs からデータを取得
+        savedData = PlayerPrefs.GetString(dataKey, "データがありません");
+
+        // 取得したデータをリモートに保存（Room Custom Properties を利用）
+        ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
+        customProperties[dataKey] = savedData;
+        PhotonNetwork.CurrentRoom.SetCustomProperties(customProperties);
+
+        Debug.Log($"[保存] データ: {savedData} をリモートに保存しました。");
+    }
 
     private void Update()
     {
-        // 時間を減らしていく
+        // カウントダウン
         timeRemaining -= Time.deltaTime;
-
-        // 時間が 0 以下になったら 0 に固定
-        if (timeRemaining <= 0)
-        {
-            timeRemaining = 0;
-        }
-
-        //時間が0になったらシーン遷移
-        if (timeRemaining == 0)
-        {
-            SceneManager.LoadScene("TimeUp");
-        }
+        if (timeRemaining <= 0) timeRemaining = 0;
 
         // 表示を更新
         UpdateTimerDisplay();
+
+        // 残り 1 分 になったら通知
+        if (timeRemaining <= 60 && !isNotified)
+        {
+            isNotified = true;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.CustomProperties.ContainsKey("Name"))
+                {
+                    string playerName = ((string)player.CustomProperties["Name"]).Replace("\u200B", "");
+                    snsPlofiles += (playerName + "\n");
+                    Hashtable plofiles = new Hashtable {
+                        {"Plofiles",snsPlofiles}
+                    };
+                    PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
+                }
+            }
+        }
     }
 
     // タイマーの表示を更新
@@ -36,18 +67,42 @@ public class TimeManagement : MonoBehaviour
     {
         if (timeRemaining > 60)
         {
-            // 60 秒以上の場合は「〇分〇秒」の形式で表示
-            int minutes = Mathf.FloorToInt(timeRemaining / 60); // 分
-            float seconds = timeRemaining % 60;                 // 秒
-
-            // 小数点以下 1 桁までの秒数を表示
-            timerText.text = minutes + ":" + seconds.ToString("F1");
+            int minutes = Mathf.FloorToInt(timeRemaining / 60);
+            float seconds = timeRemaining % 60;
+            timerText.text = minutes + ":" + seconds.ToString("F1") + "秒";
         }
         else
         {
-            // 60 秒未満の場合は小数点以下 1 桁までの秒数を表示
-            timerText.text = timeRemaining.ToString("F1");
+            timerText.text = timeRemaining.ToString("F1") + "秒";
         }
     }
-}
 
+    // 全員に通知
+    public void SendEvent()
+    {
+        string message = $"データ: {savedData}";
+
+        // 全員に通知
+        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+
+        // イベントを送信
+        PhotonNetwork.RaiseEvent(EventCode, message, options, sendOptions);
+
+        Debug.Log($"[通知] {message}");
+    }
+
+    // イベントを受信
+    public void OnEvent(EventData photonEvent)
+    {
+        if (photonEvent.Code == EventCode)
+        {
+            string receivedMessage = (string)photonEvent.CustomData;
+            Debug.Log($"[受信] メッセージ: {receivedMessage}");
+            timerText.text = receivedMessage;
+        }
+    }
+
+    public override void OnEnable() { PhotonNetwork.AddCallbackTarget(this); }
+    public override void OnDisable() { PhotonNetwork.RemoveCallbackTarget(this); }
+}

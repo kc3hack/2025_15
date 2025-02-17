@@ -14,8 +14,8 @@ public class MoveInputSecretID : MonoBehaviour
         string playerBirth = Birth.text;
 
         // PlayerPrefsに名前を保存
-        PlayerPrefs.SetString("PlayerName", playerName);
-        PlayerPrefs.SetString("PlayerBirth", playerBirth);
+        PlayerPrefs.SetString("Name", playerName);
+        PlayerPrefs.SetString("Birth", playerBirth);
         //保存する
         PlayerPrefs.Save();
         //Logをコンソールに出す。
