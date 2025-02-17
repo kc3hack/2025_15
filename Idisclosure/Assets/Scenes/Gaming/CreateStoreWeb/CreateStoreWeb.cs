@@ -23,7 +23,7 @@ public class CreateStoreWeb : MonoBehaviour
     void VirusOO()
     {
         // 単位秒数あたりの確率
-        int randomValue = Random.Range(0, 100);
+        int randomValue = Random.Range(0, 5);
 
         // 1が出たらStoreWebを建ちあげる
         if (randomValue == 1)
