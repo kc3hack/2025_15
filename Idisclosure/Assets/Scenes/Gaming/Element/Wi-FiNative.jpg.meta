@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wi-FiNative_0: 605972609261240192
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

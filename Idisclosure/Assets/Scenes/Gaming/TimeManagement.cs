@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class TimeManagement : MonoBehaviour
@@ -18,6 +19,12 @@ public class TimeManagement : MonoBehaviour
         if (timeRemaining <= 0)
         {
             timeRemaining = 0;
+        }
+
+        //時間が0になったらシーン遷移
+        if (timeRemaining == 0)
+        {
+            SceneManager.LoadScene("TimeUp");
         }
 
         // 表示を更新

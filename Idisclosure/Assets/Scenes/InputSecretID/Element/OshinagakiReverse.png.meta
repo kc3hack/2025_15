@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      OshinagakiReverse_0: 6483897675956578063
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

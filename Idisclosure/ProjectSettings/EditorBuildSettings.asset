@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Connecting.unity
     guid: 94a4f60353632b446a81353cfffb29f2
+  - enabled: 1
+    path: Assets/Scenes/TimeUp.unity
+    guid: a261483b0abc6a74488b831d2149ab0f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
