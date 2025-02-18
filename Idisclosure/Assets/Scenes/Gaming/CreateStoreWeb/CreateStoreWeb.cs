@@ -8,7 +8,7 @@ public class CreateStoreWeb : MonoBehaviour
 {
     public TMP_Text ShowBrowser;
     /*----------Reset時必要----------*/
-    string showBrowser = "My Server\n" + "SNS Server\n";
+    string showBrowser = "SNS Server\n";
 
     void Start()
     {
