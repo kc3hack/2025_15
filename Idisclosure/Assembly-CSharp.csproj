@@ -71,8 +71,10 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scenes\Gaming\FishingManager.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\AntiFishingNow.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveTerminalMyServer.cs" />
     <Compile Include="Assets\Scenes\Waiting\ShowRoomMembers.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingNow.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\CreateStoreWeb.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />

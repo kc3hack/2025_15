@@ -12,7 +12,8 @@ public class FishingViruOO : MonoBehaviour
             Hashtable webs = new Hashtable 
             { 
                 { "VirusOO", true },
-                { "FishingVirusOO", true }
+                { "FishingVirusOO", true },
+                {"FishingNow", true}
             };
             PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
 
