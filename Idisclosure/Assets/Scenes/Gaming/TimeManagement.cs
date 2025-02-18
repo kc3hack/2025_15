@@ -4,7 +4,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
 
-public class CountdownTimerWithCover : MonoBehaviourPunCallbacks, IOnEventCallback
+public class CountdownTimerWithCover : MonoBehaviourPunCallbacks
 {
     // タイマー設定
     public float timeRemaining = 90.0f;
@@ -23,15 +23,15 @@ public class CountdownTimerWithCover : MonoBehaviourPunCallbacks, IOnEventCallba
 
     private void Start()
     {
-        // PlayerPrefs からデータを取得
-        savedData = PlayerPrefs.GetString(dataKey, "データがありません");
+        // // PlayerPrefs からデータを取得
+        // savedData = PlayerPrefs.GetString(dataKey, "データがありません");
 
-        // 取得したデータをリモートに保存（Room Custom Properties を利用）
-        ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
-        customProperties[dataKey] = savedData;
-        PhotonNetwork.CurrentRoom.SetCustomProperties(customProperties);
+        // // 取得したデータをリモートに保存（Room Custom Properties を利用）
+        // ExitGames.Client.Photon.Hashtable customProperties = new ExitGames.Client.Photon.Hashtable();
+        // customProperties[dataKey] = savedData;
+        // PhotonNetwork.CurrentRoom.SetCustomProperties(customProperties);
 
-        Debug.Log($"[保存] データ: {savedData} をリモートに保存しました。");
+        // Debug.Log($"[保存] データ: {savedData} をリモートに保存しました。");
     }
 
     private void Update()
@@ -51,8 +51,7 @@ public class CountdownTimerWithCover : MonoBehaviourPunCallbacks, IOnEventCallba
             {
                 if (player.CustomProperties.ContainsKey("Name"))
                 {
-                    string playerName = ((string)player.CustomProperties["Name"]).Replace("\u200B", "");
-                    snsPlofiles += (playerName + "\n");
+                    snsPlofiles += (player.NickName + "\n");
                     Hashtable plofiles = new Hashtable {
                         {"Plofiles",snsPlofiles}
                     };
@@ -77,32 +76,32 @@ public class CountdownTimerWithCover : MonoBehaviourPunCallbacks, IOnEventCallba
         }
     }
 
-    // 全員に通知
-    public void SendEvent()
-    {
-        string message = $"データ: {savedData}";
+    // // 全員に通知
+    // public void SendEvent()
+    // {
+    //     string message = $"データ: {savedData}";
 
-        // 全員に通知
-        RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-        SendOptions sendOptions = new SendOptions { Reliability = true };
+    //     // 全員に通知
+    //     RaiseEventOptions options = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+    //     SendOptions sendOptions = new SendOptions { Reliability = true };
 
-        // イベントを送信
-        PhotonNetwork.RaiseEvent(EventCode, message, options, sendOptions);
+    //     // イベントを送信
+    //     PhotonNetwork.RaiseEvent(EventCode, message, options, sendOptions);
 
-        Debug.Log($"[通知] {message}");
-    }
+    //     Debug.Log($"[通知] {message}");
+    // }
 
-    // イベントを受信
-    public void OnEvent(EventData photonEvent)
-    {
-        if (photonEvent.Code == EventCode)
-        {
-            string receivedMessage = (string)photonEvent.CustomData;
-            Debug.Log($"[受信] メッセージ: {receivedMessage}");
-            timerText.text = receivedMessage;
-        }
-    }
+    // // イベントを受信
+    // public void OnEvent(EventData photonEvent)
+    // {
+    //     if (photonEvent.Code == EventCode)
+    //     {
+    //         string receivedMessage = (string)photonEvent.CustomData;
+    //         Debug.Log($"[受信] メッセージ: {receivedMessage}");
+    //         timerText.text = receivedMessage;
+    //     }
+    // }
 
-    public override void OnEnable() { PhotonNetwork.AddCallbackTarget(this); }
-    public override void OnDisable() { PhotonNetwork.RemoveCallbackTarget(this); }
+    // public override void OnEnable() { PhotonNetwork.AddCallbackTarget(this); }
+    // public override void OnDisable() { PhotonNetwork.RemoveCallbackTarget(this); }
 }
