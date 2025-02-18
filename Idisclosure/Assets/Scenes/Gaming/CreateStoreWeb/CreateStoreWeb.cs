@@ -14,14 +14,6 @@ public class CreateStoreWeb : MonoBehaviour
     {
         // 起動してから1秒間隔でランダムを回す
         InvokeRepeating(nameof(VirusOO), 0f, 1f);
-    
-        /*----------判別しているプロパティをResetする、Reset時必要----------*/
-        Hashtable Webs = new Hashtable 
-        { 
-            { "VirusOO", false },
-            {"FishingVirusOO", false}
-        };
-        PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
     }
 
     void VirusOO()
@@ -56,6 +48,8 @@ public class CreateStoreWeb : MonoBehaviour
         else
         {
             showBrowser = showBrowser.Replace("VirusOO\n", "");
+            Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
         }
 
         /*----------テキストに反映----------*/

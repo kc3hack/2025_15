@@ -11,12 +11,12 @@ public class AntiFishingNow : MonoBehaviour
     public void HideFishingNow()
     {
         Hashtable webs = new Hashtable 
-            { 
-                { "VirusOO", false },
-                { "FishingVirusOO", false },
-                { "FishingNow", false}
-            };
-        SceneManager.UnloadSceneAsync("FishingNow");
+        { 
+            { "VirusOO", false },
+            { "FishingVirusOO", false },
+            { "FishingNow", false}
+        };
+        PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
         Debug.Log("Done!");
     }
 }
