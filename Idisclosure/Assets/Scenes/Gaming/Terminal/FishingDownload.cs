@@ -20,7 +20,7 @@ public class FishingDownload : MonoBehaviour
             PlayerPrefs.Save();
 
             // 宛先探索
-            fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherVirusOO"]
+            string fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherVirusOO"];
             Player targetPlayer = null;
             foreach (Player player in PhotonNetwork.PlayerList)
             {
