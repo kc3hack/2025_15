@@ -14,8 +14,9 @@ public class AntiFishingNow : MonoBehaviour
             { 
                 { "VirusOO", false },
                 { "FishingVirusOO", false },
-                {"FishingNow", false}
+                { "FishingNow", false}
             };
         SceneManager.UnloadSceneAsync("FishingNow");
+        Debug.Log("Done!");
     }
 }
