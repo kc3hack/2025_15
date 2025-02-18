@@ -11,8 +11,8 @@ public class BuhiCoinCalculator : MonoBehaviour
     public TMP_Text EnteredSecretID;
     public void GetBuhiCoin()
     {
-        string PlayerName = PlayerPrefs.GetString("PlayerName", "Guest").Replace("\u200B", "");
-        string PlayerBirth = PlayerPrefs.GetString("PlayerBirth", "2000/0101").Replace("\u200B", "");
+        string PlayerName = PlayerPrefs.GetString("Name", "Guest").Replace("\u200B", "");
+        string PlayerBirth = PlayerPrefs.GetString("Birth", "2000/0101").Replace("\u200B", "");
         string PlayerBirthday = PlayerBirth.Substring(PlayerBirth.IndexOf("/") + 1); // "/"より後の4桁
         string PlayerBirthyear = PlayerBirth.Substring(0, PlayerBirth.IndexOf("/")); // "/"より前の4桁
         int BuhiCoinNow = 0;

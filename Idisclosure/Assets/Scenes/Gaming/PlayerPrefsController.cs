@@ -17,7 +17,7 @@
             string buhiCoin = PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", "");
             string birthday = PlayerPrefs.GetString("Birthday", "0101").Replace("\u200B", "");
             string birthyear = PlayerPrefs.GetString("Birthyear", "2000").Replace("\u200B", "");
-            int age = PlayerPrefs.GetInt("Age", 0);
+            int age = PlayerPrefs.GetInt("Age", 00);
 
 
             // UIに表示
