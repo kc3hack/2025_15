@@ -29,6 +29,10 @@ public class ExecuteMyServer : MonoBehaviour
                     SceneManager.LoadScene("VirusOO");
                     // ここにwifiにIPをメモる処理忘れずに
                 }
+                else
+                {
+                    Debug.Log("Low Battery...");
+                }
             }
         }
     }
