@@ -56,6 +56,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AppScenes/MyServer/FishingMyServer.unity
     guid: d7c1899657869bb479ca48a45973add4
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingVirusOO.unity
+    guid: e5098430433ff504894ca00f2028c784
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Success.unity
+    guid: 7353005a55ff9f847aa9c7974dbd0db1
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Failed.unity
+    guid: 073db3243ed69ae448100203521d5fdb
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/CreateFishing.unity
+    guid: e6fb24341bb919b478fb6c2741b45425
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

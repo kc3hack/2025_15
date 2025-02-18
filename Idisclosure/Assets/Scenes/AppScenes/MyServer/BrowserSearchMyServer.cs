@@ -32,19 +32,39 @@ public class BrowserSearchMyServer : MonoBehaviour
         /*----------Virus Osakano Obatyannを検索----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["VirusOO"])
         {
-            if (searchWords == "virusoo")
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingVirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingVirusOO"])
             {
-                int drain = 1;
-
-                int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
-                if ((Battery - drain >= 0))
+                if (searchWords == "virusoo")
                 {
-                    Battery -= drain;
-                    PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
-                    PlayerPrefs.Save();
-                    SceneManager.LoadScene("VirusOO");
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        Battery -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("FishingVirusOO");
+                    }
+                    // ここにwifiにIPをメモる処理忘れずに
                 }
-                // ここにwifiにIPをメモる処理忘れずに
+            }
+            else
+            {
+                if (searchWords == "virusoo")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        Battery -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("VirusOO");
+                    }
+                    // ここにwifiにIPをメモる処理忘れずに
+                }
             }
         }
     }

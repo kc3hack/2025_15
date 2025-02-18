@@ -16,7 +16,11 @@ public class CreateStoreWeb : MonoBehaviour
         InvokeRepeating(nameof(VirusOO), 0f, 1f);
     
         /*----------判別しているプロパティをResetする、Reset時必要----------*/
-        Hashtable Webs = new Hashtable { { "VirusOO", false } };
+        Hashtable Webs = new Hashtable 
+        { 
+            { "VirusOO", false },
+            {"FishingVirusOO", false}
+        };
         PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
     }
 

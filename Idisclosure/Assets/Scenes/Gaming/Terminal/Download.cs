@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
@@ -30,6 +31,7 @@ public class Download : MonoBehaviour
                 Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
+            SceneManager.LoadScene("Success");
         }
     }
 }
