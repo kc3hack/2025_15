@@ -2,6 +2,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using ExitGames.Client.Photon;
+using System.Collections.Generic;
 
 public class Start15m : MonoBehaviourPunCallbacks
 {
@@ -41,6 +42,9 @@ public class Start15m : MonoBehaviourPunCallbacks
         // 全員で一気にシーン遷移
         PhotonNetwork.LoadLevel("Gaming");
 
+        // IPListを生成
+        MakeIPList();
+
     }
 
     // プレイヤーに番号を割り振る
@@ -54,6 +58,54 @@ public class Start15m : MonoBehaviourPunCallbacks
 
         // 保存
         PhotonNetwork.CurrentRoom.SetCustomProperties(time);
+    }
+
+    /*----------IPアドレスを生成----------*/
+    private const byte SendIPs = 2;
+    public void MakeIPList()
+    {
+        List<string> IPList = new List<string>();
+        int NumberOfPlayer = PhotonNetwork.PlayerList.Length;
+
+        while (IPList.Count < NumberOfPlayer * 2 + 1)
+        {
+            // IPを生成
+            int first = UnityEngine.Random.Range(0, 256);
+            int second = UnityEngine.Random.Range(0, 256);
+            int third = UnityEngine.Random.Range(0, 256);
+            int fourth = UnityEngine.Random.Range(0, 256);
+
+            string NewIP = $"{first}.{second}.{third}.{fourth}";
+            
+            // 一意性が保証されたら追加
+            if (!(IPList.Contains(NewIP)))
+            {
+                IPList.Add(NewIP);
+            }
+        }
+            // サーバー上に保存
+            Hashtable props = new Hashtable
+            {
+                { "IPList", string.Join(",", IPList) },
+                { "SNSServerIP", IPList[0] }
+            };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(props);
+            Debug.Log("IPList is saved! : " + string.Join(",", IPList));
+
+        // プレイヤーに配布
+        int i = 1;
+        foreach(Player player in PhotonNetwork.PlayerList)
+        {
+            object[] data = new object[] { IPList[i], IPList[i + 1] };
+
+            RaiseEventOptions options = new RaiseEventOptions
+            {
+                TargetActors = new int[] { player.ActorNumber }
+            };
+            SendOptions sendOptions = new SendOptions { Reliability = true };
+            PhotonNetwork.RaiseEvent(SendIPs, data, options, sendOptions);
+            i += 2;
+        }
     }
 }
 
