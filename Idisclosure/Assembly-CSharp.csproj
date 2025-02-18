@@ -65,24 +65,25 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.30f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingLock\AntiFishingNow.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\BrowserSearch.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scenes\Gaming\FishingManager.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\AntiFishingNow.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveTerminalMyServer.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\MoveFishing.cs" />
     <Compile Include="Assets\Scenes\Waiting\ShowRoomMembers.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingNow.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\CreateStoreWeb.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start5m.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\ReturnButton.cs" />
     <Compile Include="Assets\Scenes\Waiting\ReceiveIPs.cs" />
     <Compile Include="Assets\Scenes\Gaming\ContinueOrOver.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\MoveFirewallMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Assets\Scenes\StartClick\MoveInputProfiles.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\MoveTerminalMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scenes\InputSecretID\BuhiCoinCalculator.cs" />
     <Compile Include="Assets\Scenes\Gaming\CrackManagement.cs" />
@@ -118,20 +120,19 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\ReturnMyServer.cs" />
     <Compile Include="Assets\Scenes\Gaming\Terminal\Download.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start15m.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveTerminal.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveFirewallMyServer.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveFishing.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingLock\FishingNow.cs" />
     <Compile Include="Assets\Scenes\EndGame\MoveStartClick.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveFirewall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />
     <Compile Include="Assets\Scenes\Gaming\Terminal\FishingDownload.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\ReturnMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
@@ -147,7 +148,6 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scenes\CreateJoin\CreateJoin.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
-    <Compile Include="Assets\Scenes\AppScenes\MyServer\ReturnButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
