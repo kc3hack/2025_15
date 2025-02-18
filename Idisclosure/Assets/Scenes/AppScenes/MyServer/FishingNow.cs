@@ -1,17 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Photon.Pun;
-using Photon.Realtime;
-using ExitGames.Client.Photon;
-using TMPro;
 
 public class FishingNow : MonoBehaviour
 {
-    // FishingNowのシーンを重ねる
     void Update()
     {
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingNow") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingNow"])
+        // "FishingNow"シーンがすでにロードされているか確認
+        if (!SceneManager.GetSceneByName("FishingNow").isLoaded && PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingNow") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingNow"])
         {
+            // FishingNowシーンを重ねる
             SceneManager.LoadScene("FishingNow", LoadSceneMode.Additive);
         }
     }

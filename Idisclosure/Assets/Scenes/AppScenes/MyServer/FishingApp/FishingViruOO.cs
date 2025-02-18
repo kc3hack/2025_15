@@ -13,7 +13,7 @@ public class FishingViruOO : MonoBehaviour
             { 
                 { "VirusOO", true },
                 { "FishingVirusOO", true },
-                {"FishingNow", true}
+                { "FishingNow", true}
             };
             PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
 
