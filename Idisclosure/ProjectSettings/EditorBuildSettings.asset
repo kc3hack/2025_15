@@ -66,6 +66,9 @@ EditorBuildSettings:
     path: Assets/Scenes/AppScenes/Failed.unity
     guid: 073db3243ed69ae448100203521d5fdb
   - enabled: 1
+    path: Assets/Scenes/AppScenes/MyServer/FishingNow.unity
+    guid: 638b011f8701f7e4ba7b29d4efb33122
+  - enabled: 0
     path: Assets/Scenes/AppScenes/CreateFishing.unity
     guid: e6fb24341bb919b478fb6c2741b45425
   m_configObjects:
