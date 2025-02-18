@@ -6,9 +6,8 @@ public class SNSServerDisplay : MonoBehaviour
 {
     public TMP_Text displayText; // データを表示するTextMeshProUGUIコンポーネント
 
-    private void Start()
+    private void Update()
     {
-
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles"))
         {
             displayText.text = (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"];
