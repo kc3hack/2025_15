@@ -70,6 +70,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveTerminalMyServer.cs" />
     <Compile Include="Assets\Scenes\Waiting\ShowRoomMembers.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\CreateStoreWeb.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start10m.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\ExecuteMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
@@ -115,6 +117,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveTerminal.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveFirewallMyServer.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\MoveFishing.cs" />
     <Compile Include="Assets\Scenes\EndGame\MoveStartClick.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveFirewall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
@@ -125,7 +129,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\BrowserSearchMyServer.cs" />
     <Compile Include="Assets\Scenes\Gaming\Terminal\ShowTerminal.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\PlayerPrefsControllerMyServer.cs" />
     <Compile Include="Assets\Scenes\InputProfiles\MoveInputSecretID.cs" />
     <Compile Include="Assets\Scenes\Gaming\TimeManagement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />

@@ -4,10 +4,10 @@ using ExitGames.Client.Photon;
 using UnityEngine;
 using TMPro;
 
-public class PlayerPrefsController : MonoBehaviourPunCallbacks
+public class PlayerPrefsControllerMyServer : MonoBehaviourPunCallbacks
 {
     public TMP_Text BuhiCoinText;
-    public TMP_Text BatteryText;
+    public TMP_Text BatteryMyServerText;
 
     void Update()
     {
@@ -17,15 +17,16 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         string secretID = PlayerPrefs.GetString("SecretID", "secret").Replace("\u200B", "");
         string buhiCoin = PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", "");
         string battery = PlayerPrefs.GetString("Battery", "0").Replace("\u200B", "");
+        string batteryMyServer = PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", "");
 
         // UIに表示
         if (BuhiCoinText != null)
         {
             BuhiCoinText.text = buhiCoin;
         }
-        if (BatteryText != null)
+        if (BatteryMyServerText != null)
         {
-            BatteryText.text = battery;
+            BatteryMyServerText.text = batteryMyServer;
         }
 
         // カスタムプロパティに設定
@@ -35,6 +36,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         props["SecretID"] = secretID;
         props["BuhiCoin"] = buhiCoin;
         props["Battery"] = battery;
+        props["BatteryMyServer"] = batteryMyServer;
 
         // Photonのネットワークに保存
         PhotonNetwork.LocalPlayer.SetCustomProperties(props);

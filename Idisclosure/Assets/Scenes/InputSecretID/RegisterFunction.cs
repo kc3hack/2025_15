@@ -13,6 +13,7 @@ public class RegisterFunction : MonoBehaviour
         // PlayerPrefsに名前を保存
         PlayerPrefs.SetString("SecretID", secret);
         PlayerPrefs.SetString("Battery", "100");
+        PlayerPrefs.SetString("BatteryMyServer","100");
         //保存する
         PlayerPrefs.Save();
         //Logをコンソールに出す。

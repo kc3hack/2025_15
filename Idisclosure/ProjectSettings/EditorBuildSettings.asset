@@ -47,6 +47,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AppScenes/VirusOO.unity
     guid: a2b9ff54042bd4f4eae863ecdd48338e
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/MyServer/TerminalMyServer.unity
+    guid: c7deb6066207cbe40a4c581484d8b7a7
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/MyServer/FirewallMyServer.unity
+    guid: 463ea72c60d700d48b7d309ab397a267
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/MyServer/FishingMyServer.unity
+    guid: d7c1899657869bb479ca48a45973add4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
