@@ -14,9 +14,14 @@ public class AntiFishingNow : MonoBehaviour
         { 
             { "VirusOO", false },
             { "FishingVirusOO", false },
-            { "FishingNow", false}
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
+
+        Hashtable props = new Hashtable
+        {
+            { "FishingNow", false}
+        };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
         Debug.Log("Done!");
     }
 }

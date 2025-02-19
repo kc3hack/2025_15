@@ -17,14 +17,19 @@ public class Start15m : MonoBehaviourPunCallbacks
 
     public void StartByMaster()
     {
-        // 判別しているプロパティをResetする、Reset時必要
+        // 判別用プロパティをResetする
         Hashtable Webs = new Hashtable 
         { 
             { "VirusOO", false },
             {"FishingVirusOO", false},
-            { "FishingNow", false}
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
+
+        Hashtable props = new Hashtable
+        {
+            { "FishingNow", false},
+        };
+        PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
         //Masterが押しているかどうかのチェック
         if (!PhotonNetwork.IsMasterClient)

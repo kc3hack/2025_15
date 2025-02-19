@@ -20,21 +20,25 @@ public class FishingViruOO : MonoBehaviour
                 Hashtable webs = new Hashtable 
                 { 
                     { "VirusOO", true },
-                    { "FishingVirusOO", true },
-                    { "FishingNow", true}
+                    { "FishingVirusOO", true }
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
+                Hashtable FishingNow = new Hashtable
+                {
+                    { "FishingNow", true },
+                };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(FishingNow);
                 // 宛先を保存
+                string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
                 Hashtable fisher = new Hashtable
                 {
-                    {"FisherVirusOO", PhotonNetwork.NickName}
-                    // IPの処理も忘れずに
+                    {"FisherVirusOO", PhotonNetwork.NickName},
+                    {"FishingVirusOOIP", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 
                 SceneManager.LoadScene("Success");
             }
-            // ここにwifiにIPメモる処理忘れずに
         }
     }
 }
