@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\MoveTerminalMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ShaderPropAnimator.cs" />
     <Compile Include="Assets\Scenes\InputSecretID\BuhiCoinCalculator.cs" />
+    <Compile Include="Assets\Scenes\Gaming\Wi-Fi\Wi-FiActive1.cs" />
     <Compile Include="Assets\Scenes\Gaming\CrackManagement.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
@@ -126,7 +127,9 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveTerminal.cs" />
+    <Compile Include="Assets\Scenes\Gaming\Wi-Fi\Wi-FiActive2.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingLock\FishingNow.cs" />
+    <Compile Include="Assets\Scenes\Gaming\Wi-Fi\Wi-FiActive3.cs" />
     <Compile Include="Assets\Scenes\EndGame\MoveStartClick.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveFirewall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
