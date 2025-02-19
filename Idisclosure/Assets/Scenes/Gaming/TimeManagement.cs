@@ -1,19 +1,41 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class TimeManagement : MonoBehaviour
+public class TimeManagement : MonoBehaviourPunCallbacks
 {
-    // 制限時間（秒）
-    public float timeRemaining = 180.0f; // 初期値を設定
+    public float timeLimit = 0;
 
     // TextMeshPro の参照
     public TextMeshProUGUI timerText;
 
+    private float startTime;
+
+    private void Start()
+    {
+        if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("Time", out object limit))
+        {
+            timeLimit = (float)limit;
+        }
+        if (PhotonNetwork.CurrentRoom.CustomProperties.TryGetValue("StartTime", out object start))
+        {
+            startTime = (float)start;
+        }
+        else
+        {
+            startTime = Time.time;
+        }
+    }
+
     private void Update()
     {
-        // 時間を減らしていく
-        timeRemaining -= Time.deltaTime;
+        // 現在時刻から開始時刻を引いて経過時間を計算
+        float elapsedTime = Time.time - startTime;
+
+        // 残り時間を計算
+        float timeRemaining = timeLimit - elapsedTime;
 
         // 時間が 0 以下になったら 0 に固定
         if (timeRemaining <= 0)
@@ -21,18 +43,18 @@ public class TimeManagement : MonoBehaviour
             timeRemaining = 0;
         }
 
-        //時間が0になったらシーン遷移
+        // 時間が0になったらシーン遷移
         if (timeRemaining == 0)
         {
             SceneManager.LoadScene("TimeUp");
         }
 
         // 表示を更新
-        UpdateTimerDisplay();
+        UpdateTimerDisplay(timeRemaining);
     }
 
     // タイマーの表示を更新
-    private void UpdateTimerDisplay()
+    private void UpdateTimerDisplay(float timeRemaining)
     {
         if (timeRemaining > 60)
         {
@@ -50,4 +72,3 @@ public class TimeManagement : MonoBehaviour
         }
     }
 }
-

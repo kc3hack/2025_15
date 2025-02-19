@@ -8,6 +8,7 @@ public class Start5m : MonoBehaviourPunCallbacks
 {
     private int totalPlayers;
     private float seconds = 5*60;
+    private float startTime;
 
     void Awake()
     {
@@ -41,7 +42,7 @@ public class Start5m : MonoBehaviourPunCallbacks
         // 一応Playerの人数を把握
         totalPlayers = PhotonNetwork.PlayerList.Length;
 
-        // 1ゲーム何分のモードかを保存
+        // 1ゲーム何分のモードかと
         SaveTime();
 
         // 全員で一気にシーン遷移
@@ -52,13 +53,14 @@ public class Start5m : MonoBehaviourPunCallbacks
 
     }
 
-    // プレイヤーに番号を割り振る
     private void SaveTime()
     {
-        // プレイ時間を保存
+        startTime = Time.time;
+        // プレイ時間関連を保存
         Hashtable time = new Hashtable
         {
-            { "Time", seconds }
+            { "Time", seconds },
+            { "StartTime", startTime }
         };
 
         // 保存
