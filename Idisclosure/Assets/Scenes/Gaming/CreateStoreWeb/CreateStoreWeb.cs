@@ -21,16 +21,19 @@ public class CreateStoreWeb : MonoBehaviour
     void VirusOO()
     {
         // 単位秒数あたりの確率
-        int randomValue = Random.Range(0, 100);
+        int randomValue = Random.Range(0, 2);
 
-        // 1が出たらStoreWebを建ちあげる
-        if (randomValue == 1)
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOO") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["VirusOO"]))
         {
-            // 判別しているプロパティをtrueにする
-            Hashtable Webs = new Hashtable { { "VirusOO", true } };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
-            MakeIP("VirusOO");
-            Debug.Log("Create VirusOO!!!!!!");
+            // 1が出たらStoreWebを建ちあげる
+            if (randomValue == 1)
+            {
+                // 判別しているプロパティをtrueにする
+                Hashtable Webs = new Hashtable { { "VirusOO", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
+                MakeIP("VirusOO");
+                Debug.Log("Create VirusOO!!!!!!");
+            }
         }
     }
 

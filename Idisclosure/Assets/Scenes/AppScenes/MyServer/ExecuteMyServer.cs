@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using ExitGames.Client.Photon;
 using Photon.Pun;
-
+using System.Text.RegularExpressions;
 public class ExecuteMyServer : MonoBehaviour
 {
     public TMP_Text Command;
@@ -16,7 +16,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------Virus Osakano Obatyannを実行----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadVirusOO"])
         {
-            if (command == "./virusoo")
+            if (Regex.IsMatch(command, @"virusoo.*"))
             {
                 int drain = 10;
 
@@ -27,7 +27,6 @@ public class ExecuteMyServer : MonoBehaviour
                     PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                     PlayerPrefs.Save();
                     SceneManager.LoadScene("VirusOO");
-                    // ここにwifiにIPをメモる処理忘れずに
                 }
                 else
                 {
