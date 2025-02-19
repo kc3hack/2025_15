@@ -28,7 +28,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             // ここにwifiにIPメモる処理忘れずに
         }
-        
+
         /*----------Virus Osakano Obatyannを検索----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["VirusOO"])
         {
@@ -66,6 +66,85 @@ public class BrowserSearchMyServer : MonoBehaviour
                     // ここにwifiにIPをメモる処理忘れずに
                 }
             }
+
+            /*----------SpareBatteryを検索----------*/
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBattery"])
+            {
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBattery"])
+                {
+                    if (searchWords == "SpareBattery")
+                    {
+                        int drain = 1;
+
+                        int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                        if ((Battery - drain >= 0))
+                        {
+                            Battery -= drain;
+                            PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                            PlayerPrefs.Save();
+                            SceneManager.LoadScene("FishingSpareBattery");
+                        }
+                        // ここにwifiにIPをメモる処理忘れずに
+                    }
+                }
+                else
+                {
+                    if (searchWords == "SpareBattery")
+                    {
+                        int drain = 1;
+
+                        int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                        if ((Battery - drain >= 0))
+                        {
+                            Battery -= drain;
+                            PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                            PlayerPrefs.Save();
+                            SceneManager.LoadScene("SpareBattery");
+                        }
+                        // ここにwifiにIPをメモる処理忘れずに
+                    }
+                }
+            }
+
+            /*----------SmallBatteryを検索----------*/
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBattery"])
+            {
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBattery"])
+                {
+                    if (searchWords == "SmallBattery")
+                    {
+                        int drain = 1;
+
+                        int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                        if ((Battery - drain >= 0))
+                        {
+                            Battery -= drain;
+                            PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                            PlayerPrefs.Save();
+                            SceneManager.LoadScene("FishingSmallBattery");
+                        }
+                        // ここにwifiにIPをメモる処理忘れずに
+                    }
+                }
+                else
+                {
+                    if (searchWords == "SmallBattery")
+                    {
+                        int drain = 1;
+
+                        int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                        if ((Battery - drain >= 0))
+                        {
+                            Battery -= drain;
+                            PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                            PlayerPrefs.Save();
+                            SceneManager.LoadScene("SmallBattery");
+                        }
+                        // ここにwifiにIPをメモる処理忘れずに
+                    }
+                }
+            }
         }
+
     }
 }
