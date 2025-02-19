@@ -5,6 +5,7 @@ using ExitGames.Client.Photon;
 using Photon.Pun;
 using System.Linq;
 using System;
+using System.Net;
 
 public class BrowserSearch : MonoBehaviour
 {
@@ -124,38 +125,24 @@ public class BrowserSearch : MonoBehaviour
     }
 
     public void SortAndSave(string IP1, string IP2, int WifiNumber)
-    {   
-        long ScaleIP1 = long.Parse(IP1.Replace(".", ""));
-        long ScaleIP2 = long.Parse(IP2.Replace(".", ""));
-        long[] IPScales = { ScaleIP1, ScaleIP2 };
-        long[] IPScalesClone = (long[])IPScales.Clone();
-        Array.Sort(IPScales);
+    {
+        int Permutation = UnityEngine.Random.Range(0, 2);
 
-        // ソート後の配列と元の配列を比較
-        string NewRecord;
-        if (IPScalesClone.SequenceEqual(IPScales))
-        {
-            // IPが昇順で並んでいる場合
-            NewRecord = IP1 + ":" + IP2 + "\n";
-        }
-        else
-        {
-            // IPが降順の場合
-            NewRecord = IP2 + ":" + IP1 + "\n";
-        }
+        // IPアドレスを比較し、昇順になるように並び替え
+        string NewRecord = (Permutation == 0) ? $"{IP1}:{IP2}\n" : $"{IP2}:{IP1}\n";
 
-        // WiFiのカスタムプロパティを更新
+        // 既存のWiFi記録を取得して追加
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("WiFi" + WifiNumber))
         {
             string Record = (string)PhotonNetwork.CurrentRoom.CustomProperties["WiFi" + WifiNumber];
             NewRecord = Record + NewRecord;
         }
 
+        // カスタムプロパティを更新
         Hashtable props = new Hashtable
         {
             { "WiFi" + WifiNumber, NewRecord },
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(props);
     }
-
 }
