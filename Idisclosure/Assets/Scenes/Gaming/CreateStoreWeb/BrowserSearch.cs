@@ -125,10 +125,10 @@ public class BrowserSearch : MonoBehaviour
 
     public void SortAndSave(string IP1, string IP2, int WifiNumber)
     {   
-        int ScaleIP1 = int.Parse(IP1.Replace(".", ""));
-        int ScaleIP2 = int.Parse(IP2.Replace(".", ""));
-        int[] IPScales = { ScaleIP1, ScaleIP2 };
-        int[] IPScalesClone = (int[])IPScales.Clone();
+        long ScaleIP1 = long.Parse(IP1.Replace(".", ""));
+        long ScaleIP2 = long.Parse(IP2.Replace(".", ""));
+        long[] IPScales = { ScaleIP1, ScaleIP2 };
+        long[] IPScalesClone = (int[])IPScales.Clone();
         Array.Sort(IPScales);
 
         // ソート後の配列と元の配列を比較
