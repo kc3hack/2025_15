@@ -128,7 +128,7 @@ public class BrowserSearch : MonoBehaviour
         long ScaleIP1 = long.Parse(IP1.Replace(".", ""));
         long ScaleIP2 = long.Parse(IP2.Replace(".", ""));
         long[] IPScales = { ScaleIP1, ScaleIP2 };
-        long[] IPScalesClone = (int[])IPScales.Clone();
+        long[] IPScalesClone = (long[])IPScales.Clone();
         Array.Sort(IPScales);
 
         // ソート後の配列と元の配列を比較
