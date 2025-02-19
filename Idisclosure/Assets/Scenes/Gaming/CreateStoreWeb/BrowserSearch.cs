@@ -4,6 +4,7 @@ using TMPro;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using System.Linq;
+using System;
 
 public class BrowserSearch : MonoBehaviour
 {
@@ -30,14 +31,16 @@ public class BrowserSearch : MonoBehaviour
                 // Wifi番号を取得
                 int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
                 // SNSServerIPを取得
+                string SNSServerIP = "";
                 if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SNSServerIP"))
                 {
-                    string SNSServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SNSServerIP"];
+                    SNSServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SNSServerIP"];
                 }
                 // 自分のIPを取得
+                string PlayerIP = "";
                 if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
                 {
-                    string PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                    PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
                 }
                 SortAndSave(SNSServerIP, PlayerIP, WifiNumber);
                 /*----------シーン遷移----------*/
@@ -65,15 +68,17 @@ public class BrowserSearch : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // SNSServerIPを取得
+                        // FishingVirusOOIPを取得
+                        string FishingVirusOOIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingVirusOOIP"))
                         {
-                            string FishingVirusOOIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingVirusOOIP"];
+                            FishingVirusOOIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingVirusOOIP"];
                         }
                         // 自分のIPを取得
+                        string PlayerIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
                         {
-                            string PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                            PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
                         }
                         SortAndSave(FishingVirusOOIP, PlayerIP, WifiNumber);
                         /*----------シーン遷移----------*/
@@ -97,15 +102,17 @@ public class BrowserSearch : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // SNSServerIPを取得
+                        // VirusOOIPを取得
+                        string VirusOOIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOOIP"))
                         {
-                            string VirusOOIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["VirusOOIP"];
+                            VirusOOIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["VirusOOIP"];
                         }
                         // 自分のIPを取得
+                        string PlayerIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
                         {
-                            string PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                            PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
                         }
                         SortAndSave(VirusOOIP, PlayerIP, WifiNumber);
                         /*----------シーン遷移----------*/

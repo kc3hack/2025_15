@@ -13,11 +13,11 @@ public class ReceiveIPs : MonoBehaviourPunCallbacks, IOnEventCallback
         if (photonEvent.Code == SendIPs)
         {
             object[] receivedData = (object[])photonEvent.CustomData;
-            string playerIP = (string)receivedData[0];
-            string serverIP = (string)receivedData[1];
+            string PlayerIP = (string)receivedData[0];
+            string ServerIP = (string)receivedData[1];
             // ローカル保存
-            PlayerPrefs.SetString("PlayerIP", playerIP);
-            PlayerPrefs.SetString("ServerIP", serverIP);
+            PlayerPrefs.SetString("PlayerIP", PlayerIP);
+            PlayerPrefs.SetString("ServerIP", ServerIP);
             PlayerPrefs.Save();
             // サーバー保存
             Hashtable props = new Hashtable
@@ -27,7 +27,7 @@ public class ReceiveIPs : MonoBehaviourPunCallbacks, IOnEventCallback
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
-            Debug.Log("IPs are saved! : " + playerIP + " : " + serverIP);
+            Debug.Log("IPs are saved! : " + PlayerIP + " : " + ServerIP);
         }
     }
 }
