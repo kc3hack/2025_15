@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 10891437}
   - component: {fileID: 10891440}
   - component: {fileID: 10891439}
-  - component: {fileID: 10891438}
+  - component: {fileID: 10891441}
   m_Layer: 5
   m_Name: AppText
   m_TagString: Untagged
@@ -154,22 +154,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -389, y: 859}
-  m_SizeDelta: {x: 443.898, y: 88.682}
+  m_AnchoredPosition: {x: -17.482, y: 838.001}
+  m_SizeDelta: {x: 1186.934, y: 130.68}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &10891438
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 10891436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7badd37a789d4fc4f98a364abb129281, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTerminal: {fileID: 10891439}
 --- !u!114 &10891439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,6 +258,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 10891436}
   m_CullTransparentMesh: 1
+--- !u!114 &10891441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10891436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 427ea72a21a6c7341b6b4b644c0e403c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wifi1Display: {fileID: 10891439}
 --- !u!1 &33241175
 GameObject:
   m_ObjectHideFlags: 0
