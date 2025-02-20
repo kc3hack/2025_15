@@ -37,7 +37,6 @@ public class TimeManagement : MonoBehaviourPunCallbacks
 
             // 残り時間を計算
             timeRemaining = timeLimit - elapsedTime;
-            Debug.Log(timeRemaining);
 
             // 時間が 0 以下になったら 0 に固定
             if (timeRemaining <= 0)
