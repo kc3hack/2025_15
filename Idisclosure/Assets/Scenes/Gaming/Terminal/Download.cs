@@ -99,4 +99,29 @@ public class Download : MonoBehaviour
             SceneManager.LoadScene("Success");
         }
     }
+
+    public void DownloadDos()
+    {
+        int drain = 1;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadDos", true } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
+            if (!(showTerminal.Contains("Dos\n")))
+            {
+                // Terminalに追加
+                showTerminal += "Dos\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
 }

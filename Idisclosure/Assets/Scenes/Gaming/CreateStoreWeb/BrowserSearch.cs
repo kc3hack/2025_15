@@ -273,6 +273,79 @@ public class BrowserSearch : MonoBehaviour
                 }
             }
         }
+
+         /*---------Dosを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingDos"])
+            {
+                if (searchWords == "dos")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        Battery -= drain;
+                        PlayerPrefs.SetString("Battery", Battery.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingDosIPを取得
+                        string FishingDosIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDosIP"))
+                        {
+                            FishingDosIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingDosIP"];
+                        }
+                        // 自分のIPを取得
+                        string PlayerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
+                        {
+                            PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                        }
+                        SortAndSave(FishingDosIP, PlayerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingDos");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "dos")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        Battery -= drain;
+                        PlayerPrefs.SetString("Battery", Battery.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // DosIPを取得
+                        string DosIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DosIP"))
+                        {
+                            DosIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["DosIP"];
+                        }
+                        // 自分のIPを取得
+                        string PlayerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
+                        {
+                            PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                        }
+                        SortAndSave(DosIP, PlayerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("Dos");
+                    }
+                }
+            }
+        }
     }
 
     public void SortAndSave(string IP1, string IP2, int WifiNumber)

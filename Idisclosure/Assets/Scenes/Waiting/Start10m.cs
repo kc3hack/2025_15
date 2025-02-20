@@ -29,6 +29,8 @@ public class Start10m : MonoBehaviourPunCallbacks
             {"FishingSmallBattery",false},
             {"PullDeer",false},
             {"FishingPullDeer",false},
+            {"Dos",false},
+            {"FishingDos",false},
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
 

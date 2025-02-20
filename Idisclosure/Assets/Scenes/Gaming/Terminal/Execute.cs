@@ -48,5 +48,23 @@ public class Execute : MonoBehaviour
                 }
             }
         }
+
+        /*----------Dosを実行----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadDos"])
+        {
+            if (Regex.IsMatch(command, @"Dos.*"))
+            {
+                int drain = 10;
+
+                int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    Battery -= drain;
+                    PlayerPrefs.SetString("Battery", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Dos");
+                }
+            }
+        }
     }
 }

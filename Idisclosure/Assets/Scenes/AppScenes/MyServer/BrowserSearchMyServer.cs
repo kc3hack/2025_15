@@ -182,5 +182,44 @@ public class BrowserSearchMyServer : MonoBehaviour
                 }
             }
         }
+
+        /*----------Dosを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingDos"])
+            {
+                if (searchWords == "Dos")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        Battery -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("FishingDos");
+                    }
+                    // ここにwifiにIPをメモる処理忘れずに
+                }
+            }
+            else
+            {
+                if (searchWords == "Dos")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        Battery -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("Dos");
+                    }
+                    // ここにwifiにIPをメモる処理忘れずに
+                }
+            }
+        }
     }
 }}

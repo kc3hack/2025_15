@@ -19,6 +19,7 @@ public class CreateStoreWeb : MonoBehaviour
         InvokeRepeating(nameof(SpareBattery), 0f, 1f);
         InvokeRepeating(nameof(SmallBattery), 0f, 1f);
         InvokeRepeating(nameof(PullDeer), 0f, 1f);
+        InvokeRepeating(nameof(Dos), 0f, 1f);
     }
 
 
@@ -108,6 +109,24 @@ public class CreateStoreWeb : MonoBehaviour
         }
     }
 
+     void Dos()
+    {
+        // 単位秒数あたりの確率
+        int randomValue = Random.Range(0, 2);
+
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"]))
+        {
+            // 1が出たらStoreWebを建ちあげる
+            if (randomValue == 1)
+            {
+                // 判別しているプロパティをtrueにする
+                Hashtable Webs = new Hashtable { { "Dos", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
+                MakeIP("Dos");
+                Debug.Log("Create Dos!!!!!!");
+            }
+        }
+    }
     void Update()
     {
         /*----------VirusOO----------*/
@@ -178,6 +197,24 @@ public class CreateStoreWeb : MonoBehaviour
         else
         {
             showBrowser = showBrowser.Replace("PullDeer\n", "");
+            Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+        }
+
+        /*----------Dos----------*/
+        if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"])
+        {
+            if (!(showBrowser.Contains("Dos\n")))
+            {
+                // Browserに追加
+                showBrowser += "Dos\n";
+                Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+        }
+        else
+        {
+            showBrowser = showBrowser.Replace("Dos\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
             PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
         }
