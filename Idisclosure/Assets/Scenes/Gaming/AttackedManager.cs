@@ -60,13 +60,13 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PlayerPrefs.SetString("BatteryMyServer",Battery.ToString());
             PlayerPrefs.Save();
             // "DoS" シーンを現在のシーンに重ねる
-            SceneManager.LoadScene("DoS", LoadSceneMode.Additive);
+            SceneManager.LoadScene("DoSNotification", LoadSceneMode.Additive);
             
             // 2秒待つ
             yield return new WaitForSeconds(2);
             
             // "DoS" シーンを削除
-            SceneManager.UnloadSceneAsync("DoS");
+            SceneManager.UnloadSceneAsync("DoSNOtification");
         }
     }
     private IEnumerator ShowAndUnloadDoSServerScene()
@@ -79,13 +79,13 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PlayerPrefs.SetString("Battery",Battery.ToString());
             PlayerPrefs.Save();
             // "DoS" シーンを現在のシーンに重ねる
-            SceneManager.LoadScene("DoS", LoadSceneMode.Additive);
+            SceneManager.LoadScene("DoSNotification", LoadSceneMode.Additive);
             
             // 2秒待つ
             yield return new WaitForSeconds(2);
             
             // "DoS" シーンを削除
-            SceneManager.UnloadSceneAsync("DoS");
+            SceneManager.UnloadSceneAsync("DoSNotification");
         }
         
     }

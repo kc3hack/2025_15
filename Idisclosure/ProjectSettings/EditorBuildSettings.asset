@@ -89,6 +89,30 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AppScenes/Attack/Wifi3.unity
     guid: 120f52f625cc61e44b60c29afb9fea8e
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/SpareBattery.unity
+    guid: 403453807b107644291bd73c5682d596
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/SmallBattery.unity
+    guid: 0dd17c71d096a0445bb405d006fddf7f
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/PullDeer.unity
+    guid: de4ebc93f808d7e4a8fe64dd54bc1482
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/Dos.unity
+    guid: e31bfb9b8fd84184285867f544e7563e
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/FishingSpareBattery.unity
+    guid: 08217ece3b6336e4f87cfff8fa17dd37
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/FishingSmallBattery.unity
+    guid: ca161579e3f60c346976037748eacb1f
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/FishingPullDeer.unity
+    guid: 0866dceac9b0eaf43937e047f5d109fc
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/FishingDos.unity
+    guid: f630ef539a8a06d459ce923b58f14635
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
