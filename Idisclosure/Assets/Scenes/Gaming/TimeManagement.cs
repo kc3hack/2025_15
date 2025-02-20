@@ -12,7 +12,6 @@ public class TimeManagement : MonoBehaviourPunCallbacks
     private double timeRemaining;
     private double startTime;
     public TMP_Text timerText;
-    public TMP_Text ShowInformation;
     private bool isTimeInitialized = false;
     private bool isNotified270 = false; // 270秒用
     private bool isNotified240 = false; // 240秒用
@@ -168,7 +167,6 @@ public class TimeManagement : MonoBehaviourPunCallbacks
                 Debug.Log("[保存] Plofiles: " + snsPlofiles);
             }
         }
-        ShowInformation.text = (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"];
     }
 
     // タイマーの表示を更新
