@@ -84,7 +84,7 @@ public class CreateStoreWeb : MonoBehaviour
     void PullDeer()
     {
         // 単位秒数あたりの確率
-        int randomValue = Random.Range(0, 2);
+        int randomValue = Random.Range(0, 100);
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PullDeer") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["PullDeer"]))
         {
@@ -103,7 +103,7 @@ public class CreateStoreWeb : MonoBehaviour
      void Dos()
     {
         // 単位秒数あたりの確率
-        int randomValue = Random.Range(0, 2);
+        int randomValue = Random.Range(0, 100);
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"]))
         {
