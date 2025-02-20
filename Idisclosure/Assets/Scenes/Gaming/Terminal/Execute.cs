@@ -72,7 +72,7 @@ public class Execute : MonoBehaviour
         /*----------Dosを実行----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadDos"])
         {
-            if (Regex.IsMatch(command, @"Dos.*"))
+            if (Regex.IsMatch(command, @"dos.*"))
             {
                 int drain = 10;
 
