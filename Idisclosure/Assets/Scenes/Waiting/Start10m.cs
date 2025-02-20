@@ -7,8 +7,8 @@ using System.Collections.Generic;
 public class Start10m : MonoBehaviourPunCallbacks
 {
     private int totalPlayers;
-    private float seconds = 10*60;
-    private float startTime;
+    private double seconds = 10*60;    
+    private double startTime;
 
     void Awake()
     {
@@ -65,6 +65,7 @@ public class Start10m : MonoBehaviourPunCallbacks
 
         // 保存
         PhotonNetwork.CurrentRoom.SetCustomProperties(time);
+        Debug.Log(seconds + ":" + startTime + "is saved!");
     }
 
     /*----------IPアドレスを生成----------*/
