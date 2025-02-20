@@ -11,10 +11,9 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private const byte VirusOO = 101;
     private const byte DoSPlayer = 102;
     private const byte DoSServer = 103;
-    string Device;
-    string AttackIP;
-    string BlockedIPMyServer;
-    string BlockedIP;
+    string AttackIP = "";
+    string BlockedIPMyServer = "";
+    string BlockedIP = "";
 
 
     public void OnEvent(EventData photonEvent)
@@ -27,7 +26,7 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
         /*----------DoSPlayerを受信----------*/
         if (photonEvent.Code == DoSPlayer)
         {
-            string AttackIP = (string)photonEvent.CustomData;
+            AttackIP = (string)photonEvent.CustomData;
             StartCoroutine(ShowAndUnloadDoSPlayerScene());
         }
         /*----------DoSServerを受信----------*/
