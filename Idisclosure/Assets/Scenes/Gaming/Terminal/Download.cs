@@ -57,7 +57,7 @@ public class Download : MonoBehaviour
 
      public void DownloadSmallBattery()
     {
-        int drain = 300;
+        int drain = 10;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
         int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
 
@@ -68,7 +68,7 @@ public class Download : MonoBehaviour
             PlayerPrefs.Save();
 
             // 支払われたら領収通知発行
-            Battery = 100;
+            Battery += 25;//25%充電を増やす
             PlayerPrefs.SetString("Battery", Battery.ToString());
             PlayerPrefs.Save();
             SceneManager.LoadScene("Success");

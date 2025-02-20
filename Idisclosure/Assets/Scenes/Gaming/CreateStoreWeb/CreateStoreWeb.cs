@@ -58,7 +58,7 @@ public class CreateStoreWeb : MonoBehaviour
     void SmallBattery()
     {
         // 単位秒数あたりの確率
-        int randomValue = Random.Range(0, 100);
+        int randomValue = Random.Range(0, 2);
 
         // 1が出たらStoreWebを建ちあげる
         if (randomValue == 1)
@@ -116,10 +116,10 @@ public class CreateStoreWeb : MonoBehaviour
          /*----------SmallBattery----------*/
         if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBattery"])
         {
-            if (!(showBrowser.Contains("Spare SmallBattery\n")))
+            if (!(showBrowser.Contains("Small Battery\n")))
             {
                 // Browserに追加
-                showBrowser += "Spare SmallBattery\n";
+                showBrowser += "Small Battery\n";
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
