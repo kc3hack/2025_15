@@ -7,6 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class PlayerPrefsController : MonoBehaviourPunCallbacks
 {
+    void Start()
+    {
+        PlayerPrefs.SetString("BlockedIP", "0.0.0.0");
+        PlayerPrefs.SetString("BlockedIPMyServer", "0.0.0.0");
+        PlayerPrefs.Save();
+    }
     public TMP_Text BuhiCoinText;
     public TMP_Text BatteryText;
 
