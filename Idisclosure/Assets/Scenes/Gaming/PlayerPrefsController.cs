@@ -55,6 +55,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         props["BuhiCoin"] = buhiCoin;
         props["Battery"] = battery;
         props["Birthyear"] = birthyear;
+        props["Birthday"] = birthday;
         props["Age"] = age;
 
         // Photonのネットワークに保存
