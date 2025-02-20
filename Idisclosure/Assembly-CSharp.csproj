@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\CreateStoreWeb.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scenes\TimeUp\Ranking.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start5m.cs" />
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\ReturnButton.cs" />

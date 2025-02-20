@@ -40,6 +40,7 @@ public class CrackManagement : MonoBehaviourPunCallbacks
 
         // ユーザーがGuessIDに入力したパスワードを取得
         string guessedSecretID = GuessSecretID.text.Replace("\u200B", "");
+        int income = 500;
 
         // プレイヤーのパスワードが一致するか確認
         foreach (Player player in PhotonNetwork.PlayerList)
@@ -51,6 +52,10 @@ public class CrackManagement : MonoBehaviourPunCallbacks
 
                 if ((string)guessedSecretID == (string)playerSecretID)
                 {
+                    int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+                    BuhiCoin += income;
+                    PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+                    PlayerPrefs.Save();
                     // messageの定義
                     string message = "Your SecretID is cracked!";
                     // 送信先の定義
