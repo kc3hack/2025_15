@@ -51,7 +51,7 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private IEnumerator ShowAndUnloadDoSPlayerScene()
     {
-        BlockedIPMyServer = (string)PlayerPrefs.GetString("BlockedIPMyServer","0.0.0.0");
+        BlockedIPMyServer = (string)PlayerPrefs.GetString("BlockedIPMyServer","");
         if (!(BlockedIPMyServer.Contains(AttackIP)))
         {
             int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer","0"));
@@ -70,7 +70,7 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
     }
     private IEnumerator ShowAndUnloadDoSServerScene()
     {   
-        BlockedIP = (string)PlayerPrefs.GetString("BlockedIP","0.0.0.0");
+        BlockedIP = (string)PlayerPrefs.GetString("BlockedIP","");
         if (!(BlockedIP.Contains(AttackIP)))
         {
             int Battery = int.Parse(PlayerPrefs.GetString("Battery","0"));
