@@ -4,9 +4,15 @@ using TMPro;
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using System.Text.RegularExpressions;
+using Photon.Realtime;
+
+
 public class ExecuteMyServer : MonoBehaviour
 {
     public TMP_Text Command;
+    private const byte VirusOO = 101;
+    private const byte DoSPlayer = 102;
+    private const byte DoSServer = 103;
 
     public void ExecuteCommand()
     {
@@ -23,39 +29,48 @@ public class ExecuteMyServer : MonoBehaviour
                 int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
                 if ((Battery - drain >= 0))
                 {
+                    /*----------Battery処理----------*/
                     Battery -= drain;
                     PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                     PlayerPrefs.Save();
                     SceneManager.LoadScene("VirusOO");
-                }
-                else
-                {
-                    Debug.Log("Low Battery...");
+                    /*----------IP処理----------*/
+                    string TargetIP = command.Replace("virusoo ","");
+                    /*----------IP探索----------*/
+                    foreach (Player player in PhotonNetwork.PlayerList)
+                    {
+                        if ((string)player.CustomProperties["PlayerIP"] == TargetIP || (string)player.CustomProperties["ServerIP"] == TargetIP)
+                        {
+                            string message = "Ametyann Ageruwa";
+                            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
+                            SendOptions sendOptions = new SendOptions { Reliability = true };
+                            PhotonNetwork.RaiseEvent(VirusOO, message, raiseEventOptions, sendOptions);
+                        }
+                    }
+
                 }
             }
         }
-        /*---------PullDeerを実行----------*/
+        /*----------PullDeerを実行----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadPullDeer"])
         {
-            if (Regex.IsMatch(command, @"PullDeer.*"))
+            if (Regex.IsMatch(command, "pulldeer"))
             {
                 int drain = 10;
-
+                
                 int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
                 if ((Battery - drain >= 0))
                 {
+                    /*----------Battery処理----------*/
                     Battery -= drain;
                     PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                     PlayerPrefs.Save();
-                    SceneManager.LoadScene("PullDeer");
-                }
-                else
-                {
-                    Debug.Log("Low Battery...");
+                    SceneManager.LoadScene("Wifi1");
                 }
             }
         }
-        /*---------Dosを実行----------*/
+
+        /*----------Dosを実行----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadDos"])
         {
             if (Regex.IsMatch(command, @"Dos.*"))
@@ -65,14 +80,39 @@ public class ExecuteMyServer : MonoBehaviour
                 int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
                 if ((Battery - drain >= 0))
                 {
+                    /*----------Battery処理----------*/
                     Battery -= drain;
                     PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                     PlayerPrefs.Save();
-                    SceneManager.LoadScene("Dos");
-                }
-                else
-                {
-                    Debug.Log("Low Battery...");
+                    /*----------IP処理----------*/
+                    string TargetIP = command.Replace("dos ","");
+                    /*----------IP探索----------*/
+                    foreach (Player player in PhotonNetwork.PlayerList)
+                    {
+                        string ServerIP = "";
+                        if ((string)player.CustomProperties["PlayerIP"] == TargetIP)
+                        {
+                            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                            {
+                                ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                            }
+                            string message = ServerIP;
+                            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
+                            SendOptions sendOptions = new SendOptions { Reliability = true };
+                            PhotonNetwork.RaiseEvent(DoSPlayer, message, raiseEventOptions, sendOptions);
+                        }
+                        else if ((string)player.CustomProperties["ServerIP"] == TargetIP)
+                        {
+                            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                            {
+                                ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                            }
+                            string message = ServerIP;
+                            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
+                            SendOptions sendOptions = new SendOptions { Reliability = true };
+                            PhotonNetwork.RaiseEvent(DoSServer, message, raiseEventOptions, sendOptions);
+                        }
+                    }
                 }
             }
         }

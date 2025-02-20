@@ -9,7 +9,8 @@ using System.Collections;
 public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     private const byte VirusOO = 101;
-    private const byte DoS = 102;
+    private const byte DoSPlayer = 102;
+    private const byte DoSServer = 103;
     string Device;
     string AttackIP;
     string BlockedIPMyServer;
@@ -23,13 +24,17 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
         {
             StartCoroutine(ShowAndUnloadCandyScene());
         }
-        /*----------DoSを受信----------*/
-        if (photonEvent.Code == DoS)
+        /*----------DoSPlayerを受信----------*/
+        if (photonEvent.Code == DoSPlayer)
         {
-            object[] data = (object[])photonEvent.CustomData; // 受け取ったデータを取得
-            Device = (string)data[0];
-            AttackIP = (string)data[1];
-            StartCoroutine(ShowAndUnloadDoSScene());
+            string AttackIP = (string)photonEvent.CustomData;
+            StartCoroutine(ShowAndUnloadDoSPlayerScene());
+        }
+        /*----------DoSServerを受信----------*/
+        if (photonEvent.Code == DoSServer)
+        {
+            string AttackIP = (string)photonEvent.CustomData;
+            StartCoroutine(ShowAndUnloadDoSServerScene());
         }
     }
 
@@ -45,45 +50,43 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
         SceneManager.UnloadSceneAsync("Candy");
     }
 
-    private IEnumerator ShowAndUnloadDoSScene()
+    private IEnumerator ShowAndUnloadDoSPlayerScene()
     {
-        if (Device == "Server")
+        BlockedIPMyServer = (string)PlayerPrefs.GetString("BlockedIPMyServer","0.0.0.0");
+        if (!(BlockedIP.Contains(AttackIP)))
         {
-            BlockedIPMyServer = (string)PlayerPrefs.GetString("BlockedIPMyServer","0.0.0.0");
-            if (!(BlockedIP.Contains(AttackIP)))
-            {
-                int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer","0"));
-                Battery -= 25;
-                PlayerPrefs.SetString("BatteryMyServer",Battery.ToString());
-                PlayerPrefs.Save();
-                // "DoS" シーンを現在のシーンに重ねる
-                SceneManager.LoadScene("DoS", LoadSceneMode.Additive);
-                
-                // 2秒待つ
-                yield return new WaitForSeconds(2);
-                
-                // "DoS" シーンを削除
-                SceneManager.UnloadSceneAsync("DoS");
-            }
+            int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer","0"));
+            Battery -= 25;
+            PlayerPrefs.SetString("BatteryMyServer",Battery.ToString());
+            PlayerPrefs.Save();
+            // "DoS" シーンを現在のシーンに重ねる
+            SceneManager.LoadScene("DoS", LoadSceneMode.Additive);
+            
+            // 2秒待つ
+            yield return new WaitForSeconds(2);
+            
+            // "DoS" シーンを削除
+            SceneManager.UnloadSceneAsync("DoS");
         }
-        else if (Device == "Player")
+    }
+    private IEnumerator ShowAndUnloadDoSServerScene()
+    {   
+        BlockedIP = (string)PlayerPrefs.GetString("BlockedIP","0.0.0.0");
+        if (!(BlockedIP.Contains(AttackIP)))
         {
-            BlockedIP = (string)PlayerPrefs.GetString("BlockedIP","0.0.0.0");
-            if (!(BlockedIP.Contains(AttackIP)))
-            {
-                int Battery = int.Parse(PlayerPrefs.GetString("Battery","0"));
-                Battery -= 25;
-                PlayerPrefs.SetString("Battery",Battery.ToString());
-                PlayerPrefs.Save();
-                // "DoS" シーンを現在のシーンに重ねる
-                SceneManager.LoadScene("DoS", LoadSceneMode.Additive);
-                
-                // 2秒待つ
-                yield return new WaitForSeconds(2);
-                
-                // "DoS" シーンを削除
-                SceneManager.UnloadSceneAsync("DoS");
-            }
+            int Battery = int.Parse(PlayerPrefs.GetString("Battery","0"));
+            Battery -= 25;
+            PlayerPrefs.SetString("Battery",Battery.ToString());
+            PlayerPrefs.Save();
+            // "DoS" シーンを現在のシーンに重ねる
+            SceneManager.LoadScene("DoS", LoadSceneMode.Additive);
+            
+            // 2秒待つ
+            yield return new WaitForSeconds(2);
+            
+            // "DoS" シーンを削除
+            SceneManager.UnloadSceneAsync("DoS");
         }
+        
     }
 }
