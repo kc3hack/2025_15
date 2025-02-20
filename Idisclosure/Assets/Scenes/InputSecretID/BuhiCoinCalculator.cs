@@ -11,11 +11,12 @@ public class BuhiCoinCalculator : MonoBehaviour
     public TMP_Text EnteredSecretID;
     public void GetBuhiCoin()
     {
-        string PlayerName = PlayerPrefs.GetString("PlayerName", "Guest").Replace("\u200B", "");
-        string PlayerBirth = PlayerPrefs.GetString("PlayerBirth", "2000/0101").Replace("\u200B", "");
-        string PlayerBirthday = PlayerBirth.Substring(PlayerBirth.IndexOf("/") + 1); // "/"より後の4桁
-        string PlayerBirthyear = PlayerBirth.Substring(0, PlayerBirth.IndexOf("/")); // "/"より前の4桁
+        string PlayerName = PlayerPrefs.GetString("Name", "Guest").Replace("\u200B", "");
+        string PlayerBirth = PlayerPrefs.GetString("Birth", "2000/0101").Replace("\u200B", "");
+        string PlayerBirthday = PlayerBirth.Substring(PlayerBirth.IndexOf("/") + 1);
+        string PlayerBirthyear = PlayerBirth.Substring(0, PlayerBirth.IndexOf("/"));
         int BuhiCoinNow = 0;
+        int age = 0;
         string SecretID = EnteredSecretID.text.Replace("\u200B", "");
 
         Debug.Log(PlayerName.Length);
@@ -62,8 +63,31 @@ public class BuhiCoinCalculator : MonoBehaviour
         // ShowBuhiCoinにBuhiCoinの結果を渡す
         ShowBuhiCoin.text = BuhiCoinNow.ToString();
 
+        /*----------年齢計算----------*/
+        try
+        {
+            // PlayerBirthyear と PlayerBirthday を使用して DateTime を生成
+            string fullBirthDate = PlayerBirthyear + "/" + PlayerBirthday;
+            DateTime birthDate = DateTime.ParseExact(fullBirthDate, "yyyy/MMdd", null);
+
+            // 現在の日付を取得
+            DateTime today = DateTime.Today;
+
+            // 年齢を計算
+            age = today.Year - birthDate.Year;
+            if (today < birthDate.AddYears(age)) age--;
+
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("error" + ex.Message);
+        }
+
         // PlayerPrefsに名前を保存
+        PlayerPrefs.SetString("Birthday", PlayerBirthday.ToString());
+        PlayerPrefs.SetString("Birthyear", PlayerBirthyear.ToString());
         PlayerPrefs.SetString("BuhiCoin", BuhiCoinNow.ToString());
+        PlayerPrefs.SetInt("Age", age);
         //保存する
         PlayerPrefs.Save();
 

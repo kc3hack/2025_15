@@ -21,7 +21,7 @@ public class CreateStoreWeb : MonoBehaviour
     void VirusOO()
     {
         // 単位秒数あたりの確率
-        int randomValue = Random.Range(0, 2);
+        int randomValue = Random.Range(0, 100);
 
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOO") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["VirusOO"]))
         {

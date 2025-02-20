@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class Start5m : MonoBehaviourPunCallbacks
 {
     private int totalPlayers;
-    private double seconds = 5*60;    
+    private double seconds = 2*60;    
     private double startTime;
 
     void Awake()
