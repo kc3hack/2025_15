@@ -200,6 +200,79 @@ public class BrowserSearch : MonoBehaviour
                 }
             }
         }
+
+        /*----------PullDeerを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["PullDeer"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingPullDeer"])
+            {
+                if (searchWords == "pull deer")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        Battery -= drain;
+                        PlayerPrefs.SetString("Battery", Battery.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingPullDeerIPを取得
+                        string FishingPullDeerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingPullDeerIP"))
+                        {
+                            FishingPullDeerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingPullDeerIP"];
+                        }
+                        // 自分のIPを取得
+                        string PlayerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
+                        {
+                            PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                        }
+                        SortAndSave(FishingPullDeerIP, PlayerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingPullDeer");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "pull deer")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        Battery -= drain;
+                        PlayerPrefs.SetString("Battery", Battery.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // PullDeerIPを取得
+                        string PullDeerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PullDeerIP"))
+                        {
+                            PullDeerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PullDeerIP"];
+                        }
+                        // 自分のIPを取得
+                        string PlayerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PlayerIP"))
+                        {
+                            PlayerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PlayerIP"];
+                        }
+                        SortAndSave(PullDeerIP, PlayerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("PullDeer");
+                    }
+                }
+            }
+        }
     }
 
     public void SortAndSave(string IP1, string IP2, int WifiNumber)

@@ -144,7 +144,43 @@ public class BrowserSearchMyServer : MonoBehaviour
                     }
                 }
             }
-        }
+            /*----------PullDeerを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["PullDeer"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingPullDeer"])
+            {
+                if (searchWords == "PullDeer")
+                {
+                    int drain = 1;
 
+                    int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        Battery -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("FishingPullDeer");
+                    }
+                    // ここにwifiにIPをメモる処理忘れずに
+                }
+            }
+            else
+            {
+                if (searchWords == "PullDeer")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        Battery -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                        PlayerPrefs.Save();
+                        SceneManager.LoadScene("PullDeer");
+                    }
+                    // ここにwifiにIPをメモる処理忘れずに
+                }
+            }
+        }
     }
-}
+}}

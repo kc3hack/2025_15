@@ -74,4 +74,29 @@ public class Download : MonoBehaviour
             SceneManager.LoadScene("Success");
         }
     }
+
+     public void DownloadPullDeer()
+    {
+        int drain = 300;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadPullDeer", true } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
+            if (!(showTerminal.Contains("PullDeer\n")))
+            {
+                // Terminalに追加
+                showTerminal += "PullDeer\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
 }

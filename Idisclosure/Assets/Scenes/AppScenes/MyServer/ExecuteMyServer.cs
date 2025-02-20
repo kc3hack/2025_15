@@ -34,5 +34,26 @@ public class ExecuteMyServer : MonoBehaviour
                 }
             }
         }
+        /*---------PullDeerを実行----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadPullDeer"])
+        {
+            if (Regex.IsMatch(command, @"PullDeer.*"))
+            {
+                int drain = 10;
+
+                int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    Battery -= drain;
+                    PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("PullDeer");
+                }
+                else
+                {
+                    Debug.Log("Low Battery...");
+                }
+            }
+        }
     }
 }
