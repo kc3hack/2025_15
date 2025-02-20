@@ -68,12 +68,12 @@ public class BrowserSearch : MonoBehaviour
             }
         }
 
-        /*----------SpareBatteryを検索----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBattery"])
+        /*----------Dosを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"])
         {
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBattery"])
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingDos"])
             {
-                if (searchWords == "spare battery")
+                if (searchWords == "dos")
                 {
                     int drain = 1;
 
@@ -83,14 +83,14 @@ public class BrowserSearch : MonoBehaviour
                         Battery -= drain;
                         PlayerPrefs.SetString("Battery", Battery.ToString());
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("FishingSpareBattery");
+                        SceneManager.LoadScene("FishingDos");
                     }
                     // ここにwifiにIPをメモる処理忘れずに
                 }
             }
             else
             {
-                if (searchWords == "spare battery")
+                if (searchWords == "dos")
                 {
                     int drain = 1;
 
@@ -100,46 +100,7 @@ public class BrowserSearch : MonoBehaviour
                         Battery -= drain;
                         PlayerPrefs.SetString("Battery", Battery.ToString());
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("SpareBattery");
-                    }
-                    // ここにwifiにIPをメモる処理忘れずに
-                }
-            }
-        }
-
-        /*----------SmallBatteryを検索----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBattery"])
-        {
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBattery"])
-            {
-                if (searchWords == "small battery")
-                {
-                    int drain = 1;
-
-                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
-                    if ((Battery - drain >= 0))
-                    {
-                        Battery -= drain;
-                        PlayerPrefs.SetString("Battery", Battery.ToString());
-                        PlayerPrefs.Save();
-                        SceneManager.LoadScene("FishingSmallBattery");
-                    }
-                    // ここにwifiにIPをメモる処理忘れずに
-                }
-            }
-            else
-            {
-                if (searchWords == "small battery")
-                {
-                    int drain = 1;
-
-                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
-                    if ((Battery - drain >= 0))
-                    {
-                        Battery -= drain;
-                        PlayerPrefs.SetString("Battery", Battery.ToString());
-                        PlayerPrefs.Save();
-                        SceneManager.LoadScene("SmallBattery");
+                        SceneManager.LoadScene("Dos");
                     }
                     // ここにwifiにIPをメモる処理忘れずに
                 }
