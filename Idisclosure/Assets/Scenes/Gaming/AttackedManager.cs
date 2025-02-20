@@ -33,7 +33,7 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
         /*----------DoSServerを受信----------*/
         if (photonEvent.Code == DoSServer)
         {
-            string AttackIP = (string)photonEvent.CustomData;
+            AttackIP = (string)photonEvent.CustomData;
             StartCoroutine(ShowAndUnloadDoSServerScene());
         }
     }
@@ -53,7 +53,7 @@ public class AttackedManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private IEnumerator ShowAndUnloadDoSPlayerScene()
     {
         BlockedIPMyServer = (string)PlayerPrefs.GetString("BlockedIPMyServer","0.0.0.0");
-        if (!(BlockedIP.Contains(AttackIP)))
+        if (!(BlockedIPMyServer.Contains(AttackIP)))
         {
             int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer","0"));
             Battery -= 25;
