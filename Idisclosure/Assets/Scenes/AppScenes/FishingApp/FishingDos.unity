@@ -1222,8 +1222,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35, y: -8}
-  m_SizeDelta: {x: 1801.9519, y: 91.2543}
+  m_AnchoredPosition: {x: 52, y: -18}
+  m_SizeDelta: {x: 1388.4358, y: 230.1697}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &806778409
 MonoBehaviour:
@@ -1245,7 +1245,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reduce the opponent's battery
+  m_text: 'Your battery drops by 10%
+
+    amd Your opponent''s battery drops by 25%.
+
+    Your
+    opponent will say "Erai koccha DoS!!"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
   m_sharedMaterial: {fileID: -4885029858982630998, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
@@ -2472,8 +2477,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 65, y: 67}
-  m_SizeDelta: {x: 461.0915, y: 179.0932}
+  m_AnchoredPosition: {x: 58, y: 67}
+  m_SizeDelta: {x: 990.9087, y: 169.4014}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560799017
 MonoBehaviour:
@@ -2495,9 +2500,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dos
-
-'
+  m_text: Dos Attack Tool
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
   m_sharedMaterial: {fileID: -4885029858982630998, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
@@ -2724,7 +2727,6 @@ GameObject:
   - component: {fileID: 1744320773}
   - component: {fileID: 1744320772}
   - component: {fileID: 1744320771}
-  - component: {fileID: 1744320770}
   - component: {fileID: 1744320774}
   m_Layer: 5
   m_Name: DownloadButton
@@ -2753,18 +2755,6 @@ RectTransform:
   m_AnchoredPosition: {x: 125.227844, y: -381}
   m_SizeDelta: {x: 419.422, y: 128.244}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1744320770
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1744320767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68ebd4deecdee1047bbddc4f9b8c37e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1744320771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2810,8 +2800,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1744320774}
-        m_TargetAssemblyTypeName: Download, Assembly-CSharp
-        m_MethodName: DownloadDos
+        m_TargetAssemblyTypeName: FishingDownload, Assembly-CSharp
+        m_MethodName: FishingDownloadDos
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2868,7 +2858,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1744320767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5072b2936a16a3949a10a63948105e76, type: 3}
+  m_Script: {fileID: 11500000, guid: e7288d98c5caa6648b69b9cd35d597e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1748140690

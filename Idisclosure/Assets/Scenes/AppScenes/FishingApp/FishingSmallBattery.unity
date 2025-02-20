@@ -2467,7 +2467,6 @@ GameObject:
   - component: {fileID: 860362255}
   - component: {fileID: 860362254}
   - component: {fileID: 860362253}
-  - component: {fileID: 860362252}
   - component: {fileID: 860362256}
   m_Layer: 5
   m_Name: DownloadButton
@@ -2496,18 +2495,6 @@ RectTransform:
   m_AnchoredPosition: {x: 125.227844, y: -381}
   m_SizeDelta: {x: 419.422, y: 128.244}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &860362252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 860362250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3ea792b54fb444e9e2b209a9080180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &860362253
 MonoBehaviour:
   m_ObjectHideFlags: 0

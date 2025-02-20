@@ -13,7 +13,8 @@ public class FishingViruOO : MonoBehaviour
 
             int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
             if ((Battery - drain >= 0))
-            {   // Batteryを減らす処理
+            {   
+                // Batteryを減らす処理
                 Battery -= drain;
                 PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                 PlayerPrefs.Save();

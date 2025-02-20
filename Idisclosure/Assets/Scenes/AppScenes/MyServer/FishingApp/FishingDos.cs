@@ -13,7 +13,8 @@ public class FishingDos : MonoBehaviour
 
             int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
             if ((Battery - drain >= 0))
-            {   // Batteryを減らす処理
+            {   
+                // Batteryを減らす処理
                 Battery -= drain;
                 PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                 PlayerPrefs.Save();
@@ -33,7 +34,7 @@ public class FishingDos : MonoBehaviour
                 Hashtable fisher = new Hashtable
                 {
                     {"FisherDos", PhotonNetwork.NickName},
-                    {"FishingDosIP", ServerIP}
+                    {"FishingDos", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 

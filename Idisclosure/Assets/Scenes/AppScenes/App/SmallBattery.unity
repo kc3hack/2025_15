@@ -4046,7 +4046,6 @@ GameObject:
   - component: {fileID: 1324793720}
   - component: {fileID: 1324793719}
   - component: {fileID: 1324793718}
-  - component: {fileID: 1324793717}
   - component: {fileID: 1324793716}
   m_Layer: 5
   m_Name: DownloadButton
@@ -4085,18 +4084,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5072b2936a16a3949a10a63948105e76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1324793717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1324793714}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd3ea792b54fb444e9e2b209a9080180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1324793718

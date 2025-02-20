@@ -78,10 +78,10 @@ public class TimeManagement : MonoBehaviourPunCallbacks
             if (!string.IsNullOrEmpty(snsPlofiles))
             {
                 Hashtable plofiles = new Hashtable {
-                    { "Plofiles", snsPlofiles }
+                    { "Profiles", snsPlofiles }
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
-                Debug.Log("[保存] Plofiles: " + snsPlofiles);
+                Debug.Log("[保存] Profiles: " + snsPlofiles);
             }
         }
     }

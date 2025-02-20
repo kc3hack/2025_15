@@ -23,6 +23,14 @@ public class Start10m : MonoBehaviourPunCallbacks
         { 
             { "VirusOO", false },
             {"FishingVirusOO", false},
+            { "SpareBattery", false },
+            {"FishingSpareBattery", false},
+            { "SmallBattery", false },
+            {"FishingSmallBattery", false},
+            { "PullDeer", false },
+            {"FishingPullDeer", false},
+            { "Dos", false },
+            {"FishingDos", false},
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
 

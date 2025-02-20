@@ -34,4 +34,95 @@ public class Download : MonoBehaviour
             SceneManager.LoadScene("Success");
         }
     }
+
+    public void DownloadSpareBattery()
+    {
+        int drain = 300;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+        int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Battery = 100;
+            PlayerPrefs.SetString("Battery", Battery.ToString());
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Success");
+        }
+    }
+
+     public void DownloadSmallBattery()
+    {
+        int drain = 10;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+        int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Battery += 25;//25%充電を増やす
+            PlayerPrefs.SetString("Battery", Battery.ToString());
+            PlayerPrefs.Save();
+            SceneManager.LoadScene("Success");
+        }
+    }
+
+     public void DownloadPullDeer()
+    {
+        int drain = 300;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadPullDeer", true } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
+            if (!(showTerminal.Contains("PullDeer\n")))
+            {
+                // Terminalに追加
+                showTerminal += "PullDeer\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
+
+    public void DownloadDos()
+    {
+        int drain = 100;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadDos", true } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
+            if (!(showTerminal.Contains("Dos\n")))
+            {
+                // Terminalに追加
+                showTerminal += "Dos\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
 }
+
