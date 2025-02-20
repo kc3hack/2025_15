@@ -74,6 +74,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AppScenes/MyServer/BatteryDead.unity
     guid: 3206edcca1a83264a8eeff51dccdbe51
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Attack/Candy.unity
+    guid: 616b58211e0a96b44b7b1e3bf3bde105
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Attack/DoS.unity
+    guid: d790a20c5afa1694190bdad0652fd2bb
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Attack/Wifi1.unity
+    guid: cd08cd0b20a0f6d48889b4dee1d7f82d
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Attack/Wifi2.unity
+    guid: 96c02477711a93746959ab27005f9a69
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/Attack/Wifi3.unity
+    guid: 120f52f625cc61e44b60c29afb9fea8e
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

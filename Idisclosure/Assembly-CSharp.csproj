@@ -109,6 +109,7 @@
     <Compile Include="Assets\Scenes\Gaming\CrackManagement.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\Display\Firewall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start10m.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\ExecuteMyServer.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
     <Compile Include="Assets\Scenes\CreateJoin\CreateJoin.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\FirewallMyServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
