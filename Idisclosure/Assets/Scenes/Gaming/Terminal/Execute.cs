@@ -33,7 +33,6 @@ public class Execute : MonoBehaviour
                     Battery -= drain;
                     PlayerPrefs.SetString("Battery", Battery.ToString());
                     PlayerPrefs.Save();
-                    SceneManager.LoadScene("VirusOO");
                     /*----------IP処理----------*/
                     string TargetIP = command.Replace("virusoo ","");
                     /*----------IP探索----------*/
