@@ -9,16 +9,19 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
     public TMP_Text BuhiCoinText;
     public TMP_Text BatteryText;
 
-    void Update()
+    void Start()
     {
-        // 自分の情報をPlayerPrefsから取得
-        string name = PlayerPrefs.GetString("Name", "name").Replace("\u200B", "");
+        // 自分の情報を PlayerPrefs から取得
+        string playerName = PlayerPrefs.GetString("Name", "name").Replace("\u200B", "");
         string birth = PlayerPrefs.GetString("Birth", "2000/0101").Replace("\u200B", "");
         string secretID = PlayerPrefs.GetString("SecretID", "secret").Replace("\u200B", "");
         string buhiCoin = PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", "");
         string battery = PlayerPrefs.GetString("Battery", "0").Replace("\u200B", "");
+        string birthday = PlayerPrefs.GetString("Birthday", "0101").Replace("\u200B", "");
+        string birthyear = PlayerPrefs.GetString("Birthyear", "2000").Replace("\u200B", "");
+        int age = PlayerPrefs.GetInt("Age", 0);
 
-        // UIに表示
+        // UI に表示
         if (BuhiCoinText != null)
         {
             BuhiCoinText.text = buhiCoin;
@@ -30,14 +33,16 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
 
         // カスタムプロパティに設定
         Hashtable props = new Hashtable();
-        props["Name"] = name;
+        props["Name"] = playerName;
         props["Birth"] = birth;
         props["SecretID"] = secretID;
         props["BuhiCoin"] = buhiCoin;
         props["Battery"] = battery;
+        props["Birthday"] = birthday;
+        props["Birthyear"] = birthyear;
+        props["Age"] = age;
 
-        // Photonのネットワークに保存
+        // Photon のネットワークに保存
         PhotonNetwork.LocalPlayer.SetCustomProperties(props);
     }
 }
-
