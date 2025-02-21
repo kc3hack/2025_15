@@ -6,12 +6,12 @@ using TMPro;
 
 public class ShowProfiles : MonoBehaviour
 {
-    public TMP_Text Plofiles;
+    public TMP_Text Profiles;
     void Update()
     {
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles"))
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Profiles"))
         {
-            Plofiles.text = (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"];
+            Profiles.text = (string)PhotonNetwork.CurrentRoom.CustomProperties["Profiles"];
         }
             
     }

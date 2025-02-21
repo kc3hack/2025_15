@@ -27,6 +27,12 @@ public class CreateJoin : MonoBehaviourPunCallbacks
             PhotonNetwork.ConnectUsingSettings();
             Debug.Log($"Photonに接続中... プレイヤー名: {PhotonNetwork.NickName}");
         }
+
+        // ファイアーウォールの初期化
+        PlayerPrefs.SetString("BlockedIP","");
+        PlayerPrefs.SetString("BlockedIPMyServer","");
+        PlayerPrefs.Save();
+
     }
 
     public override void OnConnectedToMaster()
