@@ -204,7 +204,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("VirusOO\n")))
             {
@@ -218,7 +218,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("VirusOO\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -230,7 +230,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("Spare Battery(PC)\n")))
             {
@@ -244,7 +244,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("Spare Battery(PC)\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -256,7 +256,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("Spare Battery(Server)\n")))
             {
@@ -270,7 +270,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("Spare Battery(Server)\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -282,7 +282,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("Small Battery(PC)\n")))
             {
@@ -296,7 +296,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("Small Battery(PC)\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -308,7 +308,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("Small Battery(Server)\n")))
             {
@@ -322,7 +322,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("Small Battery(Server)\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -334,7 +334,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("IPBST1\n")))
             {
@@ -348,7 +348,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("IPBST1\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -360,7 +360,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("IPBST2\n")))
             {
@@ -374,7 +374,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("IPBST2\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -386,7 +386,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("IPBST3\n")))
             {
@@ -400,7 +400,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("IPBST3\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
@@ -412,7 +412,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             if (!(showBrowser.Contains("DoS Tool\n")))
             {
@@ -426,7 +426,7 @@ public class CreateStoreWeb : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
             {
-                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay")
+                showBrowser = PhotonNetwork.CurrentRoom.CustomProperties("BrowserDisplay");
             }
             showBrowser = showBrowser.Replace("DoS Tool\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
