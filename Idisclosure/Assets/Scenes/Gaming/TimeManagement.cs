@@ -50,9 +50,9 @@ public class TimeManagement : MonoBehaviourPunCallbacks
 
         // 送信するテキストを格納する変数
         HashSet<string> existingProfiles = new HashSet<string>();
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles"))
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Profiles"))
         {
-            string currentProfiles = (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"];
+            string currentProfiles = (string)PhotonNetwork.CurrentRoom.CustomProperties["Profiles"];
             string[] existingEntries = currentProfiles.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             foreach (var entry in existingEntries)
             {
@@ -146,13 +146,13 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         if (newProfiles.Count > 0)
         {
             string newProfilesText = string.Join("\n", newProfiles);
-            string updatedProfiles = (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles") 
-                ? (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"] + "\n" 
+            string updatedProfiles = (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Profiles") 
+                ? (string)PhotonNetwork.CurrentRoom.CustomProperties["Profiles"] + "\n" 
                 : "") + newProfilesText;
 
-            Hashtable profiles = new Hashtable { { "Plofiles", updatedProfiles } };
+            Hashtable profiles = new Hashtable { { "Profiles", updatedProfiles } };
             PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
-            Debug.Log("[保存] Plofiles: " + newProfilesText);
+            Debug.Log("[保存] Profiles: " + newProfilesText);
         }
     }
 

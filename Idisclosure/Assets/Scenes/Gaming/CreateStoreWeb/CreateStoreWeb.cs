@@ -210,6 +210,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "VirusOO\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -236,6 +237,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "Spare Battery(PC)\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -262,6 +264,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "Spare Battery(Server)\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -288,6 +291,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "Small Battery(PC)\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -314,6 +318,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "Small Battery(Server)\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -340,6 +345,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "IPBST1\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -366,6 +372,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "IPBST2\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -392,6 +399,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "IPBST3\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
@@ -418,6 +426,7 @@ public class CreateStoreWeb : MonoBehaviour
             {
                 // Browserに追加
                 showBrowser += "DoS Tool\n";
+                Debug.Log("wow");
                 Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
             }
