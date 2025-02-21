@@ -76,7 +76,6 @@ public class CreateStoreWeb : MonoBehaviour
                 PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
                 MakeIP("SmallBattery");
                 Debug.Log("Create SmallBattery!!!!!!");
-                // IPの生成処理忘れずに
             }
         }
     }
