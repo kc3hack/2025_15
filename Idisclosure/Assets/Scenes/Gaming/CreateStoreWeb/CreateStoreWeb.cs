@@ -20,6 +20,9 @@ public class CreateStoreWeb : MonoBehaviour
         InvokeRepeating(nameof(SmallBattery), 0f, 1f);
         InvokeRepeating(nameof(PullDeer), 0f, 1f);
         InvokeRepeating(nameof(Dos), 0f, 1f);
+        InvokeRepeating(nameof(IPBST1), 0f, 1f);
+        InvokeRepeating(nameof(IPBST2), 0f, 1f);
+        InvokeRepeating(nameof(IPBST3), 0f, 1f);
     }
 
 
@@ -118,6 +121,64 @@ public class CreateStoreWeb : MonoBehaviour
             }
         }
     }
+
+    void IPBST1()
+    {
+        // 単位秒数あたりの確率
+        int randomValue = Random.Range(0, 100);
+
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST1") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST1"]))
+        {
+            // 1が出たらStoreWebを建ちあげる
+            if (randomValue == 1)
+            {
+                // 判別しているプロパティをtrueにする
+                Hashtable Webs = new Hashtable { { "IPBST1", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
+                MakeIP("IPBST1");
+                Debug.Log("Create IPBST1!!!!!!");
+            }
+        }
+    }
+
+    void IPBST2()
+    {
+        // 単位秒数あたりの確率
+        int randomValue = Random.Range(0, 100);
+
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST2") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST2"]))
+        {
+            // 1が出たらStoreWebを建ちあげる
+            if (randomValue == 1)
+            {
+                // 判別しているプロパティをtrueにする
+                Hashtable Webs = new Hashtable { { "IPBST2", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
+                MakeIP("IPBST2");
+                Debug.Log("Create IPBST2!!!!!!");
+            }
+        }
+    }
+
+    void IPBST3()
+    {
+        // 単位秒数あたりの確率
+        int randomValue = Random.Range(0, 100);
+
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST3") && !((bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST3"]))
+        {
+            // 1が出たらStoreWebを建ちあげる
+            if (randomValue == 1)
+            {
+                // 判別しているプロパティをtrueにする
+                Hashtable Webs = new Hashtable { { "IPBST3", true } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
+                MakeIP("IPBST3");
+                Debug.Log("Create IPBST3!!!!!!");
+            }
+        }
+    }
+
     void Update()
     {
         /*----------VirusOO----------*/
@@ -206,6 +267,60 @@ public class CreateStoreWeb : MonoBehaviour
         else
         {
             showBrowser = showBrowser.Replace("Dos\n", "");
+            Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+        }
+
+        /*----------IPBST1----------*/
+        if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST1") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST1"])
+        {
+            if (!(showBrowser.Contains("IPBST1\n")))
+            {
+                // Browserに追加
+                showBrowser += "IPBST1\n";
+                Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+        }
+        else
+        {
+            showBrowser = showBrowser.Replace("IPBST1\n", "");
+            Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+        }
+
+        /*----------IPBST2----------*/
+        if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST2") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST2"])
+        {
+            if (!(showBrowser.Contains("IPBST2\n")))
+            {
+                // Browserに追加
+                showBrowser += "IPBST2\n";
+                Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+        }
+        else
+        {
+            showBrowser = showBrowser.Replace("IPBST2\n", "");
+            Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+        }
+
+        /*----------IPBST3----------*/
+        if(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST3") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST3"])
+        {
+            if (!(showBrowser.Contains("IPBST3\n")))
+            {
+                // Browserに追加
+                showBrowser += "IPBST3\n";
+                Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+            }
+        }
+        else
+        {
+            showBrowser = showBrowser.Replace("IPBST3\n", "");
             Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
             PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
         }
