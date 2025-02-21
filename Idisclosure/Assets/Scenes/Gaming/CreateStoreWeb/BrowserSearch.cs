@@ -142,10 +142,10 @@ public class BrowserSearch : MonoBehaviour
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
                         // VirusOOIPを取得
-                        string SpareBatteryIP = "";
+                        string FishingSpareBatteryIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryIP"))
                         {
-                            SpareBatteryIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryIP"];
+                            FishingSpareBatteryIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryIP"];
                         }
                         // 自分のIPを取得
                         string PlayerIP = "";
@@ -213,10 +213,10 @@ public class BrowserSearch : MonoBehaviour
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
                         // VirusOOIPを取得
-                        string SmallBatteryIP = "";
+                        string FishingSmallBatteryIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryIP"))
                         {
-                            SmallBatteryIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryIP"];
+                            FishingSmallBatteryIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryIP"];
                         }
                         // 自分のIPを取得
                         string PlayerIP = "";
@@ -257,7 +257,7 @@ public class BrowserSearch : MonoBehaviour
                         {
                             PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
                         }
-                        SortAndSave(FishingSmallBatteryIP, PlayerIP, WifiNumber);
+                        SortAndSave(SmallBatteryIP, PlayerIP, WifiNumber);
                         /*----------シーン遷移----------*/
                         SceneManager.LoadScene("SmallBattery");
                     }
