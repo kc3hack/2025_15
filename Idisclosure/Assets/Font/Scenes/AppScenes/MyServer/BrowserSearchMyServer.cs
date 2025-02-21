@@ -17,7 +17,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         Debug.Log("Browser起動:" + searchWords);
 
         /*----------SNS Serverを検索----------*/
-        if (searchWords == "sns server")
+        if (searchWords == "snsserver")
         {
             int drain = 1;
 
@@ -128,7 +128,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryMyServer"])
             {
-                if (searchWords == "spare battery my server")
+                if (searchWords == "sparebatterymyserver")
                 {
                     int drain = 0;
 
@@ -161,7 +161,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             else
             {
-                if (searchWords == "spare battery my server")
+                if (searchWords == "sparebatterymyserver")
                 {
                     int drain = 1;
 
@@ -199,7 +199,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryPC") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryPC"])
             {
-                if (searchWords == "spare battery pc")
+                if (searchWords == "sparebatterypc")
                 {
                     int drain = 0;
 
@@ -232,7 +232,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             else
             {
-                if (searchWords == "spare battery pc")
+                if (searchWords == "sparebatterypc")
                 {
                     int drain = 1;
 
@@ -270,7 +270,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryMyServer"])
             {
-                if (searchWords == "small battery my server")
+                if (searchWords == "smallbatterymyserver")
                 {
                     int drain = 1;
 
@@ -303,7 +303,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             else
             {
-                if (searchWords == "small battery my server")
+                if (searchWords == "smallbatterymyserver")
                 {
                     int drain = 1;
 
@@ -341,7 +341,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryPC") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryPC"])
             {
-                if (searchWords == "small battery pc")
+                if (searchWords == "smallbatterypc")
                 {
                     int drain = 1;
 
@@ -374,7 +374,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             else
             {
-                if (searchWords == "small battery pc")
+                if (searchWords == "smallbatterypc")
                 {
                     int drain = 1;
 
@@ -558,7 +558,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST3") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST3"])
             {
-                if (searchWords == "IPBST3")
+                if (searchWords == "ipbst3")
                 {
                     int drain = 1;
 
@@ -592,7 +592,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             else
             {
-                if (searchWords == "IPBST3")
+                if (searchWords == "ipbst3")
                 {
                     int drain = 1;
 
@@ -631,7 +631,7 @@ public class BrowserSearchMyServer : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingDos"])
             {
-                if (searchWords == "dos")
+                if (searchWords == "dostool" || searchWords == "dos")
                 {
                     int drain = 1;
 
@@ -665,7 +665,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
             else
             {
-                if (searchWords == "dos")
+                if (searchWords == "dostool" || searchWords == "dos")
                 {
                     int drain = 1;
 

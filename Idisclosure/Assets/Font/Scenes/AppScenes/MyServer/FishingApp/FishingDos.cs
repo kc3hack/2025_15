@@ -36,9 +36,9 @@ public class FishingDos : MonoBehaviour
                 {
                     showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
                 }
-                if (!(showBrowser.Contains("DoS Tool\n")))
+                if (!(showBrowser.Contains("Dos\n")))
                 {
-                    showBrowser += "DoS Tool\n";
+                    showBrowser += "Dos\n";
                     Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                     PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
                 }
