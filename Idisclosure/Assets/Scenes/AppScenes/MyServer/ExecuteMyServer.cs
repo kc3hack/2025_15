@@ -69,6 +69,44 @@ public class ExecuteMyServer : MonoBehaviour
             }
         }
 
+        /*----------IPBST2を実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST2") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST2"])
+        {
+            if (Regex.IsMatch(command, "ipbst2"))
+            {
+                int drain = 10;
+                
+                int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    /*----------Battery処理----------*/
+                    Battery -= drain;
+                    PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Wifi2");
+                }
+            }
+        }
+
+        /*----------IPBST3を実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST3") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST3"])
+        {
+            if (Regex.IsMatch(command, "ipbst3"))
+            {
+                int drain = 10;
+                
+                int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u300B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    /*----------Battery処理----------*/
+                    Battery -= drain;
+                    PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Wifi3");
+                }
+            }
+        }
+
         /*----------Dosを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDos"])
         {

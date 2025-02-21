@@ -784,9 +784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'VirusOO
-
-'
+  m_text: IPBST1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
   m_sharedMaterial: {fileID: -4885029858982630998, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
@@ -1284,7 +1282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "IP baretemo \nSIKAtanai tool1\n"
+  m_text: "IP Baretemo \nSIKAtanai Tool1\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
   m_sharedMaterial: {fileID: -4885029858982630998, guid: 1342c314fc8f4d94293ec8af283ce7da, type: 2}
@@ -2804,7 +2802,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1993642334}
         m_TargetAssemblyTypeName: FishingDownload, Assembly-CSharp
-        m_MethodName: FishingDownloadPullDeer
+        m_MethodName: FishingDownloadIPBST1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

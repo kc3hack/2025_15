@@ -50,7 +50,7 @@ public class Execute : MonoBehaviour
                 }
             }
         }
-        /*----------PullDeerを実行----------*/
+        /*----------IPBST1を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST1") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST1"])
         {
             if (Regex.IsMatch(command, "ipbst1"))
@@ -65,6 +65,44 @@ public class Execute : MonoBehaviour
                     PlayerPrefs.SetString("Battery", Battery.ToString());
                     PlayerPrefs.Save();
                     SceneManager.LoadScene("Wifi1");
+                }
+            }
+        }
+
+        /*----------IPBST2を実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST2") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST2"])
+        {
+            if (Regex.IsMatch(command, "ipbst2"))
+            {
+                int drain = 10;
+                
+                int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    /*----------Battery処理----------*/
+                    Battery -= drain;
+                    PlayerPrefs.SetString("Battery", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Wifi2");
+                }
+            }
+        }
+
+        /*----------IPBST3を実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST3") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST3"])
+        {
+            if (Regex.IsMatch(command, "ipbst3"))
+            {
+                int drain = 10;
+                
+                int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    /*----------Battery処理----------*/
+                    Battery -= drain;
+                    PlayerPrefs.SetString("Battery", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("Wifi3");
                 }
             }
         }

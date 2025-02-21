@@ -81,6 +81,64 @@ public class Download : MonoBehaviour
 
      public void DownloadIPBST1()
     {
+        int drain = 1;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadIPBST1", true } };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
+            {
+                showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
+            }
+            if (!(showTerminal.Contains("IPBST1\n")))
+            {
+                // Terminalに追加
+                showTerminal += "IPBST1\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
+
+     public void DownloadIPBST2()
+    {
+        int drain = 2;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadIPBST2", true } };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
+            {
+                showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
+            }
+            if (!(showTerminal.Contains("IPBST2\n")))
+            {
+                // Terminalに追加
+                showTerminal += "IPBST2\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
+
+     public void DownloadIPBST3()
+    {
         int drain = 300;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
 
@@ -91,16 +149,16 @@ public class Download : MonoBehaviour
             PlayerPrefs.Save();
 
             // 支払われたら領収通知発行
-            Hashtable Download = new Hashtable { { "DownloadPullDeer", true } };
+            Hashtable Download = new Hashtable { { "DownloadIPBST3", true } };
             PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
             if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
             {
                 showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
             }
-            if (!(showTerminal.Contains("IPBST1\n")))
+            if (!(showTerminal.Contains("IPBST3\n")))
             {
                 // Terminalに追加
-                showTerminal += "PullDeer\n";
+                showTerminal += "IPBST3\n";
                 Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
             }
