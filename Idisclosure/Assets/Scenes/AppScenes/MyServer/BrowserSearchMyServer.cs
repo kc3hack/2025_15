@@ -39,9 +39,9 @@ public class BrowserSearchMyServer : MonoBehaviour
                 }
                 // 自分のIPを取得
                 string ServerIP = "";
-                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                 {
-                    ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                    ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                 }
                 SortAndSave(SNSServerIP, ServerIP, WifiNumber);
                 /*----------シーン遷移----------*/
@@ -77,9 +77,9 @@ public class BrowserSearchMyServer : MonoBehaviour
                         }
                         // 自分のIPを取得
                         string ServerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                         {
-                            ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                         }
                         SortAndSave(FishingVirusOOIP, ServerIP, WifiNumber);
                         /*----------シーン遷移----------*/
@@ -111,9 +111,9 @@ public class BrowserSearchMyServer : MonoBehaviour
                         }
                         // 自分のIPを取得
                         string ServerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                         {
-                            ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                         }
                         SortAndSave(VirusOOIP, ServerIP, WifiNumber);
                         /*----------シーン遷移----------*/
@@ -123,14 +123,14 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
         }
 
-        /*----------SpareBatteryを検索----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBattery"])
+        /*----------SpareBatteryMyServerを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBatteryMyServer"])
         {
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBattery"])
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryMyServer"])
             {
-                if (searchWords == "spare battery")
+                if (searchWords == "spare BatteryMyServer")
                 {
-                    int drain = 1;
+                    int drain = 0;
 
                     int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
                     if ((BatteryMyServer - drain >= 0))
@@ -138,14 +138,30 @@ public class BrowserSearchMyServer : MonoBehaviour
                         BatteryMyServer -= drain;
                         PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("FishingSpareBattery");
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // SpareBatteryMyServerIPを取得
+                        string FishingSpareBatteryMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryMyServerIP"))
+                        {
+                            FishingSpareBatteryMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingSpareBatteryMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingSpareBatteryMyServer");
                     }
-                    // ここにwifiにIPをメモる処理忘れずに
                 }
             }
             else
             {
-                if (searchWords == "spare battery")
+                if (searchWords == "spare BatteryMyServer")
                 {
                     int drain = 1;
 
@@ -155,21 +171,37 @@ public class BrowserSearchMyServer : MonoBehaviour
                         BatteryMyServer -= drain;
                         PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("SpareBattery");
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // SpareBatteryMyServerIPを取得
+                        string SpareBatteryMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBatteryMyServerIP"))
+                        {
+                            SpareBatteryMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SpareBatteryMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(SpareBatteryMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("SpareBatteryMyServer");
                     }
-                    // ここにwifiにIPをメモる処理忘れずに
                 }
             }
         }
 
-        /*----------SmallBatteryを検索----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBattery"])
+        /*----------SpareBatteryMyServerMyServerを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBatteryMyServerMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBatteryMyServerMyServer"])
         {
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBattery"])
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryMyServerMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryMyServerMyServer"])
             {
-                if (searchWords == "small battery")
+                if (searchWords == "spare BatteryMyServer")
                 {
-                    int drain = 1;
+                    int drain = 0;
 
                     int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
                     if ((BatteryMyServer - drain >= 0))
@@ -177,14 +209,30 @@ public class BrowserSearchMyServer : MonoBehaviour
                         BatteryMyServer -= drain;
                         PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("FishingSmallBattery");
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingSpareBatteryMyServerMyServerIPを取得
+                        string FishingSpareBatteryMyServerMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryMyServerMyServerIP"))
+                        {
+                            FishingSpareBatteryMyServerMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryMyServerMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingSpareBatteryMyServerMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingSpareBatteryMyServerMyServer");
                     }
-                    // ここにwifiにIPをメモる処理忘れずに
                 }
             }
             else
             {
-                if (searchWords == "small battery")
+                if (searchWords == "spare BatteryMyServer")
                 {
                     int drain = 1;
 
@@ -194,19 +242,177 @@ public class BrowserSearchMyServer : MonoBehaviour
                         BatteryMyServer -= drain;
                         PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                         PlayerPrefs.Save();
-                        SceneManager.LoadScene("SmallBattery");
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingSpareBatteryMyServerMyServerIPを取得
+                        string SpareBatteryMyServerMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBatteryMyServerMyServerIP"))
+                        {
+                            SpareBatteryMyServerMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SpareBatteryMyServerMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(SpareBatteryMyServerMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("SpareBatteryMyServerMyServer");
                     }
-                    // ここにwifiにIPをメモる処理忘れずに
                 }
             }
         }
 
-        /*----------PullDeerを検索----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["PullDeer"])
+        /*----------SmallBatteryMyServerを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBatteryMyServer"])
         {
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingPullDeer"])
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryMyServer"])
             {
-                if (searchWords == "pull deer")
+                if (searchWords == "small BatteryMyServer")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // VirusOOIPを取得
+                        string FishingSmallBatteryMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServerIP"))
+                        {
+                            FishingSmallBatteryMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingSmallBatteryMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingSmallBatteryMyServer");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "small BatteryMyServer")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // VirusOOIPを取得
+                        string SmallBatteryMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServerIP"))
+                        {
+                            SmallBatteryMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SmallBatteryMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(SmallBatteryMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("SmallBatteryMyServer");
+                    }
+                }
+            }
+        }
+
+        /*----------SmallBatteryMyServerMyServerを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServerMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBatteryMyServerMyServer"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServerMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryMyServerMyServer"])
+            {
+                if (searchWords == "small BatteryMyServer")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // VirusOOIPを取得
+                        string FishingSmallBatteryMyServerMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServerMyServerIP"))
+                        {
+                            FishingSmallBatteryMyServerMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryMyServerMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingSmallBatteryMyServerMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingSmallBatteryMyServerMyServer");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "small BatteryMyServer")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // VirusOOIPを取得
+                        string SmallBatteryMyServerMyServerIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServerMyServerIP"))
+                        {
+                            SmallBatteryMyServerMyServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["SmallBatteryMyServerMyServerIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(SmallBatteryMyServerMyServerIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("SmallBatteryMyServerMyServer");
+                    }
+                }
+            }
+        }
+
+        /*----------IPBST1を検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST1") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST1"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST1") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST1"])
+            {
+                if (searchWords == "ipbst1")
                 {
                     int drain = 1;
 
@@ -220,27 +426,27 @@ public class BrowserSearchMyServer : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // FishingPullDeerIPを取得
-                        string FishingPullDeerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingPullDeerIP"))
+                        // FishingIPBST1IPを取得
+                        string FishingIPBST1IP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST1IP"))
                         {
-                            FishingPullDeerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingPullDeerIP"];
+                            FishingIPBST1IP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST1IP"];
                         }
                         // 自分のIPを取得
                         string ServerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                         {
-                            ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                         }
-                        SortAndSave(FishingPullDeerIP, ServerIP, WifiNumber);
+                        SortAndSave(FishingIPBST1IP, ServerIP, WifiNumber);
                         /*----------シーン遷移----------*/
-                        SceneManager.LoadScene("FishingPullDeer");
+                        SceneManager.LoadScene("FishingIPBST1");
                     }
                 }
             }
             else
             {
-                if (searchWords == "pull deer")
+                if (searchWords == "ipbst1")
                 {
                     int drain = 1;
 
@@ -254,21 +460,167 @@ public class BrowserSearchMyServer : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // PullDeerIPを取得
-                        string PullDeerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("PullDeerIP"))
+                        // IPBST1IPを取得
+                        string IPBST1IP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST1IP"))
                         {
-                            PullDeerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["PullDeerIP"];
+                            IPBST1IP = (string)PhotonNetwork.CurrentRoom.CustomProperties["IPBST1IP"];
                         }
                         // 自分のIPを取得
                         string ServerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                         {
-                            ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                         }
-                        SortAndSave(PullDeerIP, ServerIP, WifiNumber);
+                        SortAndSave(IPBST1IP, ServerIP, WifiNumber);
                         /*----------シーン遷移----------*/
-                        SceneManager.LoadScene("PullDeer");
+                        SceneManager.LoadScene("IPBST1");
+                    }
+                }
+            }
+        }
+
+        /*----------IPBST2を検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST2") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST2"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST2") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST2"])
+            {
+                if (searchWords == "ipbst2")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingIPBST2IPを取得
+                        string FishingIPBST2IP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST2IP"))
+                        {
+                            FishingIPBST2IP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST2IP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingIPBST2IP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingIPBST2");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "ipbst2")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // IPBST2IPを取得
+                        string IPBST2IP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST2IP"))
+                        {
+                            IPBST2IP = (string)PhotonNetwork.CurrentRoom.CustomProperties["IPBST2IP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(IPBST2IP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("IPBST2");
+                    }
+                }
+            }
+        }
+
+        /*----------IPBST3を検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST3") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["IPBST3"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST3") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST3"])
+            {
+                if (searchWords == "IPBST3")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingIPBST3IPを取得
+                        string FishingIPBST3IP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingIPBST3IP"))
+                        {
+                            FishingIPBST3IP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingIPBST3IP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingIPBST3IP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingIPBST3");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "IPBST3")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // IPBST3IPを取得
+                        string IPBST3IP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("IPBST3IP"))
+                        {
+                            IPBST3IP = (string)PhotonNetwork.CurrentRoom.CustomProperties["IPBST3IP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(IPBST3IP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("IPBST3");
                     }
                 }
             }
@@ -301,9 +653,9 @@ public class BrowserSearchMyServer : MonoBehaviour
                         }
                         // 自分のIPを取得
                         string ServerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                         {
-                            ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                         }
                         SortAndSave(FishingDosIP, ServerIP, WifiNumber);
                         /*----------シーン遷移----------*/
@@ -335,9 +687,9 @@ public class BrowserSearchMyServer : MonoBehaviour
                         }
                         // 自分のIPを取得
                         string ServerIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("ServerIP"))
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
                         {
-                            ServerIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["ServerIP"];
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
                         }
                         SortAndSave(DosIP, ServerIP, WifiNumber);
                         /*----------シーン遷移----------*/
@@ -352,7 +704,6 @@ public class BrowserSearchMyServer : MonoBehaviour
     {
         int Permutation = UnityEngine.Random.Range(0, 2);
 
-        // IPアドレスを比較し、昇順になるように並び替え
         string NewRecord = (Permutation == 0) ? $"{IP1}:{IP2}\n" : $"{IP2}:{IP1}\n";
 
         // 既存のWiFi記録を取得して追加
