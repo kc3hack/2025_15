@@ -1,45 +1,58 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using System;
+using TMPro;
 
-public class BuhiCoinCalc : MonoBehaviour
+public class BuhiCoinCalculator : MonoBehaviour
 {
-    public TMP_Text score;
-    public TMP_Text EnteredPassword;
+    public TMP_Text ShowBuhiCoin;
+    public TMP_Text EnteredSecretID;
+    public TMP_Text warningText; // 追加: 警告テキスト
+    public Button registerButton; // 追加: 登録ボタン
 
-    // 警告文のテキスト
-    public TMP_Text warningText;
+    public void GetBuhiCoin()
+    {
+        string PlayerName = PlayerPrefs.GetString("Name", "Guest").Replace("\u200B", "");
+        string PlayerBirth = PlayerPrefs.GetString("Birth", "2000/0101").Replace("\u200B", "");
 
-    // Register ボタン
-    public Button registerButton;
+        if (!PlayerBirth.Contains("/"))
+        {
+            Debug.LogError("Invalid Birth format: " + PlayerBirth);
+            return;
+        }
 
-    public void ScoreManager()
-    {//関数名
-        string PlayerName = PlayerPrefs.GetString("PlayerName", "Guest").Replace("\u200B", "");
-        string PlayerBirthday = PlayerPrefs.GetString("PlayerBirthday", "0101").Replace("\u200B", "");
-        int ScoreNow = 0;//パスワードに関するポイントの初期値を設定
-        string Password = EnteredPassword.text.Replace("\u200B", "");//要素を取得
+        string PlayerBirthday = PlayerBirth.Substring(PlayerBirth.IndexOf("/") + 1);
+        string PlayerBirthyear = PlayerBirth.Substring(0, PlayerBirth.IndexOf("/"));
+        int BuhiCoinNow = 0;
+        int age = 0;
+        string SecretID = EnteredSecretID.text.Replace("\u200B", "");
 
         Debug.Log(PlayerName.Length);
         Debug.Log(PlayerName);
         bool isIncludeName = false;
         bool isIncludeBirthday = false;
-        Debug.Log("Length...??" + Password.Length);
-        if (Password.Contains(PlayerName))
-        {//名前が含まれていたら+1点
-            ScoreNow += 500;
+        bool isIncludeBirthyear = false;
+        Debug.Log("Length...??" + SecretID.Length);
+
+        /*----------点数計算----------*/
+        if (SecretID.Contains(PlayerName))
+        {
+            BuhiCoinNow += 500;
             isIncludeName = true;
         }
-        if (Password.Contains(PlayerBirthday))
+        if (SecretID.Contains(PlayerBirthday))
         {
-            ScoreNow += 300;
+            BuhiCoinNow += 400;
             isIncludeBirthday = true;
         }
+        if (SecretID.Contains(PlayerBirthyear))
+        {
+            BuhiCoinNow += 300;
+            isIncludeBirthyear = true;
+        }
 
-        int LengthNow = Password.Length;
+        /*----------OtherWords検査----------*/
+        int LengthNow = SecretID.Length;
         if (isIncludeName)
         {
             LengthNow -= PlayerName.Length;
@@ -50,17 +63,39 @@ public class BuhiCoinCalc : MonoBehaviour
             LengthNow -= PlayerBirthday.Length;
             Debug.Log("LengthNow: " + LengthNow);
         }
-        ScoreNow -= LengthNow * 100;
+        if (isIncludeBirthyear)
+        {
+            LengthNow -= PlayerBirthyear.Length;
+            Debug.Log("LengthNow: " + LengthNow);
+        }
 
-        score.text = ScoreNow.ToString();
+        /*----------OtherWords計算結果----------*/
+        BuhiCoinNow -= LengthNow * 100;
 
-        // PlayerPrefsに名前を保存
-        PlayerPrefs.SetString("BuhiCoin", ScoreNow.ToString());
-        //保存する
-        PlayerPrefs.Save();
+        // ShowBuhiCoinにBuhiCoinの結果を渡す
+        ShowBuhiCoin.text = BuhiCoinNow.ToString();
+
+        /*----------年齢計算----------*/
+        try
+        {
+            // PlayerBirthyear と PlayerBirthday を使用して DateTime を生成
+            string fullBirthDate = PlayerBirthyear + "/" + PlayerBirthday;
+            DateTime birthDate = DateTime.ParseExact(fullBirthDate, "yyyy/MMdd", null);
+
+            // 現在の日付を取得
+            DateTime today = DateTime.Today;
+
+            // 年齢を計算
+            age = today.Year - birthDate.Year;
+            if (today < birthDate.AddYears(age)) age--;
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in age calculation: " + ex.Message);
+        }
 
         // --- 追加部分 ---
-        if (ScoreNow < 0)
+        if (BuhiCoinNow < 0)  // ScoreNow → BuhiCoinNow に修正
         {
             // マイナスの時、警告文を表示してボタンを無効化
             warningText.text = "Buhicoin is negative";
@@ -74,5 +109,14 @@ public class BuhiCoinCalc : MonoBehaviour
             warningText.gameObject.SetActive(false);
             registerButton.interactable = true;
         }
+
+        // PlayerPrefsに保存
+        PlayerPrefs.SetString("Birthday", PlayerBirthday);
+        PlayerPrefs.SetString("Birthyear", PlayerBirthyear);
+        PlayerPrefs.SetString("BuhiCoin", BuhiCoinNow.ToString());
+        PlayerPrefs.SetInt("Age", age);
+        PlayerPrefs.Save();
     }
 }
+
+

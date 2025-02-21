@@ -37,8 +37,8 @@ public class MoveInputSecretID : MonoBehaviour
         if (isNameValid && isBirthdayValid)
         {
             // PlayerPrefsに名前と生年月日を保存
-            PlayerPrefs.SetString("PlayerName", playerName);
-            PlayerPrefs.SetString("PlayerBirthday", playerBirth);
+            PlayerPrefs.SetString("Name", playerName);
+            PlayerPrefs.SetString("Birth", playerBirth);
             PlayerPrefs.Save();
 
             // シーン遷移
