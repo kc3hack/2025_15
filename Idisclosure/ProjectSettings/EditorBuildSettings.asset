@@ -113,6 +113,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AppScenes/FishingApp/FishingDos.unity
     guid: f630ef539a8a06d459ce923b58f14635
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/IPBST1.unity
+    guid: 5948140eba7d4754aa7aa8c190a5e7c4
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/IPBST1.unity
+    guid: ccd9b2586f11b8a4c833de03708ab60c
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/IPBST2.unity
+    guid: be60cdfff899aa84b8b9856bbedb23f0
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/IPBST2.unity
+    guid: 81b863af991691e4691f09e6f4ad0a83
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/App/IPBST3.unity
+    guid: 2e028dbff3993834bb3ac87aec52fb4b
+  - enabled: 1
+    path: Assets/Scenes/AppScenes/FishingApp/IPBST3.unity
+    guid: 26e9bb576c5cc574bb84ebcdeec727d0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

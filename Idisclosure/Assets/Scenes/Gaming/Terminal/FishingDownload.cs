@@ -161,5 +161,98 @@ public class FishingDownload : MonoBehaviour
             SceneManager.LoadScene("Failed");
         }
     }
+
+    public void FishingDownloadIPBST1()
+    {
+        int drain = 1;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 宛先探索
+            string fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherIPBST1"];
+            Player targetPlayer = null;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.NickName == fisherName)
+                {
+                    targetPlayer = player;
+                    break;
+                }
+            }
+
+            // 支払われたらServerの主に送金
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { targetPlayer.ActorNumber } };
+            SendOptions sendOptions = new SendOptions { Reliability = true };
+            PhotonNetwork.RaiseEvent(SuccessFishing, drain, raiseEventOptions, sendOptions);
+            SceneManager.LoadScene("Failed");
+        }
+    }
+
+    public void FishingDownloadIPBST2()
+    {
+        int drain = 1;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 宛先探索
+            string fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherIPBST2"];
+            Player targetPlayer = null;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.NickName == fisherName)
+                {
+                    targetPlayer = player;
+                    break;
+                }
+            }
+
+            // 支払われたらServerの主に送金
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { targetPlayer.ActorNumber } };
+            SendOptions sendOptions = new SendOptions { Reliability = true };
+            PhotonNetwork.RaiseEvent(SuccessFishing, drain, raiseEventOptions, sendOptions);
+            SceneManager.LoadScene("Failed");
+        }
+    }
+
+    public void FishingDownloadIPBST3()
+    {
+        int drain = 1;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 宛先探索
+            string fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherIPBST3"];
+            Player targetPlayer = null;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.NickName == fisherName)
+                {
+                    targetPlayer = player;
+                    break;
+                }
+            }
+
+            // 支払われたらServerの主に送金
+            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { targetPlayer.ActorNumber } };
+            SendOptions sendOptions = new SendOptions { Reliability = true };
+            PhotonNetwork.RaiseEvent(SuccessFishing, drain, raiseEventOptions, sendOptions);
+            SceneManager.LoadScene("Failed");
+        }
+    }
 }
 

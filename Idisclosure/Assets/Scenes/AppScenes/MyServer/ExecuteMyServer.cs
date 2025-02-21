@@ -51,6 +51,7 @@ public class ExecuteMyServer : MonoBehaviour
                 }
             }
         }
+
         /*----------PullDeerを実行----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadPullDeer"])
         {
