@@ -42,7 +42,7 @@ public class MoveInputSecretID : MonoBehaviour
             PlayerPrefs.Save();
 
             // シーン遷移
-            SceneManager.LoadScene("PasswordScene");
+            SceneManager.LoadScene("InputSecretID");
         }
         else
         {
