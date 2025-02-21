@@ -81,7 +81,7 @@ public class Download : MonoBehaviour
 
     public void DownloadSmallBattery()
     {
-        int drain = 10;
+        int drain = 100;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
         int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
 
@@ -101,7 +101,7 @@ public class Download : MonoBehaviour
 
     public void DownloadSmallBatteryMyServer()
     {
-        int drain = 10;
+        int drain = 100;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
         int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
 
@@ -208,7 +208,7 @@ public class Download : MonoBehaviour
 
     public void DownloadDos()
     {
-        int drain = 100;
+        int drain = 300;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
 
         // BuhiCoinの支払いについて
