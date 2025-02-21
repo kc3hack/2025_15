@@ -4,6 +4,7 @@ using TMPro;
 using Photon.Pun;
 using Photon.Realtime;
 using System;
+using System.Collections.Generic;
 using ExitGames.Client.Photon;
 
 public class TimeManagement : MonoBehaviourPunCallbacks
@@ -13,10 +14,6 @@ public class TimeManagement : MonoBehaviourPunCallbacks
     private double startTime;
     public TMP_Text timerText;
     private bool isTimeInitialized = false;
-    private bool isNotified270 = false; // 270秒用
-    private bool isNotified240 = false; // 240秒用
-    private bool isNotified180 = false;  // 180秒用
-    private bool isNotified120 = false;  // 120秒用
 
     private void Update()
     {
@@ -51,121 +48,112 @@ public class TimeManagement : MonoBehaviourPunCallbacks
 
         UpdateTimerDisplay(timeRemaining);
 
-        /*----------SNS Serverへの情報提供処理 (270秒)----------*/
-        if (timeRemaining <= 270 && !isNotified270)
+        // 送信するテキストを格納する変数
+        HashSet<string> existingProfiles = new HashSet<string>();
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles"))
         {
-            isNotified270 = true;
-            string snsPlofiles = "";
+            string currentProfiles = (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"];
+            string[] existingEntries = currentProfiles.Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var entry in existingEntries)
+            {
+                existingProfiles.Add(entry);
+            }
+        }
 
+        List<string> newProfiles = new List<string>();
+
+        if (timeRemaining <= 270)
+        {
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 if (player.CustomProperties.ContainsKey("Birthyear"))
                 {
                     string birthyear = (string)player.CustomProperties["Birthyear"];
-                    snsPlofiles += (player.NickName + " → " + birthyear + " years born\n");
+                    string profileEntry = player.NickName + " → " + birthyear + " years born";
+                    if (!existingProfiles.Contains(profileEntry))
+                    {
+                        newProfiles.Add(profileEntry);
+                    }
                 }
             }
-
-            if (!string.IsNullOrEmpty(snsPlofiles))
-            {
-                Hashtable plofiles = new Hashtable { { "Plofiles", snsPlofiles } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
-                Debug.Log("[保存] Plofiles: " + snsPlofiles);
-            }
         }
-        
-        /*----------SNS Serverへの情報提供処理 (240秒)----------*/
-        if (timeRemaining <= 240 && !isNotified240)
-        {
-            isNotified240 = true;
-            string snsPlofiles = "";
 
+        if (timeRemaining <= 240)
+        {
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 if (player.CustomProperties.ContainsKey("Age"))
                 {
                     int age = (int)player.CustomProperties["Age"];
-                    snsPlofiles += (player.NickName + " → " + age + " years old\n");
+                    string profileEntry = player.NickName + " → " + age + " years old";
+                    if (!existingProfiles.Contains(profileEntry))
+                    {
+                        newProfiles.Add(profileEntry);
+                    }
                 }
-            }
-
-            if (!string.IsNullOrEmpty(snsPlofiles))
-            {
-                Hashtable plofiles = new Hashtable { { "Plofiles", snsPlofiles } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
-                Debug.Log("[保存] Plofiles: " + snsPlofiles);
             }
         }
 
-        /*----------SNS Serverへの情報提供処理 (180秒)----------*/
-        if (timeRemaining <= 180 && !isNotified180)
+        if (timeRemaining <= 180)
         {
-            isNotified180 = true;
-            string snsPlofiles = "";
-
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 if (player.CustomProperties.ContainsKey("Birthday"))
                 {
                     string birthday = (string)player.CustomProperties["Birthday"];
-                    snsPlofiles += (player.NickName + " 's Birthday is " + birthday + "\n");
+                    string profileEntry = player.NickName + " 's Birthday is " + birthday;
+                    if (!existingProfiles.Contains(profileEntry))
+                    {
+                        newProfiles.Add(profileEntry);
+                    }
                 }
-            }
-
-            if (!string.IsNullOrEmpty(snsPlofiles))
-            {
-                Hashtable plofiles = new Hashtable { { "Plofiles", snsPlofiles } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
-                Debug.Log("[保存] Plofiles: " + snsPlofiles);
             }
         }
 
-        /*----------SNS Serverへの情報提供処理 (120秒)----------*/
-        if (timeRemaining <= 120 && !isNotified120)
+        if (timeRemaining <= 120)
         {
-            isNotified120 = true;
-            string snsPlofiles = "";
-
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 if (player.CustomProperties.ContainsKey("PlayerIP"))
                 {
                     string playerip = (string)player.CustomProperties["PlayerIP"];
-                    snsPlofiles += (player.NickName + " 's IP is " + playerip + "\n");
+                    string profileEntry = player.NickName + " 's IP is " + playerip;
+                    if (!existingProfiles.Contains(profileEntry))
+                    {
+                        newProfiles.Add(profileEntry);
+                    }
                 }
-            }
-
-            if (!string.IsNullOrEmpty(snsPlofiles))
-            {
-                Hashtable plofiles = new Hashtable { { "Plofiles", snsPlofiles } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
-                Debug.Log("[保存] Plofiles: " + snsPlofiles);
             }
         }
 
-        /*----------SNS Serverへの情報提供処理 (60秒)----------*/
-        if (timeRemaining <= 60 && !isNotified60)
+        if (timeRemaining <= 60)
         {
-            isNotified60 = true;
-            string snsPlofiles = "";
-
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                if (player.CustomProperties.ContainsKey(""))
+                if (player.CustomProperties.ContainsKey("SecretID"))
                 {
-                    string playerip = (string)player.CustomProperties["PlayerIP"];
-                    snsPlofiles += (player.NickName + " 's IP is " + playerip + "\n");
+                    string secretid = (string)player.CustomProperties["SecretID"];
+                    string profileEntry = player.NickName + "'s SecretID is " + secretid;
+                    if (!existingProfiles.Contains(profileEntry))
+                    {
+                        newProfiles.Add(profileEntry);
+                    }
                 }
-            }
-
-            if (!string.IsNullOrEmpty(snsPlofiles))
-            {
-                Hashtable plofiles = new Hashtable { { "Plofiles", snsPlofiles } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(plofiles);
-                Debug.Log("[保存] Plofiles: " + snsPlofiles);
             }
         }
 
+        // 既に送信されていないデータがあれば追加
+        if (newProfiles.Count > 0)
+        {
+            string newProfilesText = string.Join("\n", newProfiles);
+            string updatedProfiles = (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles") 
+                ? (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"] + "\n" 
+                : "") + newProfilesText;
+
+            Hashtable profiles = new Hashtable { { "Plofiles", updatedProfiles } };
+            PhotonNetwork.CurrentRoom.SetCustomProperties(profiles);
+            Debug.Log("[保存] Plofiles: " + newProfilesText);
+        }
     }
 
     // タイマーの表示を更新

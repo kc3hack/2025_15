@@ -21,6 +21,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         string birthday = PlayerPrefs.GetString("Birthday", "0101").Replace("\u200B", "");
         string birthyear = PlayerPrefs.GetString("Birthyear", "2000").Replace("\u200B", "");
         int age = PlayerPrefs.GetInt("Age", 00);
+        string secretid = PlayerPrefs.GetString("SecretID", "").Replace("\u200B", "");
 
         // UIに表示
         if (BuhiCoinText != null)
@@ -57,6 +58,7 @@ public class PlayerPrefsController : MonoBehaviourPunCallbacks
         props["Birthyear"] = birthyear;
         props["Birthday"] = birthday;
         props["Age"] = age;
+        props["SecretID"] = secretid;
 
         // Photonのネットワークに保存
         PhotonNetwork.LocalPlayer.SetCustomProperties(props);
