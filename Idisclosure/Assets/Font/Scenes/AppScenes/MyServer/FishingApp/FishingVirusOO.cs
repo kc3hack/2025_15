@@ -23,12 +23,12 @@ public class FishingVirusOO : MonoBehaviour
                 { 
                     { "VirusOO", true },
                     { "FishingVirusOO", true },
-                    { "FishingAppName", "VirusOO" }
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
                 Hashtable FishingNow = new Hashtable
                 {
                     { "FishingNow", true },
+                    { "FishingAppName", "VirusOO" }
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(FishingNow);
                 // Browserに追加

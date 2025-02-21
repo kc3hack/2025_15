@@ -24,24 +24,14 @@ public class Start10m : MonoBehaviourPunCallbacks
             { "VirusOO", false },
             {"FishingVirusOO", false},
 
-<<<<<<< HEAD:Idisclosure/Assets/Scenes/Waiting/Start10m.cs
-            { "SpareBattery", false },
-            {"FishingSpareBattery", false},
-=======
             { "SpareBatteryPC", false },
             {"FishingSpareBatteryPC", false},
->>>>>>> webwebminto:Idisclosure/Assets/Font/Scenes/Waiting/Start10m.cs
 
             { "SpareBatteryMyServer", false },
             {"FishingSpareBatteryMyServer", false},
 
-<<<<<<< HEAD:Idisclosure/Assets/Scenes/Waiting/Start10m.cs
-            { "SmallBattery", false },
-            {"FishingSmallBattery", false},
-=======
             { "SmallBatteryPC", false },
             {"FishingSmallBatteryPC", false},
->>>>>>> webwebminto:Idisclosure/Assets/Font/Scenes/Waiting/Start10m.cs
 
             { "SmallBatteryMyServer", false },
             {"FishingSmallBatteryMyServer", false},

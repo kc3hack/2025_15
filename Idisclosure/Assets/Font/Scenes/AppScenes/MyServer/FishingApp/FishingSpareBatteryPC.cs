@@ -26,6 +26,7 @@ public class FishingSpareBatteryPC : MonoBehaviour
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
                 Hashtable FishingNow = new Hashtable
                 {
+                    { "FishingAppName", "SmallMyBatteryPC" },
                     { "FishingNow", true },
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(FishingNow);
