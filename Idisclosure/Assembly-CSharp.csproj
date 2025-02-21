@@ -73,10 +73,10 @@
     <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingApp\FishingSpareBattery.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
     <Compile Include="Assets\Scenes\Gaming\FishingManager.cs" />
+    <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\NewCrateStoreWeb.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\Move\MoveFishing.cs" />
     <Compile Include="Assets\Scenes\Waiting\ShowRoomMembers.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
-    <Compile Include="Assets\Scenes\Gaming\CreateStoreWeb\CreateStoreWeb.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
     <Compile Include="Assets\Scenes\Gaming\AttackedManager.cs" />
