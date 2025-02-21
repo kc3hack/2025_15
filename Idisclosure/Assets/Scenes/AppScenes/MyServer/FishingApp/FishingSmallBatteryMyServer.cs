@@ -3,11 +3,11 @@ using Photon.Pun;
 using ExitGames.Client.Photon;
 using UnityEngine.SceneManagement;
 
-public class FishingSpareBattery : MonoBehaviour
+public class FishingSmallBatteryMyServer : MonoBehaviour
 {
-    public void CreateFishingSpareBattery()
+    public void CreateFishingSmallBatteryMyServer()
     {
-        if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SpareBattery") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SpareBattery"]))
+        if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBatteryMyServer"]))
         {
             int drain = 20;
 
@@ -20,8 +20,8 @@ public class FishingSpareBattery : MonoBehaviour
                 PlayerPrefs.Save();
                 Hashtable webs = new Hashtable 
                 { 
-                    { "SpareBattery", true },
-                    { "FishingSpareBattery", true }
+                    { "SmallBatteryMyServer", true },
+                    { "FishingSmallBatteryMyServer", true }
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
                 Hashtable FishingNow = new Hashtable
@@ -33,8 +33,8 @@ public class FishingSpareBattery : MonoBehaviour
                 string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
                 Hashtable fisher = new Hashtable
                 {
-                    {"FisherSpareBattery", PhotonNetwork.NickName},
-                    {"FishingSpareBatteryIP", ServerIP}
+                    {"FisherSmallBatteryMyServer", PhotonNetwork.NickName},
+                    {"FishingSmallBatteryMyServerIP", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 

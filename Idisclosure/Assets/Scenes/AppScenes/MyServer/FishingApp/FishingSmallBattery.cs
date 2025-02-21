@@ -34,7 +34,7 @@ public class FishingSmallBattery : MonoBehaviour
                 Hashtable fisher = new Hashtable
                 {
                     {"FisherSmallBattery", PhotonNetwork.NickName},
-                    {"FishingSmallBattery", ServerIP}
+                    {"FishingSmallBatteryIP", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 

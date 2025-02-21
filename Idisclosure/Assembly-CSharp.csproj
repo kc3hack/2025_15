@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scenes\InputSecretID\RegisterFunction.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingApp\FishingSpareBatteryMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\Scenes\Gaming\Terminal\Execute.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingApp\FishingViruOO.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Assets\Scenes\Gaming\Terminal\Download.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start15m.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scenes\AppScenes\MyServer\FishingApp\FishingSmallBatteryMyServer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scenes\Gaming\MoveTerminal.cs" />
