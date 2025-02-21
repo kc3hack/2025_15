@@ -23,13 +23,17 @@ public class Download : MonoBehaviour
 
             // 支払われたら領収通知発行
             Hashtable Download = new Hashtable { { "DownloadVirusOO", true } };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
+            {
+                showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
+            }
             if (!(showTerminal.Contains("VirusOO\n")))
             {
                 // Terminalに追加
                 showTerminal += "VirusOO\n";
                 Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
             }
             SceneManager.LoadScene("Success");
         }
@@ -75,7 +79,7 @@ public class Download : MonoBehaviour
         }
     }
 
-     public void DownloadPullDeer()
+     public void DownloadIPBST1()
     {
         int drain = 300;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
@@ -88,13 +92,17 @@ public class Download : MonoBehaviour
 
             // 支払われたら領収通知発行
             Hashtable Download = new Hashtable { { "DownloadPullDeer", true } };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
-            if (!(showTerminal.Contains("PullDeer\n")))
+            PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
+            {
+                showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
+            }
+            if (!(showTerminal.Contains("IPBST1\n")))
             {
                 // Terminalに追加
                 showTerminal += "PullDeer\n";
                 Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
             }
             SceneManager.LoadScene("Success");
         }
@@ -113,13 +121,17 @@ public class Download : MonoBehaviour
 
             // 支払われたら領収通知発行
             Hashtable Download = new Hashtable { { "DownloadDos", true } };
-            PhotonNetwork.CurrentRoom.SetCustomProperties(Download);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
+            {
+                showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
+            }
             if (!(showTerminal.Contains("Dos\n")))
             {
                 // Terminalに追加
                 showTerminal += "Dos\n";
                 Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
-                PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
             }
             SceneManager.LoadScene("Success");
         }

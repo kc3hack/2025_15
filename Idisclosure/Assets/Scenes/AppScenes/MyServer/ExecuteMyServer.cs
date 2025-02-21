@@ -20,7 +20,7 @@ public class ExecuteMyServer : MonoBehaviour
         Debug.Log("Terminal起動:" + command);
 
         /*----------Virus Osakano Obatyannを実行----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadVirusOO"])
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadVirusOO"])
         {
             if (Regex.IsMatch(command, @"virusoo.*"))
             {
@@ -33,7 +33,6 @@ public class ExecuteMyServer : MonoBehaviour
                     Battery -= drain;
                     PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
                     PlayerPrefs.Save();
-                    SceneManager.LoadScene("VirusOO");
                     /*----------IP処理----------*/
                     string TargetIP = command.Replace("virusoo ","");
                     /*----------IP探索----------*/
@@ -51,10 +50,10 @@ public class ExecuteMyServer : MonoBehaviour
                 }
             }
         }
-        /*----------PullDeerを実行----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadPullDeer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadPullDeer"])
+        /*----------IPBST1を実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST1") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST1"])
         {
-            if (Regex.IsMatch(command, "pulldeer"))
+            if (Regex.IsMatch(command, "ipbst1"))
             {
                 int drain = 10;
                 
@@ -71,9 +70,9 @@ public class ExecuteMyServer : MonoBehaviour
         }
 
         /*----------Dosを実行----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DownloadDos"])
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDos"])
         {
-            if (Regex.IsMatch(command, @"Dos.*"))
+            if (Regex.IsMatch(command, @"dos.*"))
             {
                 int drain = 10;
 
