@@ -24,7 +24,8 @@ public class TimeManagement : MonoBehaviourPunCallbacks
                 PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("StartTime"))
             {
                 timeLimit = (double)PhotonNetwork.CurrentRoom.CustomProperties["Time"];
-                startTime = (double)PhotonNetwork.CurrentRoom.CustomProperties["StartTime"];
+                //startTime = (double)PhotonNetwork.CurrentRoom.CustomProperties["StartTime"];
+                startTime = Time.time;
                 isTimeInitialized = true;
                 Debug.Log("Time: " + timeLimit);
                 Debug.Log("StartTime: " + startTime);
@@ -39,6 +40,7 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         /*----------残り時間計算処理----------*/
         double elapsedTime = Time.time - startTime;
         timeRemaining = timeLimit - elapsedTime;
+        //double timeRemaining = timeLimit - Time.deltaTime;
 
         if (timeRemaining <= 0)
         {
@@ -171,5 +173,3 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         }
     }
 }
-
-

@@ -3,10 +3,11 @@ using Photon.Pun;
 using ExitGames.Client.Photon;
 using UnityEngine.SceneManagement;
 
-public class FishingViruOO : MonoBehaviour
+public class FishingVirusOO : MonoBehaviour
 {
     public void CreateFishingVirusOO()
     {
+        string showBrowser = "SNS Server\n";
         if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("VirusOO") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["VirusOO"]))
         {
             int drain = 20;
@@ -21,7 +22,8 @@ public class FishingViruOO : MonoBehaviour
                 Hashtable webs = new Hashtable 
                 { 
                     { "VirusOO", true },
-                    { "FishingVirusOO", true }
+                    { "FishingVirusOO", true },
+                    { "FishingAppName", "VirusOO" }
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
                 Hashtable FishingNow = new Hashtable
@@ -29,6 +31,17 @@ public class FishingViruOO : MonoBehaviour
                     { "FishingNow", true },
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(FishingNow);
+                // Browserに追加
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
+                {
+                    showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
+                }
+                if (!(showBrowser.Contains("VirusOO\n")))
+                {
+                    showBrowser += "VirusOO\n";
+                    Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                    PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                }
                 // 宛先を保存
                 string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
                 Hashtable fisher = new Hashtable

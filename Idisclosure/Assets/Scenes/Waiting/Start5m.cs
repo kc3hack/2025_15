@@ -23,12 +23,28 @@ public class Start5m : MonoBehaviourPunCallbacks
         { 
             { "VirusOO", false },
             {"FishingVirusOO", false},
+
             { "SpareBattery", false },
             {"FishingSpareBattery", false},
+
+            { "SpareBatteryMyServer", false },
+            {"FishingSpareBatteryMyServer", false},
+
             { "SmallBattery", false },
             {"FishingSmallBattery", false},
-            { "PullDeer", false },
-            {"FishingPullDeer", false},
+
+            { "SmallBatteryMyServer", false },
+            {"FishingSmallBatteryMyServer", false},
+
+            { "IPBST1", false },
+            {"FishingIPBST1", false},
+
+            { "IPBST2", false },
+            {"FishingIPBST2", false},
+
+            { "IPBST3", false },
+            {"FishingIPBST3", false},
+
             { "Dos", false },
             {"FishingDos", false},
         };

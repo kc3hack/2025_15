@@ -978,7 +978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 212859157}
-  - component: {fileID: 212859156}
+  - component: {fileID: 212859158}
   m_Layer: 0
   m_Name: CreateStoreWeb
   m_TagString: Untagged
@@ -986,19 +986,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &212859156
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 212859155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe46a0870758e74eae580f837edfa85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowBrowser: {fileID: 1873738148}
 --- !u!4 &212859157
 Transform:
   m_ObjectHideFlags: 0
@@ -1014,6 +1001,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &212859158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212859155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d2f9c6ee07560d4b8170cd43614a08e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowBrowser: {fileID: 1873738148}
 --- !u!1 &247982385
 GameObject:
   m_ObjectHideFlags: 0

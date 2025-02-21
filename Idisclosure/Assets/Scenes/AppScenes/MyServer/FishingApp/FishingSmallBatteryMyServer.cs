@@ -7,6 +7,7 @@ public class FishingSmallBatteryMyServer : MonoBehaviour
 {
     public void CreateFishingSmallBatteryMyServer()
     {
+        string showBrowser = "SNS Server\n";
         if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["SmallBatteryMyServer"]))
         {
             int drain = 20;
@@ -21,14 +22,26 @@ public class FishingSmallBatteryMyServer : MonoBehaviour
                 Hashtable webs = new Hashtable 
                 { 
                     { "SmallBatteryMyServer", true },
-                    { "FishingSmallBatteryMyServer", true }
+                    { "FishingSmallBatteryMyServer", true },
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
                 Hashtable FishingNow = new Hashtable
                 {
+                    { "FishingAppName", "SmallMyBattery" },
                     { "FishingNow", true },
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(FishingNow);
+                // Browserに追加
+                if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("BrowserDisplay"))
+                {
+                    showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
+                }
+                if (!(showBrowser.Contains("SmallBatteryMyServer\n")))
+                {
+                    showBrowser += "SmallBatteryMyServer\n";
+                    Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
+                    PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
+                }
                 // 宛先を保存
                 string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
                 Hashtable fisher = new Hashtable
