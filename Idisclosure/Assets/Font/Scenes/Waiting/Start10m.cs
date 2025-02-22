@@ -45,8 +45,8 @@ public class Start10m : MonoBehaviourPunCallbacks
             { "IPBST3", false },
             {"FishingIPBST3", false},
 
-            { "Dos", false },
-            {"FishingDos", false},
+            { "DoSTool", false },
+            {"FishingDoSTool", false},
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
 

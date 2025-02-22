@@ -70,6 +70,7 @@
     <Compile Include="Assets\Font\Scenes\AppScenes\MyServer\FishingLock\FishingNow.cs" />
     <Compile Include="Assets\Font\Scenes\StartClick\MoveInputProfiles.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
+    <Compile Include="Assets\Font\Scenes\AppScenes\MyServer\FishingApp\FishingDoSTool.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\PlayerPrefsControllerWeb.cs" />
@@ -92,7 +93,6 @@
     <Compile Include="Assets\Photon\PhotonRealtime\Demos\DemoLoadBalancing\ConnectAndJoinRandomLb.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
-    <Compile Include="Assets\Font\Scenes\AppScenes\MyServer\FishingApp\FishingDos.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\Terminal\FishingDownload.cs" />
     <Compile Include="Assets\Font\Scenes\Waiting\ReceiveIPs.cs" />

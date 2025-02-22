@@ -2017,8 +2017,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 877339034}
-        m_TargetAssemblyTypeName: FishingDos, Assembly-CSharp
-        m_MethodName: CreateFishingDos
+        m_TargetAssemblyTypeName: FishingDoSTool, Assembly-CSharp
+        m_MethodName: CreateFishingDoSTool
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

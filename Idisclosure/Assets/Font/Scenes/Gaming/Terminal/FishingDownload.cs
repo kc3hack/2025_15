@@ -255,7 +255,7 @@ public class FishingDownload : MonoBehaviour
         }
     }
 
-    public void FishingDownloadDos()
+    public void FishingDownloadDoSTool()
     {
         int drain = 300;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
@@ -267,7 +267,7 @@ public class FishingDownload : MonoBehaviour
             PlayerPrefs.Save();
 
             // 宛先探索
-            string fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherDos"];
+            string fisherName = (string)PhotonNetwork.CurrentRoom.CustomProperties["FisherDoSTool"];
             Player targetPlayer = null;
             foreach (Player player in PhotonNetwork.PlayerList)
             {

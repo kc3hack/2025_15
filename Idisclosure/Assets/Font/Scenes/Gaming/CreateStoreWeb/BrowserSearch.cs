@@ -626,10 +626,10 @@ public class BrowserSearch : MonoBehaviour
             }
         }
 
-         /*---------Dosを検索----------*/
-        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"])
+         /*---------DoSToolを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DoSTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DoSTool"])
         {
-            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingDos"])
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDoSTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingDoSTool"])
             {
                 if (searchWords == "dostool" || searchWords == "dos")
                 {
@@ -645,11 +645,11 @@ public class BrowserSearch : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // FishingDosIPを取得
-                        string FishingDosIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDosIP"))
+                        // FishingDoSToolIPを取得
+                        string FishingDoSToolIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingDoSToolIP"))
                         {
-                            FishingDosIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingDosIP"];
+                            FishingDoSToolIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingDoSToolIP"];
                         }
                         // 自分のIPを取得
                         string PlayerIP = "";
@@ -657,9 +657,9 @@ public class BrowserSearch : MonoBehaviour
                         {
                             PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
                         }
-                        SortAndSave(FishingDosIP, PlayerIP, WifiNumber);
+                        SortAndSave(FishingDoSToolIP, PlayerIP, WifiNumber);
                         /*----------シーン遷移----------*/
-                        SceneManager.LoadScene("FishingDos");
+                        SceneManager.LoadScene("FishingDoSTool");
                     }
                 }
             }
@@ -679,11 +679,11 @@ public class BrowserSearch : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // DosIPを取得
-                        string DosIP = "";
-                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DosIP"))
+                        // DoSToolIPを取得
+                        string DoSToolIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DoSToolIP"))
                         {
-                            DosIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["DosIP"];
+                            DoSToolIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["DoSToolIP"];
                         }
                         // 自分のIPを取得
                         string PlayerIP = "";
@@ -691,9 +691,9 @@ public class BrowserSearch : MonoBehaviour
                         {
                             PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
                         }
-                        SortAndSave(DosIP, PlayerIP, WifiNumber);
+                        SortAndSave(DoSToolIP, PlayerIP, WifiNumber);
                         /*----------シーン遷移----------*/
-                        SceneManager.LoadScene("Dos");
+                        SceneManager.LoadScene("DoSTool");
                     }
                 }
             }

@@ -11,8 +11,8 @@ public class ExecuteMyServer : MonoBehaviour
 {
     public TMP_Text Command;
     private const byte VirusOO = 101;
-    private const byte DoSPlayer = 102;
-    private const byte DoSServer = 103;
+    private const byte DoSToolPlayer = 102;
+    private const byte DoSToolServer = 103;
 
     public void ExecuteCommand()
     {
@@ -108,10 +108,10 @@ public class ExecuteMyServer : MonoBehaviour
             }
         }
 
-        /*----------Dosを実行----------*/
-        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDos") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDos"])
+        /*----------DoSToolを実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDoSTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDoSTool"])
         {
-            if (Regex.IsMatch(command, @"dos.*"))
+            if (Regex.IsMatch(command, @"dostool.*"))
             {
                 int drain = 10;
 
@@ -123,7 +123,7 @@ public class ExecuteMyServer : MonoBehaviour
                     PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                     PlayerPrefs.Save();
                     /*----------IP処理----------*/
-                    string TargetIP = command.Replace("dos ","");
+                    string TargetIP = command.Replace("dostool ","");
                     /*----------IP探索----------*/
                     foreach (Player player in PhotonNetwork.PlayerList)
                     {
@@ -137,7 +137,7 @@ public class ExecuteMyServer : MonoBehaviour
                             string message = PlayerIP;
                             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
                             SendOptions sendOptions = new SendOptions { Reliability = true };
-                            PhotonNetwork.RaiseEvent(DoSPlayer, message, raiseEventOptions, sendOptions);
+                            PhotonNetwork.RaiseEvent(DoSToolPlayer, message, raiseEventOptions, sendOptions);
                         }
                         else if ((string)player.CustomProperties["ServerIP"] == TargetIP)
                         {
@@ -148,7 +148,7 @@ public class ExecuteMyServer : MonoBehaviour
                             string message = PlayerIP;
                             RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
                             SendOptions sendOptions = new SendOptions { Reliability = true };
-                            PhotonNetwork.RaiseEvent(DoSServer, message, raiseEventOptions, sendOptions);
+                            PhotonNetwork.RaiseEvent(DoSToolServer, message, raiseEventOptions, sendOptions);
                         }
                     }
                 }

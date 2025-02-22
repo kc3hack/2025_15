@@ -3,12 +3,12 @@ using Photon.Pun;
 using ExitGames.Client.Photon;
 using UnityEngine.SceneManagement;
 
-public class FishingDos : MonoBehaviour
+public class FishingDoSTool : MonoBehaviour
 {
-    public void CreateFishingDos()
+    public void CreateFishingDoSTool()
     {
         string showBrowser = "SNS Server\n";
-        if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"]))
+        if (!(PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DoSTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["DoSTool"]))
         {
             int drain = 20;
 
@@ -21,13 +21,13 @@ public class FishingDos : MonoBehaviour
                 PlayerPrefs.Save();
                 Hashtable webs = new Hashtable 
                 { 
-                    { "Dos", true },
-                    { "FishingDos", true },
+                    { "DoSTool", true },
+                    { "FishingDoSTool", true },
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(webs);
                 Hashtable FishingNow = new Hashtable
                 {
-                    { "FishingAppName", "Dos" },
+                    { "FishingAppName", "DoSTool" },
                     { "FishingNow", true },
                 };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(FishingNow);
@@ -36,9 +36,9 @@ public class FishingDos : MonoBehaviour
                 {
                     showBrowser = (string)PhotonNetwork.CurrentRoom.CustomProperties["BrowserDisplay"];
                 }
-                if (!(showBrowser.Contains("Dos\n")))
+                if (!(showBrowser.Contains("DoSTool\n")))
                 {
-                    showBrowser += "Dos\n";
+                    showBrowser += "DoSTool\n";
                     Hashtable ShowDisplay = new Hashtable { { "BrowserDisplay", showBrowser } };
                     PhotonNetwork.CurrentRoom.SetCustomProperties(ShowDisplay);
                 }
@@ -46,8 +46,8 @@ public class FishingDos : MonoBehaviour
                 string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
                 Hashtable fisher = new Hashtable
                 {
-                    {"FisherDos", PhotonNetwork.NickName},
-                    {"FishingDos", ServerIP}
+                    {"FisherDoSTool", PhotonNetwork.NickName},
+                    {"FishingDoSTool", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 

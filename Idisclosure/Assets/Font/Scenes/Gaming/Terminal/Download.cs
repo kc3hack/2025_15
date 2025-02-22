@@ -206,7 +206,7 @@ public class Download : MonoBehaviour
         }
     }
 
-    public void DownloadDos()
+    public void DownloadDoSTool()
     {
         int drain = 300;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
@@ -218,7 +218,7 @@ public class Download : MonoBehaviour
             PlayerPrefs.Save();
 
             // 支払われたら領収通知発行
-            Hashtable Download = new Hashtable { { "DownloadDos", true } };
+            Hashtable Download = new Hashtable { { "DownloadDoSTool", true } };
             PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
             if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
             {
