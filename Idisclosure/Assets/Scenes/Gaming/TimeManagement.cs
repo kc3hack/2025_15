@@ -9,11 +9,26 @@ using ExitGames.Client.Photon;
 
 public class TimeManagement : MonoBehaviourPunCallbacks
 {
+    public static TimeManagement Instance; // シングルトンインスタンス
+
     private double timeLimit;
     private double timeRemaining;
     private double startTime;
     public TMP_Text timerText;
     private bool isTimeInitialized = false;
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject); // 既にインスタンスが存在する場合は破棄
+        }
+    }
 
     private void Update()
     {
@@ -43,7 +58,7 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         if (timeRemaining <= 0)
         {
             timeRemaining = 0;
-            SceneManager.LoadScene("TimeUp");
+            TimeUp(); // 時間切れ時の処理を実行
         }
 
         UpdateTimerDisplay(timeRemaining);
@@ -146,8 +161,8 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         if (newProfiles.Count > 0)
         {
             string newProfilesText = string.Join("\n", newProfiles);
-            string updatedProfiles = (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles") 
-                ? (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"] + "\n" 
+            string updatedProfiles = (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Plofiles")
+                ? (string)PhotonNetwork.CurrentRoom.CustomProperties["Plofiles"] + "\n"
                 : "") + newProfilesText;
 
             Hashtable profiles = new Hashtable { { "Plofiles", updatedProfiles } };
@@ -159,17 +174,28 @@ public class TimeManagement : MonoBehaviourPunCallbacks
     // タイマーの表示を更新
     private void UpdateTimerDisplay(double timeRemaining)
     {
-        if (timeRemaining > 60)
+        if (timerText != null) // timerText が null でないか確認
         {
-            int minutes = (int)Math.Floor(timeRemaining / 60);
-            double seconds = timeRemaining % 60;
-            timerText.text = minutes + ":" + seconds.ToString("00.0");
+            if (timeRemaining > 60)
+            {
+                int minutes = (int)Math.Floor(timeRemaining / 60);
+                double seconds = timeRemaining % 60;
+                timerText.text = minutes + ":" + seconds.ToString("00.0");
+            }
+            else
+            {
+                timerText.text = timeRemaining.ToString("00.0");
+            }
         }
         else
         {
-            timerText.text = timeRemaining.ToString("00.0");
+            Debug.LogError("timerText is null!"); // エラーログを出力
         }
     }
+
+    private void TimeUp()
+    {
+        Debug.Log("Time Up!");
+        // 時間切れ時の処理をここに記述 (例: 結果表示、ゲーム終了など)
+    }
 }
-
-
