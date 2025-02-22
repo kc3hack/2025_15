@@ -47,7 +47,7 @@ public class FishingDoSTool : MonoBehaviour
                 Hashtable fisher = new Hashtable
                 {
                     {"FisherDoSTool", PhotonNetwork.NickName},
-                    {"FishingDoSTool", ServerIP}
+                    {"FishingDoSToolIP", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 
