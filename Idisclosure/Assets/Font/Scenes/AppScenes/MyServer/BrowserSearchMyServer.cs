@@ -283,7 +283,7 @@ public class BrowserSearchMyServer : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // VirusOOIPを取得
+                        // SmallBatteryMyserverIPを取得
                         string FishingSmallBatteryMyServerIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServerIP"))
                         {
@@ -316,7 +316,7 @@ public class BrowserSearchMyServer : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // VirusOOIPを取得
+                        // SmallBatteryMySererIPを取得
                         string SmallBatteryMyServerIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryMyServerIP"))
                         {
@@ -354,7 +354,7 @@ public class BrowserSearchMyServer : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // VirusOOIPを取得
+                        // SmallBatteryPCIPを取得
                         string FishingSmallBatteryPCIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryPCIP"))
                         {
@@ -387,7 +387,7 @@ public class BrowserSearchMyServer : MonoBehaviour
                         /*----------WiFiにIPを記録----------*/
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
-                        // VirusOOIPを取得
+                        // SmallBatteryPCIPを取得
                         string SmallBatteryPCIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("SmallBatteryPCIP"))
                         {
@@ -626,6 +626,7 @@ public class BrowserSearchMyServer : MonoBehaviour
             }
         }
 
+        
          /*---------Dosを検索----------*/
         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("Dos") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["Dos"])
         {
@@ -651,6 +652,7 @@ public class BrowserSearchMyServer : MonoBehaviour
                         {
                             FishingDosIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingDosIP"];
                         }
+                        
                         // 自分のIPを取得
                         string ServerIP = "";
                         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
@@ -680,6 +682,7 @@ public class BrowserSearchMyServer : MonoBehaviour
                         // Wifi番号を取得
                         int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
                         // DosIPを取得
+                        
                         string DosIP = "";
                         if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("DosIP"))
                         {

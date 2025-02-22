@@ -46,8 +46,8 @@ public class FishingDos : MonoBehaviour
                 string ServerIP = (string)PlayerPrefs.GetString("ServerIP","0.0.0.0");
                 Hashtable fisher = new Hashtable
                 {
-                    {"FisherDos", PhotonNetwork.NickName},
-                    {"FishingDos", ServerIP}
+                    {"FisherDosIP", PhotonNetwork.NickName},
+                    {"FishingDosIP", ServerIP}
                 };
                 PhotonNetwork.CurrentRoom.SetCustomProperties(fisher);
 
