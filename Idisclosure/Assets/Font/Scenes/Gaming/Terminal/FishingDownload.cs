@@ -103,7 +103,7 @@ public class FishingDownload : MonoBehaviour
 
     public void FishingDownloadSmallBatteryPC()
     {
-        int drain = 300;
+        int drain = 100;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
 
         // BuhiCoinの支払いについて
@@ -134,7 +134,7 @@ public class FishingDownload : MonoBehaviour
 
     public void FishingDownloadSmallBatteryMyServer()
     {
-        int drain = 300;
+        int drain = 100;
         int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
 
         // BuhiCoinの支払いについて

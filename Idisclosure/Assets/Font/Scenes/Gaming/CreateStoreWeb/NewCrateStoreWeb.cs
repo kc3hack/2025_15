@@ -22,7 +22,7 @@ public class NewCreateStoreWeb : MonoBehaviour
 
     void RandomCreator()
     {
-        randomValue = Random.Range(0, 400);
+        randomValue = Random.Range(0, 10);
         for (int i = 0; i < Webs.Length; i++)
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey(Webs[i]) && !((bool)PhotonNetwork.CurrentRoom.CustomProperties[Webs[i]]))

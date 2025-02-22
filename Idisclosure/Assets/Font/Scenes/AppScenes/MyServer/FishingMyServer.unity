@@ -375,8 +375,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 209592118}
-        m_TargetAssemblyTypeName: FishingSmallBatteryMyServer, Assembly-CSharp
-        m_MethodName: CreateFishingSmallBatteryMyServer
+        m_TargetAssemblyTypeName: FishingSpareBatteryMyServer, Assembly-CSharp
+        m_MethodName: CreateFishingSpareBatteryMyServer
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -433,7 +433,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 209592112}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d1f0b22b6350fa44abf2bb625311e11, type: 3}
+  m_Script: {fileID: 11500000, guid: 290bc5f434c32854ebe487d55004bd1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &241716380
@@ -5090,6 +5090,7 @@ GameObject:
   - component: {fileID: 2100443946}
   - component: {fileID: 2100443945}
   - component: {fileID: 2100443948}
+  - component: {fileID: 2100443949}
   m_Layer: 5
   m_Name: VirusOO
   m_TagString: Untagged
@@ -5161,8 +5162,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2100443948}
-        m_TargetAssemblyTypeName: FishingViruOO, Assembly-CSharp
+      - m_Target: {fileID: 2100443949}
+        m_TargetAssemblyTypeName: FishingVirusOO, Assembly-CSharp
         m_MethodName: CreateFishingVirusOO
         m_Mode: 1
         m_Arguments:
@@ -5221,6 +5222,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4276f8b296193d543a040f858d1e597c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2100443949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2100443943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1424a13e41c817645a3fda6f39837ca9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

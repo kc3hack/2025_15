@@ -128,7 +128,7 @@ public class BrowserSearch : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryPC") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryPC"])
             {
-                if (searchWords == "sparebatterypc")
+                if (searchWords == "sparebatterypc"|| searchWords == "sparepc")
                 {
                     int drain = 0;
 
@@ -161,7 +161,7 @@ public class BrowserSearch : MonoBehaviour
             }
             else
             {
-                if (searchWords == "sparebatterypc")
+                if (searchWords == "sparebatterypc" || searchWords == "sparepc")
                 {
                     int drain = 1;
 
@@ -199,7 +199,7 @@ public class BrowserSearch : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSpareBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSpareBatteryMyServer"])
             {
-                if (searchWords == "sparebatterymyserver")
+                if (searchWords == "sparebatterymyserver"|| searchWords == "sparemyserver"|| searchWords == "spareserver")
                 {
                     int drain = 0;
 
@@ -232,7 +232,7 @@ public class BrowserSearch : MonoBehaviour
             }
             else
             {
-                if (searchWords == "sparebatterymyserver")
+                if (searchWords == "sparebatterymyserver"|| searchWords == "sparemyserver"|| searchWords == "spareserver")
                 {
                     int drain = 1;
 
@@ -270,7 +270,7 @@ public class BrowserSearch : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryPC") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryPC"])
             {
-                if (searchWords == "smallbatterypc")
+                if (searchWords == "smallbatterypc"|| searchWords == "smallpc")
                 {
                     int drain = 1;
 
@@ -303,7 +303,7 @@ public class BrowserSearch : MonoBehaviour
             }
             else
             {
-                if (searchWords == "smallbatterypc")
+                if (searchWords == "smallbatterypc"|| searchWords == "smallpc")
                 {
                     int drain = 1;
 
@@ -341,7 +341,7 @@ public class BrowserSearch : MonoBehaviour
         {
             if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingSmallBatteryMyServer") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingSmallBatteryMyServer"])
             {
-                if (searchWords == "smallbatterymyserver")
+                if (searchWords == "smallbatterymyserver"|| searchWords == "smallserver"|| searchWords == "smallmyserver")
                 {
                     int drain = 1;
 
@@ -374,7 +374,7 @@ public class BrowserSearch : MonoBehaviour
             }
             else
             {
-                if (searchWords == "smallbatterymyserver")
+                if (searchWords == "smallbatterymyserver" || searchWords == "smallserver" || searchWords == "smallmyserver")
                 {
                     int drain = 1;
 

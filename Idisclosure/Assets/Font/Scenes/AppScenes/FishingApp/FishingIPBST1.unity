@@ -2890,7 +2890,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1993642334}
         m_TargetAssemblyTypeName: FishingDownload, Assembly-CSharp
-        m_MethodName: FishingDownloadPullDeer
+        m_MethodName: FishingDownloadIPBST1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
