@@ -96,8 +96,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\Terminal\FishingDownload.cs" />
     <Compile Include="Assets\Font\Scenes\Waiting\ReceiveIPs.cs" />
-    <Compile Include="Assets\Font\Scenes\Gaming\MoveMyServer.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\Wi-Fi\Wi-FiActive3.cs" />
+    <Compile Include="Assets\Font\Scenes\Gaming\MoveMyServer.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\Font\Scenes\AppScenes\MyServer\FishingApp\FishingSmallBatteryPC.cs" />
@@ -154,6 +154,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Font\Scenes\Waiting\Start5m.cs" />
     <Compile Include="Assets\Font\Scenes\AppScenes\MyServer\Move\ReturnButton.cs" />
+    <Compile Include="Assets\Font\Scenes\Gaming\EndGame\ResetManagement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextConsoleSimulator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TeleType.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
