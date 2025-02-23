@@ -185,6 +185,26 @@ public void OnEvent(EventData photonEvent)
                 }
             }
         }
+
+        /*----------CrackToolを実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadCrackTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadCrackTool"])
+        {
+            if (Regex.IsMatch(command, "cracktool"))
+            {
+                int drain = 10;
+                
+                int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                if ((Battery - drain >= 0))
+                {
+                    /*----------Battery処理----------*/
+                    Battery -= drain;
+                    PlayerPrefs.SetString("Battery", Battery.ToString());
+                    PlayerPrefs.Save();
+                    SceneManager.LoadScene("CrackTool");
+                }
+            }
+        }
+        
     }
 }
 
