@@ -137,6 +137,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Font/Scenes/AppScenes/App/IPBST3.unity
     guid: 2e028dbff3993834bb3ac87aec52fb4b
+  - enabled: 1
+    path: Assets/Font/Scenes/AppScenes/App/CrackTool.unity
+    guid: 5f0935a88729e7849a2db778a6fdfdb5
+  - enabled: 1
+    path: Assets/Font/Scenes/AppScenes/FishingApp/FishingCrackTool.unity
+    guid: 929c39ef175bee740b6c95d353d45699
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

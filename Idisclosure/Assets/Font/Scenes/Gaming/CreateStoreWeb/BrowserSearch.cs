@@ -698,6 +698,79 @@ public class BrowserSearch : MonoBehaviour
                 }
             }
         }
+
+        /*----------ClackToolを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CrackTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["CrackTool"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingCrackTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingCrackTool"])
+            {
+                if (searchWords == "cracktool" || searchWords == "crack")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        Battery -= drain;
+                        PlayerPrefs.SetString("Battery", Battery.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingCrackToolIPを取得
+                        string FishingCrackToolIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingCrackToolIP"))
+                        {
+                            FishingCrackToolIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingCrackToolIP"];
+                        }
+                        // 自分のIPを取得
+                        string PlayerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerIP"))
+                        {
+                            PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
+                        }
+                        SortAndSave(FishingCrackToolIP, PlayerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingCrackTool");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "cracktool" || searchWords == "crack")
+                {
+                    int drain = 1;
+
+                    int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+                    if ((Battery - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        Battery -= drain;
+                        PlayerPrefs.SetString("Battery", Battery.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // CrackToolIPを取得
+                        string CrackToolIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CrackToolIP"))
+                        {
+                            CrackToolIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["CrackToolIP"];
+                        }
+                        // 自分のIPを取得
+                        string PlayerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerIP"))
+                        {
+                            PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
+                        }
+                        SortAndSave(CrackToolIP, PlayerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("CrackTool");
+                    }
+                }
+            }
+        }
     }
 
     public void SortAndSave(string IP1, string IP2, int WifiNumber)
