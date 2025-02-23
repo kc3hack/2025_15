@@ -10,7 +10,7 @@ public class NewCreateStoreWeb : MonoBehaviour
 {
     public TMP_Text ShowBrowser;
     int randomValue = 0;
-    string[] Webs = {"VirusOO", "SpareBatteryPC", "SpareBatteryMyServer", "SmallBatteryPC", "SmallBatteryMyServer", "IPBST1", "IPBST2", "IPBST3", "DoSTool"};
+    string[] Webs = {"VirusOO", "SpareBatteryPC", "SpareBatteryMyServer", "SmallBatteryPC", "SmallBatteryMyServer", "IPBST1", "IPBST2", "IPBST3", "DoSTool","CrackTool"};
     /*----------Reset時必要----------*/
     string showBrowser = "SNS Server\n";
 

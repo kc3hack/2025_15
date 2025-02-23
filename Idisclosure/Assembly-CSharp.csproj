@@ -134,6 +134,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Font\Scenes\AppScenes\Attack\Wifi2.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
+    <Compile Include="Assets\Font\Scenes\AppScenes\MyServer\FishingApp\FishingCrackTool.cs" />
     <Compile Include="Assets\Font\Scenes\Waiting\Start10m.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\TimerManager2.cs" />
     <Compile Include="Assets\Font\Scenes\InputProfiles\MoveInputSecretID.cs" />

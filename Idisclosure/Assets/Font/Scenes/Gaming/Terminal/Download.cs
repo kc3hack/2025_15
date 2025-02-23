@@ -234,5 +234,34 @@ public class Download : MonoBehaviour
             SceneManager.LoadScene("Success");
         }
     }
+
+     public void DownloadCrackTool()
+    {
+        int drain = 300;
+        int BuhiCoin = int.Parse(PlayerPrefs.GetString("BuhiCoin", "0").Replace("\u200B", ""));
+
+        // BuhiCoinの支払いについて
+        if ((BuhiCoin - drain) >= 0){
+            BuhiCoin -= drain;
+            PlayerPrefs.SetString("BuhiCoin", BuhiCoin.ToString());
+            PlayerPrefs.Save();
+
+            // 支払われたら領収通知発行
+            Hashtable Download = new Hashtable { { "DownloadCrackTool", true } };
+            PhotonNetwork.LocalPlayer.SetCustomProperties(Download);
+            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("TerminalDisplay"))
+            {
+                showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
+            }
+            if (!(showTerminal.Contains("CrackTool\n")))
+            {
+                // Terminalに追加
+                showTerminal += "CrackTool\n";
+                Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
+                PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
+            }
+            SceneManager.LoadScene("Success");
+        }
+    }
 }
 

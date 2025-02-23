@@ -698,6 +698,79 @@ public class BrowserSearchMyServer : MonoBehaviour
                 }
             }
         }
+
+        /*----------CrackToolを検索----------*/
+        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CrackTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["CrackTool"])
+        {
+            if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingCrackTool") && (bool)PhotonNetwork.CurrentRoom.CustomProperties["FishingCrackTool"])
+            {
+                if (searchWords == "cracktool" || searchWords == "crack")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // FishingCrackToolIPを取得
+                        string FishingCrackToolIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("FishingCrackToolIP"))
+                        {
+                            FishingCrackToolIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["FishingCrackToolIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(FishingCrackToolIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("FishingCrackTool");
+                    }
+                }
+            }
+            else
+            {
+                if (searchWords == "cracktool" || searchWords == "crack")
+                {
+                    int drain = 1;
+
+                    int BatteryMyServer = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0").Replace("\u200B", ""));
+                    if ((BatteryMyServer - drain >= 0))
+                    {
+                        /*----------バッテリー減算処理----------*/
+                        BatteryMyServer -= drain;
+                        PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
+                        PlayerPrefs.Save();
+                        /*----------WiFiにIPを記録----------*/
+                        // Wifi番号を取得
+                        int WifiNumber = int.Parse(PlayerPrefs.GetString("WifiNumber", "1"));
+                        // CrackToolIPを取得
+                        string CrackToolIP = "";
+                        if (PhotonNetwork.CurrentRoom.CustomProperties.ContainsKey("CrackToolIP"))
+                        {
+                            CrackToolIP = (string)PhotonNetwork.CurrentRoom.CustomProperties["CrackToolIP"];
+                        }
+                        // 自分のIPを取得
+                        string ServerIP = "";
+                        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("ServerIP"))
+                        {
+                            ServerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["ServerIP"];
+                        }
+                        SortAndSave(CrackToolIP, ServerIP, WifiNumber);
+                        /*----------シーン遷移----------*/
+                        SceneManager.LoadScene("CrackTool");
+                    }
+                }
+            }
+        }
     }
 
     public void SortAndSave(string IP1, string IP2, int WifiNumber)
