@@ -6,12 +6,16 @@ using Photon.Pun;
 using System.Text.RegularExpressions;
 using Photon.Realtime;
 using System.Collections.Generic;
+using System.Linq;  // これを追加
+
 
 public class CrackTool : MonoBehaviour
 {
     string CheckSecretID = "";
     string pattern = "";
-    public UnityEngine.UI.Text ShowID; // UnityのTextコンポーネント
+    public TMP_Text ShowIDDisplay;
+    string ShowID = "";
+    string Pattern = "";
     
     // 使用するキャラクターセット
     private static readonly string digits = "0123456789";      // 数字
@@ -28,12 +32,15 @@ public class CrackTool : MonoBehaviour
 
     void Start()
     {
+        ShowID = "";
+
         // 文字列として全ての人のパスワードを連結
         foreach (Player player in PhotonNetwork.PlayerList)
         {
             if (player.CustomProperties.ContainsKey("SecretID"))
             {
                 CheckSecretID += ((string)player.CustomProperties["SecretID"]).Replace("\u200B", "");
+                CheckSecretID += "\n";
             }
         }
 
@@ -41,9 +48,6 @@ public class CrackTool : MonoBehaviour
 
         // 総当たり生成
         GenerateCombinations(pattern);
-        
-        // 結果表示
-        DisplayResults();
     }
 
     // パターンに基づいて総当たり
@@ -69,69 +73,85 @@ public class CrackTool : MonoBehaviour
             // クラックする
             string generatedPassword = pattern;
 
-            if (CheckCrack(generatedPassword))
+            while (GetBlockCount(ShowID) >= maxDisplayCount)
             {
-                crackedPasswords.Add(generatedPassword);
-            }
-            else
-            {
-                failedPasswords.Add(generatedPassword);
-            }
-
-            // 最大表示件数を超えた場合、古いものを削除
-            if (crackedPasswords.Count + failedPasswords.Count > maxDisplayCount)
-            {
-                // 最も古いものを削除
-                if (crackedPasswords.Count > maxDisplayCount)
-                    crackedPasswords.RemoveAt(0);
+                int firstNewlineIndex = ShowID.IndexOf('\n');
+                if (firstNewlineIndex != -1)
+                {
+                    ShowID = ShowID.Remove(0, firstNewlineIndex + 1);
+                }
                 else
-                    failedPasswords.RemoveAt(0);
+                {
+                    ShowID = "";
+                    break;
+                }
             }
 
             return;
         }
 
-        // 現在のインデックスの文字が置換対象であれば、そのキャラクターセットを適用
-        foreach (var key in replacements.Keys)
-        {
-            if (pattern.Substring(index, key.Length) == key)
-            {
-                string characters = replacements[key];
+        var result = from a in Enumerable.Range(0,replacements["?d"].Length)
+                    from b in Enumerable.Range(0,replacements["?s"].Length)
+                    from c in Enumerable.Range(0,replacements["?l"].Length)
+                    from d in Enumerable.Range(0,replacements["?u"].Length)
+                    select new
+                    {
+                    Pattern = pattern
+                     .Replace("?d", replacements["?d"][a].ToString())
+                     .Replace("?s", replacements["?s"][b].ToString())
+                     .Replace("?l", replacements["?l"][c].ToString())
+                     .Replace("?u", replacements["?u"][d].ToString())
+                    };
 
-                foreach (var c in characters)
+        ShowID += "Cracked!:\n";
+        foreach (var ID in result)
+        {
+            if (CheckSecretID.Contains(ID.Pattern))
+            {
+                if (!(ShowID.Contains(ID.Pattern)))
                 {
-                    // 新しい文字列を生成して再帰呼び出し
-                    string newPattern = pattern.Substring(0, index) + c + pattern.Substring(index + key.Length);
-                    GenerateCombinationsRecursive(newPattern, replacements, index + 1);
+                    ShowID += ID.Pattern + "\n";
+                    Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
+                }
+                else
+                {
+                    continue;
+                }
+
+            }
+        }
+
+        ShowID += "\nExhausted...:\n";
+        foreach (var ID in result)
+        {
+            if (!(CheckSecretID.Contains(ID.Pattern)))
+            {
+                if (!(ShowID.Contains(ID.Pattern)))
+                {
+                    ShowID += ID.Pattern + "\n";
+                Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
+                }
+                else
+                {
+                    continue;
                 }
             }
         }
 
-        // 現在の文字は変換対象でない場合、そのまま再帰
-        GenerateCombinationsRecursive(pattern, replacements, index + 1);
+        ShowIDDisplay.text = ShowID;
+
     }
 
-    // パスワードがクラックできたか確認
-    bool CheckCrack(string generatedPassword)
+    private int GetBlockCount(string text)
     {
-        return CheckSecretID.Contains(generatedPassword);
-    }
-
-    // クラック成功したパスワードと失敗したパスワードを表示
-    void DisplayResults()
-    {
-        ShowID.text = ""; // 初期化
-
-        ShowID.text += "Cracked Passwords:\n";
-        foreach (var password in crackedPasswords)
+        int count = 0;
+        for (int i = 0; i < text.Length; i++)
         {
-            ShowID.text += password + "\n";
+            if (text[i] == '\n')
+            {
+                count++;
+            }
         }
-
-        ShowID.text += "\nFailed Passwords:\n";
-        foreach (var password in failedPasswords)
-        {
-            ShowID.text += password + "\n";
-        }
+        return count;
     }
 }

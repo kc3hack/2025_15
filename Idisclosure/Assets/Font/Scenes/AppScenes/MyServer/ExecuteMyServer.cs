@@ -16,13 +16,13 @@ public class ExecuteMyServer : MonoBehaviour
 
     public void ExecuteCommand()
     {
-        string command = Command.text.Trim().ToLower().Replace("\u200B", "");
+        string command = Command.text.Trim().Replace("\u200B", "");
         Debug.Log("Terminal起動:" + command);
 
         /*----------Virus Osakano Obatyannを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadVirusOO"])
         {
-            if (Regex.IsMatch(command, @"virusoo.*"))
+            if (Regex.IsMatch(command, @"Virusoo.*"))
             {
                 int drain = 10;
 
@@ -54,7 +54,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------IPBST1を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST1") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST1"])
         {
-            if (Regex.IsMatch(command, "ipbst1"))
+            if (Regex.IsMatch(command, "IPBST1"))
             {
                 int drain = 10;
                 
@@ -73,7 +73,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------IPBST2を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST2") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST2"])
         {
-            if (Regex.IsMatch(command, "ipbst2"))
+            if (Regex.IsMatch(command, "IPBST2"))
             {
                 int drain = 10;
                 
@@ -92,7 +92,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------IPBST3を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST3") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST3"])
         {
-            if (Regex.IsMatch(command, "ipbst3"))
+            if (Regex.IsMatch(command, "IPBST3"))
             {
                 int drain = 10;
                 
@@ -111,7 +111,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------DoSToolを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDoSTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDoSTool"])
         {
-            if (Regex.IsMatch(command, @"dostool.*"))
+            if (Regex.IsMatch(command, @"DoSTool.*"))
             {
                 int drain = 10;
 
@@ -158,7 +158,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------CrackToolを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadCrackTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadCrackTool"])
         {
-            if (Regex.IsMatch(command, @"cracktool.*"))
+            if (Regex.IsMatch(command, @"CrackTool.*"))
             {
                 string IDCandidate = command.Replace("cracktool ", "");
                 
@@ -181,7 +181,7 @@ public class ExecuteMyServer : MonoBehaviour
                     PlayerPrefs.Save();
 
                     /*----------シーン遷移----------*/
-                    SceneManager.LoadScene("CrackTool");
+                    SceneManager.LoadScene("CrackToolDisplay");
                 }
             }
         }
