@@ -14,6 +14,37 @@ public class Execute : MonoBehaviour
     private const byte DoSToolPlayer = 102;
     private const byte DoSToolServer = 103;
 
+public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+
+        if (eventCode == VirusOO)
+        {
+            string message = (string)photonEvent.CustomData;
+            Debug.Log($"VirusOOイベント受信！ メッセージ: {message}");
+        }
+        else if (eventCode == DoSToolPlayer || eventCode == DoSToolServer)
+        {
+            string attackerIP = (string)photonEvent.CustomData;
+            Debug.Log($"DoS攻撃イベント受信！ 攻撃元IP: {attackerIP}, イベントコード: {eventCode}");
+
+            // バッテリーを減らす処理
+            int battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+            int drainAmount = 25; // DoS攻撃のバッテリー減少量
+
+            if (battery - drainAmount >= 0)
+            {
+                battery -= drainAmount;
+                PlayerPrefs.SetString("Battery", battery.ToString());
+                PlayerPrefs.Save();
+                Debug.Log($"バッテリーが {drainAmount} 減少しました。残り: {battery}");
+            }
+            else
+            {
+                Debug.Log("バッテリーが不足しています！");
+            }
+        }
+    }
     public void ExecuteCommand()
     {
         string command = Command.text.Trim().ToLower().Replace("\u200B", "");
