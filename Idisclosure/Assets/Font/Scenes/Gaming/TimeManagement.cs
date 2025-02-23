@@ -48,7 +48,7 @@ public class TimeManagement : MonoBehaviourPunCallbacks
             SceneManager.LoadScene("TimeUp");
         }
 
-        UpdateTimerDisplay(timeRemaining);
+        /*UpdateTimerDisplay(timeRemaining);*/
 
         // 送信するテキストを格納する変数
         HashSet<string> existingProfiles = new HashSet<string>();
@@ -158,7 +158,7 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         }
     }
 
-    // タイマーの表示を更新
+   /* // タイマーの表示を更新
     private void UpdateTimerDisplay(double timeRemaining)
     {
         if (timeRemaining > 60)
@@ -171,5 +171,5 @@ public class TimeManagement : MonoBehaviourPunCallbacks
         {
             timerText.text = timeRemaining.ToString("00.0");
         }
-    }
+    }*/
 }
