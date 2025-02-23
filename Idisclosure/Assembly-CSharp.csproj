@@ -113,6 +113,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
     <Compile Include="Assets\Scenes\Waiting\Start10m.cs" />
     <Compile Include="Assets\Scenes\AppScenes\MyServer\ExecuteMyServer.cs" />
+    <Compile Include="Assets\Scenes\StartClick\audio\BGMChanger4.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
