@@ -147,6 +147,7 @@
     <Compile Include="Assets\Font\Scenes\Waiting\ShowRoomMembers.cs" />
     <Compile Include="Assets\Font\Scenes\CreateJoin\CreateJoin.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\Terminal\ShowTerminal.cs" />
+    <Compile Include="Assets\Font\Scenes\AppScenes\Attack\CrackTool.cs" />
     <Compile Include="Assets\Font\Scenes\Gaming\MoveFirewall.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\DropdownSample.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexColorCycler.cs" />

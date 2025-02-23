@@ -154,6 +154,37 @@ public class ExecuteMyServer : MonoBehaviour
                 }
             }
         }
+
+        /*----------CrackToolを実行----------*/
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadCrackTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadCrackTool"])
+        {
+            if (Regex.IsMatch(command, @"cracktool.*"))
+            {
+                string IDCandidate = command.Replace("cracktool ", "");
+                
+                // 正しいカウント処理
+                int CountL = Regex.Matches(IDCandidate, @"\?l").Count;
+                int CountU = Regex.Matches(IDCandidate, @"\?u").Count;
+                int CountD = Regex.Matches(IDCandidate, @"\?d").Count;
+                int CountS = Regex.Matches(IDCandidate, @"\?s").Count;
+                int CountA = Regex.Matches(IDCandidate, @"\?a").Count;
+
+                int drain = CountL * 3 + CountU * 3 + CountD * 1 + CountS * 5 + CountA * 15;
+                
+                int Battery = int.Parse(PlayerPrefs.GetString("BatteryMyServer", "0")); // \u200B を除去
+                if ((Battery - drain >= 0))
+                {
+                    /*----------Battery処理----------*/
+                    Battery -= drain;
+                    PlayerPrefs.SetString("BatteryMyServer", Battery.ToString());
+                    PlayerPrefs.SetString("TargetSecretID", IDCandidate);
+                    PlayerPrefs.Save();
+
+                    /*----------シーン遷移----------*/
+                    SceneManager.LoadScene("CrackTool");
+                }
+            }
+        }
     }
 }
 
