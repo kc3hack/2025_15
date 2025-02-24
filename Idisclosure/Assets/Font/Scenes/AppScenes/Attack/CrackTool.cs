@@ -107,7 +107,7 @@ public class CrackTool : MonoBehaviour
                 // 一致したらCrackedに記録
                 if (!(ShowID.Contains(ID.Pattern.Replace("CrackTool ",""))))
                 {
-                    ShowID += ID.Pattern.Replace("CrackTool", "") + "\n";
+                    ShowID += ID.Pattern.Replace("CrackTool ", "") + "\n";
                     Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
                 }
                 else
@@ -128,7 +128,7 @@ public class CrackTool : MonoBehaviour
                 // 一致したらCrackedに記録
                 if (!(ShowID.Contains(ID.Pattern.Replace("CrackTool ",""))))
                 {
-                    ShowID += ID.Pattern.Replace("CrackTool", "") + "\n";
+                    ShowID += ID.Pattern.Replace("CrackTool ", "") + "\n";
                     Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
                 }
                 else
