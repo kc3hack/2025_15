@@ -2,7 +2,7 @@
 <!-- プロダクト名に変更してください -->
 **Idisclosure**
 
-![IdisclosureLogo](https://www.canva.com/design/DAGfJIAUjLw/Z8oe8qsQZrx8i0PSowkgMA/view?utm_content=DAGfJIAUjLw&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h9fc4aed065](https://www.canva.com/design/DAGfJIAUjLw/Ej0hAEHGTuzWVxnSurHJJQ/edit?utm_content=DAGfJIAUjLw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)](https://drive.google.com/file/d/1xTSaPW47KQSbVUZ9lKLkC0UPARPs4afH/view?usp=drive_link))
+![IdisclosureLogo](https://drive.google.com/file/d/1xTSaPW47KQSbVUZ9lKLkC0UPARPs4afH/view?usp=drive_link)
 <!-- プロダクト名・イメージ画像を差し変えてください -->
 
 
