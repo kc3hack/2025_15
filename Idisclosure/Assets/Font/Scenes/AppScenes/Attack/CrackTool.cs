@@ -62,32 +62,24 @@ public class CrackTool : MonoBehaviour
             { "?u", uppercase }
         };
 
-        GenerateCombinationsRecursive(pattern, replacements, 0);
+        GenerateCombinationsRecursive(pattern, replacements);
     }
 
     // 再帰的にパスワードを生成
-    void GenerateCombinationsRecursive(string pattern, Dictionary<string, string> replacements, int index)
+    void GenerateCombinationsRecursive(string pattern, Dictionary<string, string> replacements)
     {
-        if (index == pattern.Length)  // 基本条件：パターンをすべて処理した
+        while (GetBlockCount(ShowID) >= maxDisplayCount)
         {
-            // クラックする
-            string generatedPassword = pattern;
-
-            while (GetBlockCount(ShowID) >= maxDisplayCount)
+            int firstNewlineIndex = ShowID.IndexOf('\n');
+            if (firstNewlineIndex != -1)
             {
-                int firstNewlineIndex = ShowID.IndexOf('\n');
-                if (firstNewlineIndex != -1)
-                {
-                    ShowID = ShowID.Remove(0, firstNewlineIndex + 1);
-                }
-                else
-                {
-                    ShowID = "";
-                    break;
-                }
+                ShowID = ShowID.Remove(0, firstNewlineIndex + 1);
             }
-
-            return;
+            else
+            {
+                ShowID = "";
+                break;
+            }
         }
 
         var result = from a in Enumerable.Range(0,replacements["?d"].Length)
@@ -96,40 +88,48 @@ public class CrackTool : MonoBehaviour
                     from d in Enumerable.Range(0,replacements["?u"].Length)
                     select new
                     {
-                    Pattern = pattern
-                     .Replace("?d", replacements["?d"][a].ToString())
-                     .Replace("?s", replacements["?s"][b].ToString())
-                     .Replace("?l", replacements["?l"][c].ToString())
-                     .Replace("?u", replacements["?u"][d].ToString())
+                        Pattern = pattern
+                        .Replace("?d", replacements["?d"][a].ToString())
+                        .Replace("?s", replacements["?s"][b].ToString())
+                        .Replace("?l", replacements["?l"][c].ToString())
+                        .Replace("?u", replacements["?u"][d].ToString())
                     };
-
-        ShowID += "Cracked!:\n";
+        
         foreach (var ID in result)
         {
-            if (CheckSecretID.Contains(ID.Pattern))
+            if (CheckSecretID.Contains(ID.Pattern.Replace("CrackTool ","")))
             {
-                if (!(ShowID.Contains(ID.Pattern)))
+                // 最初のみ初期値設定
+                if (!(ShowID.Contains("Cracked!")))
                 {
-                    ShowID += ID.Pattern + "\n";
+                    ShowID += "Cracked!" + "\n";
+                }
+                // 一致したらCrackedに記録
+                if (!(ShowID.Contains(ID.Pattern.Replace("CrackTool ",""))))
+                {
+                    ShowID += ID.Pattern.Replace("CrackTool", "") + "\n";
                     Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
                 }
                 else
                 {
                     continue;
                 }
-
             }
         }
-
-        ShowID += "\nExhausted...:\n";
         foreach (var ID in result)
         {
-            if (!(CheckSecretID.Contains(ID.Pattern)))
+            if (!(CheckSecretID.Contains(ID.Pattern.Replace("CrackTool ",""))))
             {
-                if (!(ShowID.Contains(ID.Pattern)))
+                // 最初のみ初期値設定
+                if (!(ShowID.Contains("Exhaust!")))
                 {
-                    ShowID += ID.Pattern + "\n";
-                Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
+                    ShowID += "Exhaust!" + "\n";
+                }
+                // 一致したらCrackedに記録
+                if (!(ShowID.Contains(ID.Pattern.Replace("CrackTool ",""))))
+                {
+                    ShowID += ID.Pattern.Replace("CrackTool", "") + "\n";
+                    Debug.Log("Generated Pattern: " + ID.Pattern);  // 各パターンを確認する
                 }
                 else
                 {
@@ -137,10 +137,11 @@ public class CrackTool : MonoBehaviour
                 }
             }
         }
-
         ShowIDDisplay.text = ShowID;
-
     }
+        
+
+    
 
     private int GetBlockCount(string text)
     {
