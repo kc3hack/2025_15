@@ -2,7 +2,7 @@
 <!-- プロダクト名に変更してください -->
 **Idisclosure**
 
-![IdisclosureLogo](https://drive.google.com/file/d/1xTSaPW47KQSbVUZ9lKLkC0UPARPs4afH/view?usp=drive_link)
+![IdisclosureLogo](https://drive.google.com/file/d/1xTSaPW47KQSbVUZ9lKLkC0UPARPs4afH/view?usp=sharing)
 <!-- プロダクト名・イメージ画像を差し変えてください -->
 
 
