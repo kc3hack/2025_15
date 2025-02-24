@@ -14,15 +14,19 @@ public class ExecuteMyServer : MonoBehaviour
     private const byte DoSToolPlayer = 102;
     private const byte DoSToolServer = 103;
 
+    // クールタイムの設定（秒）
+    private float commandCooldown = 5f;  // 5秒のクールタイム
+    private float lastCommandTime = -Mathf.Infinity;  // 最後のコマンド実行時刻
+
     public void ExecuteCommand()
     {
-        string command = Command.text.Trim().ToLower().Replace("\u200B", "");
+        string command = Command.text.Trim().Replace("\u200B", "");
         Debug.Log("Terminal起動:" + command);
 
         /*----------Virus Osakano Obatyannを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadVirusOO"])
         {
-            if (Regex.IsMatch(command, @"virusoo.*"))
+            if (Regex.IsMatch(command, @"VirusOO.*"))
             {
                 int drain = 10;
 
@@ -34,7 +38,7 @@ public class ExecuteMyServer : MonoBehaviour
                     PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                     PlayerPrefs.Save();
                     /*----------IP処理----------*/
-                    string TargetIP = command.Replace("virusoo ","");
+                    string TargetIP = command.Replace("VirusOO ","");
                     /*----------IP探索----------*/
                     foreach (Player player in PhotonNetwork.PlayerList)
                     {
@@ -54,7 +58,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------IPBST1を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST1") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST1"])
         {
-            if (Regex.IsMatch(command, "ipbst1"))
+            if (Regex.IsMatch(command, "IPBST1"))
             {
                 int drain = 10;
                 
@@ -73,7 +77,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------IPBST2を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST2") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST2"])
         {
-            if (Regex.IsMatch(command, "ipbst2"))
+            if (Regex.IsMatch(command, "IPBST2"))
             {
                 int drain = 10;
                 
@@ -92,7 +96,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------IPBST3を実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadIPBST3") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadIPBST3"])
         {
-            if (Regex.IsMatch(command, "ipbst3"))
+            if (Regex.IsMatch(command, "IPBST3"))
             {
                 int drain = 10;
                 
@@ -111,7 +115,13 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------DoSToolを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDoSTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDoSTool"])
         {
-            if (Regex.IsMatch(command, @"dostool.*"))
+            // クールタイムが経過していない場合は実行しない
+            if (Time.time - lastCommandTime < commandCooldown)
+            {
+                Debug.Log("コマンドはクールタイム中です。少し待ってから再試行してください。");
+                return;
+            }
+            if (Regex.IsMatch(command, @"DoSTool.*"))
             {
                 int drain = 10;
 
@@ -123,7 +133,7 @@ public class ExecuteMyServer : MonoBehaviour
                     PlayerPrefs.SetString("BatteryMyServer", BatteryMyServer.ToString());
                     PlayerPrefs.Save();
                     /*----------IP処理----------*/
-                    string TargetIP = command.Replace("dostool ","");
+                    string TargetIP = command.Replace("DoSTool ","");
                     /*----------IP探索----------*/
                     foreach (Player player in PhotonNetwork.PlayerList)
                     {
@@ -151,6 +161,8 @@ public class ExecuteMyServer : MonoBehaviour
                             PhotonNetwork.RaiseEvent(DoSToolServer, message, raiseEventOptions, sendOptions);
                         }
                     }
+                    // コマンド実行時刻を保存して、次のコマンド実行時に使用する
+                    lastCommandTime = Time.time;
                 }
             }
         }
