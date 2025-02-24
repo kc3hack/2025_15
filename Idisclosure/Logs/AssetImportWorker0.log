@@ -96835,3 +96835,29 @@ Memory consumption went from 172.6 MB to 163.8 MB.
 Total: 51.795700 ms (FindLiveObjects: 1.426100 ms CreateObjectMapping: 1.391700 ms MarkObjects: 12.714700 ms  DeleteObjects: 36.257500 ms)
 
 Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Refreshing native plugins compatible for Editor in 4.01 ms, found 4 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 13 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 6869 unused Assets / (8.7 MB). Loaded Objects now: 7629.
+Memory consumption went from 172.8 MB to 164.1 MB.
+Total: 74.387500 ms (FindLiveObjects: 1.859600 ms CreateObjectMapping: 1.155700 ms MarkObjects: 26.495500 ms  DeleteObjects: 44.872600 ms)
+
+Prepare: number of updated asset objects reloaded= 2
+========================================================================
+Received Import Request.
+  Time since last request: 3051.710978 seconds.
+  path: Assets/Scenes/AppScenes
+  artifactKey: Guid(0c073c11c94f9ce4f8b6615eb90fae97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/AppScenes using Guid(0c073c11c94f9ce4f8b6615eb90fae97) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd772add8356dba247e293d9514d38d96') in 0.0263846 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 40.925125 seconds.
+  path: Assets/Scenes/AppScenes/MyServer
+  artifactKey: Guid(8221d687ca2b29f49b8a86380bb6a4d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/AppScenes/MyServer using Guid(8221d687ca2b29f49b8a86380bb6a4d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9addc2f215e61870260f007d4d507a71') in 0.0023608 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
