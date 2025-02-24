@@ -50,7 +50,7 @@ public class Execute : MonoBehaviour
     }
     public void ExecuteCommand()
     {
-        string command = Command.text.Trim().ToLower().Replace("\u200B", "");
+        string command = Command.text.Trim().Replace("\u200B", "");
         Debug.Log("Terminal起動:" + command);
 
         /*----------Virus Osakano Obatyannを実行----------*/
