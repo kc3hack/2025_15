@@ -14,6 +14,9 @@ public class Execute : MonoBehaviour
     private const byte DoSToolPlayer = 102;
     private const byte DoSToolServer = 103;
 
+    // クールタイムの設定（秒）
+    private float commandCooldown = 5f;  // 5秒のクールタイム
+    private float lastCommandTime = -Mathf.Infinity;  // 最後のコマンド実行時刻
 public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
@@ -140,51 +143,63 @@ public void OnEvent(EventData photonEvent)
         }
 
         /*----------DoSToolを実行----------*/
-        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDoSTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDoSTool"])
-        {
-            if (Regex.IsMatch(command, @"dostool.*"))
-            {
-                int drain = 10;
+if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDoSTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDoSTool"])
+{
+    // クールタイムが経過していない場合は実行しない
+    if (Time.time - lastCommandTime < commandCooldown)
+    {
+        Debug.Log("コマンドはクールタイム中です。少し待ってから再試行してください。");
+        return;
+    }
 
-                int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
-                if ((Battery - drain >= 0))
-                {
-                    /*----------Battery処理----------*/
-                    Battery -= drain;
-                    PlayerPrefs.SetString("Battery", Battery.ToString());
-                    PlayerPrefs.Save();
-                    /*----------IP処理----------*/
-                    string TargetIP = command.Replace("dostool ","");
-                    /*----------IP探索----------*/
-                    foreach (Player player in PhotonNetwork.PlayerList)
-                    {
-                        string PlayerIP = "";
-                        if ((string)player.CustomProperties["PlayerIP"] == TargetIP)
-                        {
-                            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerIP"))
-                            {
-                                PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
-                            }
-                            string message = PlayerIP;
-                            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
-                            SendOptions sendOptions = new SendOptions { Reliability = true };
-                            PhotonNetwork.RaiseEvent(DoSToolPlayer, message, raiseEventOptions, sendOptions);
-                        }
-                        else if ((string)player.CustomProperties["ServerIP"] == TargetIP)
-                        {
-                            if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerIP"))
-                            {
-                                PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
-                            }
-                            string message = PlayerIP;
-                            RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
-                            SendOptions sendOptions = new SendOptions { Reliability = true };
-                            PhotonNetwork.RaiseEvent(DoSToolServer, message, raiseEventOptions, sendOptions);
-                        }
-                    }
-                }
-            }
+    if (Regex.IsMatch(command, @"dostool.*"))
+    {
+        int drain = 10;
+
+        int Battery = int.Parse(PlayerPrefs.GetString("Battery", "0").Replace("\u200B", ""));
+        if ((Battery - drain >= 0))
+        {
+            /*----------Battery処理----------*/
+            Battery -= drain;
+            PlayerPrefs.SetString("Battery", Battery.ToString());
+            PlayerPrefs.Save();
+
+            /*----------IP処理----------*/
+            string TargetIP = command.Replace("dostool ","");
+
+            /*----------IP探索----------*/
+            foreach (Player player in PhotonNetwork.PlayerList)
+{
+    string PlayerIP = "";
+    if ((string)player.CustomProperties["PlayerIP"] == TargetIP)
+    {
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerIP"))
+        {
+            PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
         }
+        string message = PlayerIP;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+        PhotonNetwork.RaiseEvent(DoSToolPlayer, message, raiseEventOptions, sendOptions);
+    }
+    else if ((string)player.CustomProperties["ServerIP"] == TargetIP)
+    {
+        if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("PlayerIP"))
+        {
+            PlayerIP = (string)PhotonNetwork.LocalPlayer.CustomProperties["PlayerIP"];
+        }
+        string message = PlayerIP;
+        RaiseEventOptions raiseEventOptions = new RaiseEventOptions { TargetActors = new int[] { player.ActorNumber } };
+        SendOptions sendOptions = new SendOptions { Reliability = true };
+        PhotonNetwork.RaiseEvent(DoSToolServer, message, raiseEventOptions, sendOptions);
     }
 }
 
+
+            // コマンド実行時刻を保存して、次のコマンド実行時に使用する
+            lastCommandTime = Time.time;
+        }
+    }
+}
+    }
+}
