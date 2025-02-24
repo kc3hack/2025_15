@@ -52,7 +52,7 @@ https://youtu.be/iihHMxUtkLc?si=6If-oNKuMv68Dccu
 ### その他
 勝利するための手段を複数個作ることによって作業になることを避けている。常にリスクをつけることによって緊張感がある。お互いにできることは同じなため理不尽な敗北がない!!
 ## 使用技術
-unity,C#,GitHub
+unity,C#,GitHub,Photon,PUN2
 <!-- 使用技術を入力してください -->
 
 
