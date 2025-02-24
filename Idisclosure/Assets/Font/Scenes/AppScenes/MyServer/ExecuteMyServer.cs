@@ -22,7 +22,7 @@ public class ExecuteMyServer : MonoBehaviour
         /*----------Virus Osakano Obatyannを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadVirusOO"])
         {
-            if (Regex.IsMatch(command, @"Virusoo.*"))
+            if (Regex.IsMatch(command, @"VirusOO.*"))
             {
                 int drain = 10;
 

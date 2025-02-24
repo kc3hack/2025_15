@@ -14,6 +14,11 @@ public class Execute : MonoBehaviour
     private const byte DoSToolPlayer = 102;
     private const byte DoSToolServer = 103;
 
+    // クールタイムの設定（秒）
+    private float commandCooldown = 5f;  // 5秒のクールタイム
+    private float lastCommandTime = -Mathf.Infinity;  // 最後のコマンド実行時刻
+
+
 public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
@@ -53,7 +58,7 @@ public void OnEvent(EventData photonEvent)
         /*----------Virus Osakano Obatyannを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadVirusOO") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadVirusOO"])
         {
-            if (Regex.IsMatch(command, @"Virusoo.*"))
+            if (Regex.IsMatch(command, @"VirusOO.*"))
             {
                 int drain = 10;
 
@@ -142,6 +147,14 @@ public void OnEvent(EventData photonEvent)
         /*----------DoSToolを実行----------*/
         if (PhotonNetwork.LocalPlayer.CustomProperties.ContainsKey("DownloadDoSTool") && (bool)PhotonNetwork.LocalPlayer.CustomProperties["DownloadDoSTool"])
         {
+
+            // クールタイムが経過していない場合は実行しない
+            if (Time.time - lastCommandTime < commandCooldown)
+            {
+                Debug.Log("コマンドはクールタイム中です。少し待ってから再試行してください。");
+                return;
+            }
+
             if (Regex.IsMatch(command, @"DoSTool.*"))
             {
                 int drain = 10;
@@ -154,7 +167,7 @@ public void OnEvent(EventData photonEvent)
                     PlayerPrefs.SetString("Battery", Battery.ToString());
                     PlayerPrefs.Save();
                     /*----------IP処理----------*/
-                    string TargetIP = command.Replace("dostool ","");
+                    string TargetIP = command.Replace("DoSTool ","");
                     /*----------IP探索----------*/
                     foreach (Player player in PhotonNetwork.PlayerList)
                     {
@@ -182,6 +195,8 @@ public void OnEvent(EventData photonEvent)
                             PhotonNetwork.RaiseEvent(DoSToolServer, message, raiseEventOptions, sendOptions);
                         }
                     }
+                    // コマンド実行時刻を保存して、次のコマンド実行時に使用する
+                    lastCommandTime = Time.time;
                 }
             }
         }

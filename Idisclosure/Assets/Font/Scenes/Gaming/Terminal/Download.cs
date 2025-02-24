@@ -224,10 +224,10 @@ public class Download : MonoBehaviour
             {
                 showTerminal = (string)PhotonNetwork.LocalPlayer.CustomProperties["TerminalDisplay"];
             }
-            if (!(showTerminal.Contains("DoS Tool\n")))
+            if (!(showTerminal.Contains("DoSTool\n")))
             {
                 // Terminalに追加
-                showTerminal += "DoS Tool\n";
+                showTerminal += "DoSTool\n";
                 Hashtable ShowDisplay = new Hashtable { { "TerminalDisplay", showTerminal } };
                 PhotonNetwork.LocalPlayer.SetCustomProperties(ShowDisplay);
             }
