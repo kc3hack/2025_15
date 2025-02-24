@@ -47,6 +47,9 @@ public class Start15m : MonoBehaviourPunCallbacks
 
             { "DoSTool", false },
             {"FishingDoSTool", false},
+
+            { "CrackTool", false },
+            {"FishingCrackTool", false},
         };
         PhotonNetwork.CurrentRoom.SetCustomProperties(Webs);
 
