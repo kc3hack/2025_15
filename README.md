@@ -2,7 +2,8 @@
 <!-- プロダクト名に変更してください -->
 **Idisclosure**
 
-![IdisclosureLogo](https://drive.google.com/file/d/1xTSaPW47KQSbVUZ9lKLkC0UPARPs4afH/view?usp=sharing)
+![image](https://github.com/user-attachments/assets/82401ce5-abd9-4a54-ac97-f42dcba4e09e)
+
 <!-- プロダクト名・イメージ画像を差し変えてください -->
 
 
